@@ -5,11 +5,13 @@ define(['routes',
 	'angular',
 	'angular-route',
 	'bootstrap',
-	'angular-translate'],
+	'angular-translate',
+	'angular-cookies'],
 	function(config, dependencyResolverFor, i18n) {
 		var AnguRaptor = angular.module('AnguRaptor', [
 			'ngRoute',
-			'pascalprecht.translate'
+			'pascalprecht.translate',
+			'ngCookies'
 		]);
 		AnguRaptor
 			.config(

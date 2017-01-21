@@ -3,11 +3,20 @@ define(['AnguRaptor'], function(AnguRaptor) {
   var root = 'http://localhost:10101';
 
   'use strict';
-  AnguRaptor.service('api', ['$http', '$q', function($http, $q) {
+  AnguRaptor.service('api', ['$http', '$q', '$cookies', '$rootScope', '$window', function($http, $q, $cookies, $rootScope, $window) {
+
+    var token = $cookies.get('token');
+
+    $rootScope.$on('session.change', function(){
+      token = $cookies.get('token');
+    }, true);
 
     function endpoint(options) {
       options.url = root + options.url;
       options.after = options.after || function(data) {
+        return data
+      };
+      options.afterError = options.afterError || function(data) {
         return data
       };
       options.auth = options.auth || false;
@@ -35,13 +44,28 @@ define(['AnguRaptor'], function(AnguRaptor) {
             'code': response.status,
             'message': response.statusText
           };
-          return $q.reject({
+          return $q.reject(options.afterError({
             'error': error,
             'data': response.data
-          });
+          }));
         });
       }
     };
+
+    function buildSession(response) {
+        var now = new $window.Date();
+        exp = new $window.Date(now.getFullYear(), now.getMonth(), now.getDate() + 30);
+        $cookies.put('token', response.token, {
+          expires: exp
+        });
+        $rootScope.$broadcast('session.change');
+        return response;
+    }
+
+    function destroySession(response) {
+       $cookies.remove('token');
+       $rootScope.$broadcast('session.change');
+    }
 
     this.user = {
       get: function() {
@@ -54,14 +78,17 @@ define(['AnguRaptor'], function(AnguRaptor) {
           body: {
             'username': username,
             'password': password
-          }
+          },
+          after: buildSession
         })();
       },
       logout: function() {
         return endpoint({
           url: '/auth/logout',
           method: 'POST',
-          auth: true
+          auth: true,
+          after: destroySession,
+          afterError: destroySession
         })();
       },
       create: function(firstName, lastName, useranme, email, password) {
@@ -76,6 +103,9 @@ define(['AnguRaptor'], function(AnguRaptor) {
             'password': password
           }
         })();
+      },
+      isLoggedIn: function() {
+        return !(token == null);
       }
     }
 
