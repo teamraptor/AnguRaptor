@@ -1,7 +1,11 @@
 'use strict';
-define(['AnguRaptor'], function(AnguRaptor) {
+define(['AnguRaptor', 'services/api'], function(AnguRaptor) {
 
-	AnguRaptor.controller('HomeCtrl', function($scope) {
-		$scope.homePageText = 'This is your homepage';
-	});
+  AnguRaptor.controller('HomeCtrl', ['$scope', 'api', function($scope, api) {
+    api.users.timeline.get('tomi', 1, 15).then(function(data) {
+      $scope.homePageText = data;
+			console.log(data);
+    })
+  }]);
+
 });
