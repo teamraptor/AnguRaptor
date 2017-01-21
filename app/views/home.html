@@ -1,26 +1,11 @@
 <div class="jumbotron">
-	<h1>'Allo, 'Allo!</h1>
-	<p class="lead">
-		<img src="images/yeoman.png" alt="I'm Yeoman"><br />
-		{{'WELCOME_MESSAGE' | translate}}
-	</p>
-	<p><a class="btn btn-lg btn-success" ng-href="#">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
-</div>
-
-<div>
-	<p><a class="btn btn-success" ng-click="login()">Login</a></p>
-	<p><a class="btn btn-default" ng-click="logout()">Logout</a></p>
-	<p>Is logged in: {{isLoggedIn}}</p>
-</div>
-
-<div class="row marketing">
-	<h4>Angular-Require-Fullstack Generator contains</h4>
-	<ul>
-		<li>AngularJs</li>
-		<li>RequireJs</li>
-		<li>Bootstrap</li>
-		<li>i18n</li>
-		<li>Grunt</li>
-		<li>File revving</li>
-	</ul>
+	<div>
+		<div ng-if="user!=null">
+			<p><strong>{{'USERNAME' | translate}}:</strong> {{user.username}}</p>
+			<p><strong>{{'FULL_NAME' | translate}}:</strong> {{user.first_name}} {{user.last_name}}</p>
+			<img ng-src="{{user.profile_picture}}"/>
+		</div>
+		<br/>
+		<p><a class="btn btn-success" ng-click="login()" ng-show="user==null">{{'LOGIN' | translate}}</a> <a class="btn btn-default" ng-click="logout()" ng-show="user!=null">{{'LOGOUT' | translate}}</a></p>
+	</div>
 </div>

@@ -1,25 +1,40 @@
 'use strict';
 define(['AnguRaptor', 'services/api'], function(AnguRaptor) {
 
-  AnguRaptor.controller('HomeCtrl', ['$scope', 'api', function($scope, api) {
-      $scope.isLoggedIn = api.user.isLoggedIn();
-      $scope.$on('session.change', function(){
-        console.log('changed');
-        $scope.isLoggedIn = api.user.isLoggedIn();
-      }, true);
+    AnguRaptor.controller('HomeCtrl', ['$scope', 'api', function($scope, api) {
 
-      $scope.login = function() {
-        api.user.login('tomi','147852').then(function(response){
-            console.log('Logged in!');
-        });
-      }
+        if (api.user.isLoggedIn()) {
+            api.user.get().then(function(user) {
+                $scope.user = user;
+            });
+        } else {
+          $scope.user = null;
+        }
 
-      $scope.logout = function() {
-        api.user.logout().then(function(){
-            console.log('Logged out!');
-        });
-      }
+        var sessionListener = $scope.$on('session.change', function() {
+            if (api.user.isLoggedIn()) {
+                api.user.get().then(function(user) {
+                    $scope.user = user;
+                });
+            } else {
+              $scope.user = null;
+            }
+        }, true);
 
-  }]);
+        $scope.$on('$destroy', sessionListener);
+
+        $scope.login = function() {
+            api.user.login('tomi', '147852').then(function(response) {
+
+            });
+        }
+
+        $scope.logout = function() {
+            api.user.logout().then(function() {
+
+            });
+        }
+
+    }]);
 
 });
