@@ -1,0 +1,67 @@
+@import 'modules/variables';
+
+.navbar-raptor {
+    @include raptor-gradient( 'horizontal');
+}
+
+.navbar-header {
+    margin-left: 20px;
+    height: 50px;
+}
+@media screen and (max-width: 768px) {
+    .navbar-header {
+        margin-left: 10px;
+    }
+    .navbar-search {
+        display: none;
+    }
+}
+
+.navbar-brand {
+    width: 115px;
+    background: url("../images/logo.png") no-repeat center;
+    background-size: 115px 28px;
+}
+
+.navbar-search {
+    padding: 0px;
+    margin-left: 20px;
+}
+
+.navbar-search .button-submit {
+  color: white;
+  background-color: $blue-color;
+}
+
+.inner-addon input[type="text"] {
+  border-radius: 50px;
+  border: none;
+  height: 34px;
+  -webkit-transition: all .5s ease;
+   -moz-transition: all .5s ease;
+   transition: all .5s ease;
+   width: 200px;
+}
+
+.inner-addon input[type="text"]:focus {
+  width: 275px;
+}
+
+.inner-addon {
+    position: relative;
+}
+
+.inner-addon .button-submit {
+  position: absolute;
+  padding: 9px;
+  pointer-events: none;
+  top: 1px;
+  height: 32px;
+  border-radius: 30px;
+}
+
+.left-addon .button-submit  { left:  1px;}
+.right-addon .button-submit { right: 1px;}
+
+.left-addon input  { padding-left:  35px; }
+.right-addon input { padding-right: 35px; }

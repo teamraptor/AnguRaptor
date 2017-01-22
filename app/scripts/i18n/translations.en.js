@@ -11,6 +11,8 @@ define([], function() {
 		FULL_NAME: 'Full name',
 
 		LOGIN: 'Login',
-		LOGOUT: 'Logout'
+		LOGOUT: 'Logout',
+
+		SEARCH_PLACEHOLDER: 'Search Raptor...'
 	};
 });
