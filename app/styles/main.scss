@@ -1,12 +1,11 @@
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 // bower:scss
 @import 'bootstrap-sass-official/assets/stylesheets/_bootstrap.scss';
-@import 'compass';
 // endbower
 
 @import 'partials/home';
 @import 'partials/navbar';
 
 body {
-  background-color: $background-color;
+  background-color: $light-blue-color;
 }

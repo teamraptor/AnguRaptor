@@ -1,3 +1,5 @@
+@import 'compass';
+
 @mixin raptor-gradient($orientation) {
   background-color: rgb(37,141,237); // Old browsers
   @if $orientation == 'horizontal' {
@@ -9,5 +11,6 @@
    }
 }
 
-$background-color: #F4F7F9;
+$light-blue-color: #F4F7F9;
 $blue-color: #258DED;
+$dark-blue-color: #8C9FAF;

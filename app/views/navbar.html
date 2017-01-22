@@ -2,10 +2,20 @@
 	<div class="navbar-header">
 		<a class="navbar-brand" href="#/"></a>
 	</div>
-	<div class="navbar-form navbar-left navbar-search">
+	<div class="navbar-form navbar-left navbar-search hidden-xs">
 		<div class="inner-addon right-addon">
-		    <a class="glyphicon glyphicon-search button-submit"></a>
-		    <input type="text" class="form-control" / placeholder="{{ 'SEARCH_PLACEHOLDER' | translate}}">
+			<a class="glyphicon glyphicon-search button-submit"></a>
+			<input type="text" class="form-control" / placeholder="{{ 'SEARCH_PLACEHOLDER' | translate}}">
 		</div>
 	</div>
+	<ul class="nav navbar-nav navbar-right navbar-menu">
+		<li class="visible-xs">
+			<a class="glyphicon glyphicon-search" href="#/"></a>
+		</li>
+		<li class="navbar-login">
+			<a href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">{{ 'LOGIN' | translate}} <span class="caret"></span></a>
+			<div class="card card-login">
+			</div>
+		</li>
+	</ul>
 </nav>
