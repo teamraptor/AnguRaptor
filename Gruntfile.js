@@ -15,7 +15,7 @@ module.exports = function (grunt) {
     yeoman: appConfig,
     connect: {
       options: {
-        port: 9876,
+        port: 8088,
         hostname: 'localhost',
         livereload: 35729
       },
