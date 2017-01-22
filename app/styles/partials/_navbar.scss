@@ -16,7 +16,6 @@
     margin-left: 20px;
     height: 50px;
 }
-
 @media screen and (max-width: 768px) {
     .navbar-header {
         margin-left: 10px;
@@ -94,19 +93,19 @@
 
 /* Navbar left menu */
 
-.navbar-menu a {
+.navbar-menu a.navbar-menu-item {
     padding: 15px;
     display: block;
     text-decoration: none;
 }
 
-.navbar-menu .open > a,
-.navbar-menu .open > a:active,
-.navbar-menu .open > a:focus,
-.navbar-menu .open > a:hover,
-.navbar-menu li a:active,
-.navbar-menu li a:focus,
-.navbar-menu li a:hover {
+.navbar-menu .open > a.navbar-menu-item,
+.navbar-menu .open > a.navbar-menu-item:active,
+.navbar-menu .open > a.navbar-menu-item:focus,
+.navbar-menu .open > a.navbar-menu-item:hover,
+.navbar-menu li a.navbar-menu-item:active,
+.navbar-menu li a.navbar-menu-item:focus,
+.navbar-menu li a.navbar-menu-item:hover {
     color: $light-blue-color;
     background-color: transparent;
 }
@@ -126,8 +125,7 @@
     float: left;
     min-width: 200px;
     min-height: 100px;
-    padding: 5px;
-    font-size: 14px;
+    padding: 20px;
     text-align: left;
     background-color: #fff;
     border-radius: 4px;
@@ -136,14 +134,87 @@
     background-clip: padding-box;
 }
 
-.open > .card,
-.card-open {
+a.link {
+  color: $blue-color;
+}
+
+.card-open,
+.open > .card {
     display: block;
 }
 
 .card-login {
     right: 0;
     margin-right: 15px;
+}
+
+.card-login input[type="password"],
+.card-login input[type="text"] {
+    background-color: $light-blue-color;
+    width: 100%;
+    min-width: 250px;
+    margin-bottom: 10px;
+}
+
+/* raptor input */
+
+.raptor-input {
+    display: block;
+    height: 34px;
+    padding: 6px 12px;
+    line-height: 1.428571429;
+    color: $dark-gray-color;
+    background-color: $light-blue-color;
+    background-image: none;
+    border-style: none;
+    border-radius: 0;
+}
+
+.raptor-input::-webkit-input-placeholder {
+    color: $dark-blue-color;
+}
+
+.raptor-input:-moz-placeholder {
+    color: $dark-blue-color;
+    opacity: 1;
+}
+
+.raptor-input::-moz-placeholder {
+    color: $dark-blue-color;
+    opacity: 1;
+}
+
+.raptor-input:-ms-input-placeholder {
+    color: $dark-blue-color;
+}
+
+input:focus.raptor-input {
+    outline: none;
+}
+
+.btn-raptor {
+  color: white;
+  background-color: $blue-color;
+  border-radius: 30px;
+  padding: 8px 16px;
+  font-weight: 500;
+}
+
+a.btn-raptor {
+  color: white;
+  font-weight: 500;
+}
+
+.btn-raptor:hover,
+.btn-raptor:focus {
+  color: white;
+  outline: none;
+  font-weight: 500;
+}
+
+.card-login .btn-spacing {
+  margin-top: 5px;
+  margin-bottom: 15px;
 }
 
 @media (max-width: 768px) {

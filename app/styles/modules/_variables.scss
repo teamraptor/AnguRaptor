@@ -1,16 +1,19 @@
 @import 'compass';
 
 @mixin raptor-gradient($orientation) {
-  background-color: rgb(37,141,237); // Old browsers
-  @if $orientation == 'horizontal' {
-    @include filter-gradient(#258ded, #544cd9, vertical); // IE6-9
-    @include background-image(linear-gradient(left, rgba(37,141,237,1) 0%,rgba(84,76,217,1) 100%));
-   } @else {
-     @include filter-gradient(#258ded, #544cd9, horizontal); // IE6-9
-     @include background-image(linear-gradient(top, rgba(37,141,237,1) 0%,rgba(84,76,217,1) 100%));
-   }
+    background-color: rgb(37,141,237); // Old browsers
+
+    @if $orientation == 'horizontal' {
+        @include filter-gradient(#258ded, #544cd9, vertical); // IE6-9
+        @include background-image(linear-gradient(left, rgba(37,141,237,1) 0%,rgba(84,76,217,1) 100%));
+    }
+    @else {
+         @include filter-gradient(#258ded, #544cd9, horizontal); // IE6-9
+        @include background-image(linear-gradient(top, rgba(37,141,237,1) 0%,rgba(84,76,217,1) 100%));
+    }
 }
 
 $light-blue-color: #F4F7F9;
 $blue-color: #258DED;
 $dark-blue-color: #8C9FAF;
+$dark-gray-color: #021D33;

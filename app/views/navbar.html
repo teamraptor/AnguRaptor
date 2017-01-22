@@ -10,11 +10,19 @@
 	</div>
 	<ul class="nav navbar-nav navbar-right navbar-menu">
 		<li class="visible-xs">
-			<a class="glyphicon glyphicon-search" href="#/"></a>
+			<a class="glyphicon glyphicon-search navbar-menu-item" href="#/"></a>
 		</li>
 		<li class="navbar-login">
-			<a href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">{{ 'LOGIN' | translate}} <span class="caret"></span></a>
+			<a href="#" class="navbar-menu-item" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">{{ 'LOG_IN' | translate}} <span class="caret"></span></a>
 			<div class="card card-login">
+				<div class="row">
+				<div class="col-md-12 text-center">
+					<input type="text" class="raptor-input" autocorrect="off" autocapitalize="none" placeholder="{{ 'USERNAME_PLACEHOLDER' | translate}}"/>
+					<input type="password" class="raptor-input" autocorrect="off" autocapitalize="none" placeholder="{{ 'PASSWORD_PLACEHOLDER' | translate}}"/>
+					<a class="btn btn-raptor btn-spacing">{{ 'LOG_IN' | translate}}</a>
+					<p>{{ 'NO_ACCOUNT' | translate}} <a class="link">{{ 'SIGN_UP' | translate}}.</a></p>
+				</div>
+			</div>
 			</div>
 		</li>
 	</ul>

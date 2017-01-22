@@ -2,9 +2,14 @@
 define([], function() {
 
 	return {
-		LOGIN: 'Login',
-		LOGOUT: 'Logout',
+		LOG_IN: 'Log in',
+		LOG_OUT: 'Log out',
 
-		SEARCH_PLACEHOLDER: 'Search Raptor...'
+		SEARCH_PLACEHOLDER: 'Search Raptor...',
+		USERNAME_PLACEHOLDER: 'Username',
+		PASSWORD_PLACEHOLDER: 'Password',
+
+		NO_ACCOUNT: 'No account?',
+		SIGN_UP: 'Sign up'
 	};
 });
