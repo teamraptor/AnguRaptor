@@ -2,6 +2,7 @@
 	<div class="navbar-header">
 		<a class="navbar-brand" href="#/"></a>
 	</div>
+	<!-- Search desktop -->
 	<div class="navbar-form navbar-left navbar-search hidden-xs">
 		<div class="inner-addon right-addon">
 			<a class="glyphicon glyphicon-search button-submit"></a>
@@ -9,20 +10,33 @@
 		</div>
 	</div>
 	<ul class="nav navbar-nav navbar-right navbar-menu">
+		<!-- Search mobile -->
 		<li class="visible-xs">
 			<a class="glyphicon glyphicon-search navbar-menu-item" href="#/"></a>
 		</li>
-		<li class="navbar-login">
+		<!-- User navbar -->
+		<li class="navbar-user" ng-if="loggedIn">
+			<a href="#" class="navbar-menu-item" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Tomi <span class="caret"></span></a>
+			<ul class="card card-user">
+				<li class="list-item"><a href="#">{{ 'PROFILE' | translate}}</a></li>
+				<li class="list-item"><a href="#">{{ 'LOG_OUT' | translate}}</a></li>
+			</ul>
+		</li>
+		<li class="navbar-user" ng-if="loggedIn">
+			<a class="navbar-menu-item img-item" href="#"><img class="profile-picture" src="https://www.gravatar.com/avatar/e87a0f9738e9a6a273271f0392686cec?d=http%3A%2F%2Fi.imgur.com%2FgOGINGL.png&s=200"/></a>
+		</li>
+		<!-- Login -->
+		<li class="navbar-login" ng-if="!loggedIn">
 			<a href="#" class="navbar-menu-item" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">{{ 'LOG_IN' | translate}} <span class="caret"></span></a>
 			<div class="card card-login">
 				<div class="row">
-				<div class="col-md-12 text-center">
-					<input type="text" class="raptor-input" autocorrect="off" autocapitalize="none" placeholder="{{ 'USERNAME_PLACEHOLDER' | translate}}"/>
-					<input type="password" class="raptor-input" autocorrect="off" autocapitalize="none" placeholder="{{ 'PASSWORD_PLACEHOLDER' | translate}}"/>
-					<a class="btn btn-raptor btn-spacing">{{ 'LOG_IN' | translate}}</a>
-					<p>{{ 'NO_ACCOUNT' | translate}} <a class="link">{{ 'SIGN_UP' | translate}}.</a></p>
+					<div class="col-md-12 text-center">
+						<input type="text" class="raptor-input" autocorrect="off" autocapitalize="none" placeholder="{{ 'USERNAME_PLACEHOLDER' | translate}}"/>
+						<input type="password" class="raptor-input" autocorrect="off" autocapitalize="none" placeholder="{{ 'PASSWORD_PLACEHOLDER' | translate}}"/>
+						<a class="btn btn-raptor btn-spacing">{{ 'LOG_IN' | translate}}</a>
+						<p>{{ 'NO_ACCOUNT' | translate}} <a class="link">{{ 'SIGN_UP' | translate}}.</a></p>
+					</div>
 				</div>
-			</div>
 			</div>
 		</li>
 	</ul>

@@ -10,6 +10,8 @@ define([], function() {
 		PASSWORD_PLACEHOLDER: 'Password',
 
 		NO_ACCOUNT: 'No account?',
-		SIGN_UP: 'Sign up'
+		SIGN_UP: 'Sign up',
+
+		PROFILE: 'Profile'
 	};
 });

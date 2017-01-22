@@ -94,9 +94,13 @@
 /* Navbar left menu */
 
 .navbar-menu a.navbar-menu-item {
-    padding: 15px;
     display: block;
     text-decoration: none;
+    font-weight: 500;
+}
+
+.navbar-menu-item.img-item {
+    padding: 5px 30px 5px 5px;
 }
 
 .navbar-menu .open > a.navbar-menu-item,
@@ -112,7 +116,12 @@
 
 .navbar-login {
     margin-right: 15px;
-    font-weight: 500;
+}
+
+.navbar-user img.profile-picture {
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid white;
 }
 
 /* Cards layout */
@@ -132,6 +141,7 @@
     border: 1px solid $dark-blue-color;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.175);
     background-clip: padding-box;
+    overflow: hidden;
 }
 
 a.link {
@@ -154,6 +164,35 @@ a.link {
     width: 100%;
     min-width: 250px;
     margin-bottom: 10px;
+}
+
+.card-user {
+  right: 0;
+  margin-right: 15px;
+  padding: 0px;
+  list-style: none;
+}
+
+.card .list-item a {
+  display: block;
+  color: $dark-gray-color;
+  line-height: 50px;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 4px;
+  font-size: 1.1em;
+}
+
+.card li.list-item {
+  border-bottom: 1px solid $dark-blue-color;
+}
+
+.card li.list-item:hover {
+  background-color: $light-blue-color;
+}
+
+.card li.list-item:last-child {
+  border-style: none;
 }
 
 /* raptor input */
