@@ -27,13 +27,13 @@ define(['AnguRaptor', 'services/api'], function(AnguRaptor) {
             api.user.login('tomi', '147852').then(function(response) {
 
             });
-        }
+        };
 
         $scope.logout = function() {
             api.user.logout().then(function() {
 
             });
-        }
+        };
 
     }]);
 

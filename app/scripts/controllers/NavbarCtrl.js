@@ -1,6 +1,6 @@
+'use strict';
 define(['AnguRaptor'], function(AnguRaptor) {
 
-    'use strict';
     AnguRaptor.controller('NavbarCtrl', function($scope) {
         $scope.loggedIn = true;
     });

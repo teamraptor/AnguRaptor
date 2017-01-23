@@ -9,24 +9,22 @@
 			<input type="text" class="form-control" / placeholder="{{ 'SEARCH_PLACEHOLDER' | translate}}">
 		</div>
 	</div>
-	<ul class="nav navbar-nav navbar-right navbar-menu">
-		<!-- Search mobile -->
-		<li class="visible-xs">
-			<a class="glyphicon glyphicon-search navbar-menu-item" href="#/"></a>
-		</li>
+	<ul class="nav navbar-nav navbar-right navbar-menu" ng-if="loggedIn">
 		<!-- User navbar -->
-		<li class="navbar-user" ng-if="loggedIn">
-			<a href="#" class="navbar-menu-item" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Tomi <span class="caret"></span></a>
+		<li class="navbar-user">
+			<a href="#" class="navbar-menu-item" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"><span class="caret"></span> Tomi</a>
 			<ul class="card card-user">
 				<li class="list-item"><a href="#">{{ 'PROFILE' | translate}}</a></li>
 				<li class="list-item"><a href="#">{{ 'LOG_OUT' | translate}}</a></li>
 			</ul>
 		</li>
-		<li class="navbar-user" ng-if="loggedIn">
+		<li class="navbar-user">
 			<a class="navbar-menu-item img-item" href="#"><img class="profile-picture" src="https://www.gravatar.com/avatar/e87a0f9738e9a6a273271f0392686cec?d=http%3A%2F%2Fi.imgur.com%2FgOGINGL.png&s=200"/></a>
 		</li>
-		<!-- Login -->
-		<li class="navbar-login" ng-if="!loggedIn">
+	</ul>
+	<!-- Login -->
+	<ul class="nav navbar-nav navbar-right navbar-menu" ng-if="!loggedIn">
+		<li class="navbar-login">
 			<a href="#" class="navbar-menu-item" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">{{ 'LOG_IN' | translate}} <span class="caret"></span></a>
 			<div class="card card-login">
 				<div class="row">
@@ -38,6 +36,12 @@
 					</div>
 				</div>
 			</div>
+		</li>
+	</ul>
+	<ul class="nav navbar-nav navbar-right navbar-menu visible-xs">
+		<!-- Search mobile -->
+		<li>
+			<a class="glyphicon glyphicon-search navbar-menu-item" href="#/"></a>
 		</li>
 	</ul>
 </nav>

@@ -1,8 +1,9 @@
+'use strict';
+
 define(['AnguRaptor'], function(AnguRaptor) {
 
     var root = 'http://localhost:10101';
 
-    'use strict';
     AnguRaptor.service('api', ['$http', '$q', '$cookies', '$rootScope', '$window', function($http, $q, $cookies, $rootScope, $window) {
 
         var token = $cookies.get('token');
@@ -10,10 +11,10 @@ define(['AnguRaptor'], function(AnguRaptor) {
         function endpoint(options) {
             options.url = root + options.url;
             options.after = options.after || function(data) {
-                return data
+                return data;
             };
             options.afterError = options.afterError || function(data) {
-                return data
+                return data;
             };
             options.auth = options.auth || false;
             options.method = options.method || 'GET';
@@ -45,7 +46,7 @@ define(['AnguRaptor'], function(AnguRaptor) {
                         'data': response.data
                     }));
                 });
-            }
+            };
         };
 
         function buildSession(response) {
@@ -106,9 +107,9 @@ define(['AnguRaptor'], function(AnguRaptor) {
                 })();
             },
             isLoggedIn: function() {
-                return !(token == null);
+                return !(token === null);
             }
-        }
+        };
 
         this.user.feed = {
             get: function(page, limit) {
@@ -121,7 +122,7 @@ define(['AnguRaptor'], function(AnguRaptor) {
                     auth: true
                 })();
             }
-        }
+        };
 
         this.user.notifications = {
             get: function(page, limit) {
@@ -140,15 +141,15 @@ define(['AnguRaptor'], function(AnguRaptor) {
                     auth: true
                 })();
             },
-            markRead: function(notification_ids) {
+            markRead: function(notificationIds) {
                 return endpoint({
                     url: '/user/notifications/read',
                     method: 'POST',
-                    body: notification_ids,
+                    body: notificationIds,
                     auth: true
                 })();
             }
-        }
+        };
 
         this.users = {
             get: function(username) {
@@ -170,7 +171,7 @@ define(['AnguRaptor'], function(AnguRaptor) {
                     auth: true
                 })();
             }
-        }
+        };
 
         this.users.timeline = {
             get: function(username, page, limit) {
@@ -182,7 +183,7 @@ define(['AnguRaptor'], function(AnguRaptor) {
                     }
                 })();
             }
-        }
+        };
 
         this.users.mentions = {
             get: function(username, page, limit) {
@@ -194,7 +195,7 @@ define(['AnguRaptor'], function(AnguRaptor) {
                     }
                 })();
             }
-        }
+        };
 
         this.users.likes = {
             get: function(username, page, limit) {
@@ -206,7 +207,7 @@ define(['AnguRaptor'], function(AnguRaptor) {
                     }
                 })();
             }
-        }
+        };
 
         this.feed = {
             get: function(page, limit) {
@@ -218,7 +219,7 @@ define(['AnguRaptor'], function(AnguRaptor) {
                     }
                 })();
             }
-        }
+        };
 
         this.trends = {
             get: function() {
@@ -226,7 +227,7 @@ define(['AnguRaptor'], function(AnguRaptor) {
                     url: '/trending'
                 });
             }
-        }
+        };
 
         this.search = {
             find: function(term, page, limit) {
@@ -239,12 +240,12 @@ define(['AnguRaptor'], function(AnguRaptor) {
                     }
                 })();
             }
-        }
+        };
 
         this.rawr = {
-            get: function(rawr_id) {
+            get: function(rawrId) {
                 return endpoint({
-                    url: '/rawrs/' + rawr_id
+                    url: '/rawrs/' + rawrId
                 })();
             },
             create: function(status) {
@@ -257,35 +258,35 @@ define(['AnguRaptor'], function(AnguRaptor) {
                     auth: true
                 })();
             },
-            like: function(rawr_id) {
+            like: function(rawrId) {
                 return endpoint({
-                    url: '/rawrs/' + rawr_id + '/like',
+                    url: '/rawrs/' + rawrId + '/like',
                     method: 'POST',
                     auth: true
                 })();
             },
-            unlike: function(rawr_id) {
+            unlike: function(rawrId) {
                 return endpoint({
-                    url: '/rawrs/' + rawr_id + '/unlike',
+                    url: '/rawrs/' + rawrId + '/unlike',
                     method: 'POST',
                     auth: true
                 })();
             },
-            rerawr: function(rawr_id) {
+            rerawr: function(rawrId) {
                 return endpoint({
-                    url: '/rawrs/' + rawr_id + '/rerawr',
+                    url: '/rawrs/' + rawrId + '/rerawr',
                     method: 'POST',
                     auth: true
                 })();
             },
-            unrerawr: function(rawr_id) {
+            unrerawr: function(rawrId) {
                 return endpoint({
-                    url: '/rawrs/' + rawr_id + '/unrerawr',
+                    url: '/rawrs/' + rawrId + '/unrerawr',
                     method: 'POST',
                     auth: true
                 })();
             }
-        }
+        };
 
     }]);
 

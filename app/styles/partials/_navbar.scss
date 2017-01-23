@@ -99,8 +99,23 @@
     font-weight: 500;
 }
 
-.navbar-menu-item.img-item {
-    padding: 5px 30px 5px 5px;
+.navbar-user .navbar-menu-item {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.navbar-nav.navbar-right.navbar-menu:last-child {
+    margin-right: 0px;
+}
+
+a.navbar-menu-item.img-item {
+    padding: 5px 15px 5px 5px;
+}
+
+@media screen and (max-width: 768px) {
+  a.navbar-menu-item.img-item {
+      padding-right: 10px;
+  }
 }
 
 .navbar-menu .open > a.navbar-menu-item,
@@ -112,10 +127,6 @@
 .navbar-menu li a.navbar-menu-item:hover {
     color: $light-blue-color;
     background-color: transparent;
-}
-
-.navbar-login {
-    margin-right: 15px;
 }
 
 .navbar-user img.profile-picture {
@@ -168,7 +179,7 @@ a.link {
 
 .card-user {
   right: 0;
-  margin-right: 15px;
+  margin-right: 5px;
   padding: 0px;
   list-style: none;
 }
