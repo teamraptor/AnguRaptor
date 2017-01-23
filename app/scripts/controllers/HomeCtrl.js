@@ -11,6 +11,10 @@ define(['AnguRaptor', 'services/api'], function(AnguRaptor) {
           $scope.user = null;
         }
 
+        api.users.get('lsoncini').then(function(result) {
+            console.log(result);
+        });
+
         var sessionListener = $scope.$on('session.change', function() {
             if (api.user.isLoggedIn()) {
                 api.user.get().then(function(user) {

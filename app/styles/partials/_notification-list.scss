@@ -10,6 +10,21 @@
   font-weight: bold;
 }
 
+.notification-list .header {
+  border-bottom: 1px solid $dark-blue-color;
+  color: $darker-blue-color;
+}
+
+.notification-list .header .glyphicon {
+  top: 3px;
+}
+
+.notification-list .header .title {
+  margin: 0px;
+  padding: 5px 5px 5px 10px;
+  font-weight: bold;
+}
+
 .notification {
   display: inline-block;
   min-width: 350px;
@@ -67,28 +82,28 @@
 
 .notification-media .icon {
   position: relative;
-  top: 20px;
-  right: 20px;
-  height: 35px;
-  width: 35px;
+  top: 18px;
+  right: 24px;
+  height: 30px;
+  width: 30px;
+  padding-top: 5px;
   text-align: center;
-  font-size: 20px;
+  font-size: 15px;
   color: white;
   border-radius: 50%;
   border: 2px solid white;
 }
 
 .icon.heart {
-  padding-top: 6px;
   background-color: $heart-color;
 }
 
 .icon.mention {
-  padding-top: 4px;
   background-color: $mention-color;
 }
 
 .icon.rerawr {
-  padding-top: 4px;
   background-color: $rerawr-color;
+  padding-top: 6px;
+  top: 18px;
 }

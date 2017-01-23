@@ -19,34 +19,33 @@ define(['AnguRaptor'], function(AnguRaptor) {
             options.auth = options.auth || false;
             options.method = options.method || 'GET';
 
-            return function() {
-                var headers = {
-                    'Content-Type': 'application/json'
-                };
-
-                if (options.auth) {
-                    // TODO - add headers for authentication
-                }
-
-                return $http({
-                    url: options.url,
-                    method: options.method,
-                    params: options.params,
-                    data: options.body,
-                    'headers': headers
-                }).then(function(response) {
-                    return options.after(response.data);
-                }).catch(function(response) {
-                    var error = {
-                        'code': response.status,
-                        'message': response.statusText
-                    };
-                    return $q.reject(options.afterError({
-                        'error': error,
-                        'data': response.data
-                    }));
-                });
+            var headers = {
+                'Content-Type': 'application/json'
             };
+
+            if (options.auth) {
+                // TODO - add headers for authentication
+            }
+
+            return $http({
+                url: options.url,
+                method: options.method,
+                params: options.params,
+                data: options.body,
+                'headers': headers
+            }).then(function(response) {
+                return options.after(response.data);
+            }).catch(function(response) {
+                var error = {
+                    'code': response.status,
+                    'message': response.statusText
+                };
+                return $q.reject(options.afterError({
+                    'error': error,
+                    'data': response.data
+                }));
+            });
+
         };
 
         function buildSession(response) {
@@ -71,7 +70,7 @@ define(['AnguRaptor'], function(AnguRaptor) {
                 return endpoint({
                     url: '/user',
                     auth: true
-                })();
+                });
             },
             login: function(username, password) {
                 return endpoint({
@@ -82,7 +81,7 @@ define(['AnguRaptor'], function(AnguRaptor) {
                         'password': password
                     },
                     after: buildSession
-                })();
+                });
             },
             logout: function() {
                 return endpoint({
@@ -91,7 +90,7 @@ define(['AnguRaptor'], function(AnguRaptor) {
                     auth: true,
                     after: destroySession,
                     afterError: destroySession
-                })();
+                });
             },
             create: function(firstName, lastName, useranme, email, password) {
                 return endpoint({
@@ -104,7 +103,7 @@ define(['AnguRaptor'], function(AnguRaptor) {
                         'email': email,
                         'password': password
                     }
-                })();
+                });
             },
             isLoggedIn: function() {
                 return !(token === null);
@@ -120,7 +119,7 @@ define(['AnguRaptor'], function(AnguRaptor) {
                         'limit': limit
                     },
                     auth: true
-                })();
+                });
             }
         };
 
@@ -133,13 +132,13 @@ define(['AnguRaptor'], function(AnguRaptor) {
                         'limit': limit
                     },
                     auth: true
-                })();
+                });
             },
             unreadCount: function() {
                 return endpoint({
                     url: '/user/notifications/count',
                     auth: true
-                })();
+                });
             },
             markRead: function(notificationIds) {
                 return endpoint({
@@ -147,7 +146,7 @@ define(['AnguRaptor'], function(AnguRaptor) {
                     method: 'POST',
                     body: notificationIds,
                     auth: true
-                })();
+                });
             }
         };
 
@@ -155,21 +154,21 @@ define(['AnguRaptor'], function(AnguRaptor) {
             get: function(username) {
                 return endpoint({
                     url: '/users/' + username
-                })();
+                });
             },
             follow: function(username) {
                 return endpoint({
                     url: '/users/' + username + '/follow',
                     method: 'POST',
                     auth: true
-                })();
+                });
             },
             unfollow: function(useranme) {
                 return endpoint({
                     url: '/users/' + useranme + '/unfollow',
                     method: 'POST',
                     auth: true
-                })();
+                });
             }
         };
 
@@ -181,7 +180,7 @@ define(['AnguRaptor'], function(AnguRaptor) {
                         'page': page,
                         'limit': limit
                     }
-                })();
+                });
             }
         };
 
@@ -193,7 +192,7 @@ define(['AnguRaptor'], function(AnguRaptor) {
                         'page': page,
                         'limit': limit
                     }
-                })();
+                });
             }
         };
 
@@ -205,7 +204,7 @@ define(['AnguRaptor'], function(AnguRaptor) {
                         'page': page,
                         'limit': limit
                     }
-                })();
+                });
             }
         };
 
@@ -217,7 +216,7 @@ define(['AnguRaptor'], function(AnguRaptor) {
                         'page': page,
                         'limit': limit
                     }
-                })();
+                });
             }
         };
 
@@ -238,7 +237,7 @@ define(['AnguRaptor'], function(AnguRaptor) {
                         'page': page,
                         'limit': limit
                     }
-                })();
+                });
             }
         };
 
@@ -246,7 +245,7 @@ define(['AnguRaptor'], function(AnguRaptor) {
             get: function(rawrId) {
                 return endpoint({
                     url: '/rawrs/' + rawrId
-                })();
+                });
             },
             create: function(status) {
                 return endpoint({
@@ -256,35 +255,35 @@ define(['AnguRaptor'], function(AnguRaptor) {
                         'status': status
                     },
                     auth: true
-                })();
+                });
             },
             like: function(rawrId) {
                 return endpoint({
                     url: '/rawrs/' + rawrId + '/like',
                     method: 'POST',
                     auth: true
-                })();
+                });
             },
             unlike: function(rawrId) {
                 return endpoint({
                     url: '/rawrs/' + rawrId + '/unlike',
                     method: 'POST',
                     auth: true
-                })();
+                });
             },
             rerawr: function(rawrId) {
                 return endpoint({
                     url: '/rawrs/' + rawrId + '/rerawr',
                     method: 'POST',
                     auth: true
-                })();
+                });
             },
             unrerawr: function(rawrId) {
                 return endpoint({
                     url: '/rawrs/' + rawrId + '/unrerawr',
                     method: 'POST',
                     auth: true
-                })();
+                });
             }
         };
 
