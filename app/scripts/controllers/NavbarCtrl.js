@@ -1,5 +1,5 @@
 'use strict';
-define(['AnguRaptor'], function(AnguRaptor) {
+define(['AnguRaptor', 'directives/notification-list'], function(AnguRaptor) {
 
     AnguRaptor.controller('NavbarCtrl', function($scope) {
         $scope.loggedIn = true;
