@@ -125,7 +125,6 @@ a.navbar-menu-item.img-item {
 .navbar-menu li a.navbar-menu-item:active,
 .navbar-menu li a.navbar-menu-item:focus,
 .navbar-menu li a.navbar-menu-item:hover {
-    color: $light-blue-color;
     background-color: transparent;
 }
 
@@ -160,10 +159,8 @@ a.navbar-menu-item.img-item {
     position: absolute;
     z-index: 1000;
     margin-top: 10px;
-    display: none;
     float: left;
     min-width: 200px;
-    min-height: 100px;
     padding: 20px;
     text-align: left;
     background-color: #fff;
@@ -171,16 +168,34 @@ a.navbar-menu-item.img-item {
     border: 1px solid $dark-blue-color;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.175);
     background-clip: padding-box;
+    list-style: none;
+
+    display: block;
+    visibility: hidden;
+    opacity: 0;
     overflow: hidden;
+    max-height: 0;
+
+    -webkit-transition: max-height 0.3s, opacity 0.2s 0.1s, visibility 0s 0.3s;
+    -moz-transition: max-height 0.3s, opacity 0.2s 0.1s, visibility 0s 0.3s;
+    -ms-transition: max-height 0.3s, opacity 0.2s 0.1s, visibility 0s 0.3s;
+    -o-transition: max-height 0.3s, opacity 0.2s 0.1s, visibility 0s 0.3s;
+    transition: max-height 0.3s, opacity 0.2s 0.1s, visibility 0s 0.3s;
 }
 
 a.link {
   color: $blue-color;
 }
 
-.card-open,
 .open > .card {
-    display: block;
+    -webkit-transition: max-height 0.3s, opacity 0.2s, visibility 0s;
+    -moz-transition: max-height 0.3s, opacity 0.2s, visibility 0s;
+    -ms-transition: max-height 0.3s, opacity 0.2s, visibility 0s;
+    -o-transition: max-height 0.3s, opacity 0.2s, visibility 0s;
+    transition: max-height 0.3s, opacity 0.2s, visibility 0s;
+
+    opacity: 1;
+    visibility: visible;
 }
 
 .card-login {
@@ -197,9 +212,13 @@ a.link {
 }
 
 .card-user {
-  right: 0;
+  right: 0px;
   padding: 0px;
   list-style: none;
+}
+
+.open > .card.card-user {
+    max-height: 200px;
 }
 
 .card .list-item a {
@@ -228,13 +247,15 @@ a.link {
 .card-notifications {
   right: 15px;
   padding: 0px;
-  list-style: none;
-  max-height: 500px;
   overflow-y: scroll;
 }
 
+.open > .card.card-notifications {
+    max-height: 500px;
+}
+
 @media screen and (max-width: 768px) {
-  .card-notifications {
+  .open > .card.card-notifications {
     max-height: 400px;
   }
 }
