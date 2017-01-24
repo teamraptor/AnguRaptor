@@ -16,16 +16,22 @@
     margin-left: 20px;
     height: 50px;
 }
-@media screen and (max-width: 768px) {
-    .navbar-header {
-        margin-left: 10px;
-    }
-}
 
 .navbar-brand {
     width: 115px;
     background: url("../images/logo.png") no-repeat center;
     background-size: 115px 28px;
+}
+
+@media screen and (max-width: 767px) {
+    .navbar-header {
+        margin-left: 10px;
+    }
+    .navbar-brand {
+      width: 56px;
+      background: url("../images/logo-small.png") no-repeat center;
+      background-size: 56px 28px;
+    }
 }
 
 /* Navbar search section */
@@ -35,15 +41,17 @@
     margin-left: 20px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
     .navbar-search {
         display: none;
     }
 }
 
-.navbar-search .button-submit {
+.navbar .navbar-form .button-submit {
     color: white;
     background-color: $blue-color;
+    line-height: 14px;
+    font-weight: 500;
 }
 
 /* Themed and rounded text input with circular button */
@@ -112,7 +120,7 @@ a.navbar-menu-item.img-item {
     padding: 5px 15px 5px 5px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   a.navbar-menu-item.img-item {
       padding-right: 10px;
   }
@@ -151,6 +159,21 @@ a.navbar-menu-item.img-item {
   font-family: sans-serif;
   font-weight: 600;
   font-size: 14px;
+}
+
+.navbar .navbar-form.navbar-rawr {
+    padding: 0;
+    margin-right: 20px;
+}
+
+.navbar-rawr .right-addon input {
+    padding-right: 54px;
+}
+
+@media screen and (max-width: 980px) {
+    .navbar-rawr {
+        display: none;
+    }
 }
 
 /* Cards layout */
@@ -254,7 +277,7 @@ a.link {
     max-height: 500px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .open > .card.card-notifications {
     max-height: 400px;
   }
@@ -321,7 +344,7 @@ a.btn-raptor {
   margin-bottom: 15px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .card {
         margin-top: 15px;
         position: fixed;
@@ -333,7 +356,7 @@ a.btn-raptor {
 
 /* Disable Responsiveness in navbar */
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .navbar-header {
         float: left;
     }

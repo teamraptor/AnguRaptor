@@ -12,6 +12,10 @@ define([], function() {
 		NO_ACCOUNT: 'No account?',
 		SIGN_UP: 'Sign up',
 
-		PROFILE: 'Profile'
+		PROFILE: 'Profile',
+
+		NOTIFICATIONS: 'Notifications',
+
+		RAWR_PLACEHOLDER: 'What\'s going on?'
 	};
 });

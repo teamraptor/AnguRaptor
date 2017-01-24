@@ -10,6 +10,12 @@ define([], function() {
 		PASSWORD_PLACEHOLDER: 'Contraseña',
 
 		NO_ACCOUNT: 'No tienes cuenta?',
-		SIGN_UP: 'Crea una'
+		SIGN_UP: 'Crea una',
+
+		PROFILE: 'Perfil',
+
+		NOTIFICATIONS: 'Notificaciones',
+
+		RAWR_PLACEHOLDER: '¿Qué hay de nuevo?'
 	};
 });
