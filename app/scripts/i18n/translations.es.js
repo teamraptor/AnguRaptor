@@ -15,6 +15,7 @@ define([], function() {
 		PROFILE: 'Perfil',
 
 		NOTIFICATIONS: 'Notificaciones',
+		EMPTY_NOTIFICATIONS: 'No hay notificaciones',
 
 		RAWR_PLACEHOLDER: '¿Qué hay de nuevo?'
 	};
