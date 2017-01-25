@@ -1,39 +1,40 @@
 <div class="notification-list">
-  <div class="header">
-    <p class="title"><i class="glyphicon glyphicon-bell"></i>  {{ 'NOTIFICATIONS' | translate}}</p>
-  </div>
-  <div class="empty-loading">
-    <img class="spinner hidden" src="https://www.facebook.com/rsrc.php/v3/yD/r/t-wz8gw1xG1.png" />
-    <p class="title">No notifications</p>
-  </div>
-  <!--<div class="notification unread">
-     <a class="notification-media pull-left" href="#">
-        <img class="profile-picture" src="https://www.gravatar.com/avatar/4caa92cdbd9a9fd844865351af1cb04c?d=http%3A%2F%2Fi.imgur.com%2FgOGINGL.png&s=150" alt="Profile Picture"/>
-        <span class="fa fa-heart icon heart"></span>
-     </a>
-     <div class="notification-body">
-        <p class="title"><a href="">luis marzoratti</a> liked your rawr</p>
-        <p class="time">17 min ago</p>
-     </div>
-  </div>
-  <div class="notification">
-     <a class="notification-media pull-left" href="#">
-        <img class="profile-picture" src="https://www.gravatar.com/avatar/20fb26fed2f661e99b7adf947499c386?d=http%3A%2F%2Fi.imgur.com%2FgOGINGL.png&s=150" alt="Profile Picture"/>
-        <span class="fa fa-comment icon mention"></span>
-     </a>
-     <div class="notification-body">
-        <p class="title"><a href="">Matias Fraga</a> mentioned you</p>
-        <p class="time">17 min ago</p>
-     </div>
-  </div>
-  <div class="notification">
-     <a class="notification-media pull-left" href="#">
-        <img class="profile-picture" src="https://www.gravatar.com/avatar/3c75605d9e99561dde5e743159323366?d=http%3A%2F%2Fi.imgur.com%2FgOGINGL.png&s=150" alt="Profile Picture"/>
-        <span class="glyphicon glyphicon-retweet icon rerawr"></span>
-     </a>
-     <div class="notification-body">
-        <p class="title"><a href="">Lucas Soncini</a> rerawred your rawr</p>
-        <p class="time">17 min ago</p>
-     </div>
-  </div>-->
+    <div class="header">
+        <p class="title"><i class="glyphicon glyphicon-bell"></i> {{ 'NOTIFICATIONS' | translate}}</p>
+    </div>
+    <div infinite-scroll='notificationList.nextPage()' infinite-scroll-distance="0" infinite-scroll-container="'.card-notifications'" infinite-scroll-disabled='notificationList.busy || notificationList.disabled'>
+        <div ng-repeat='item in notificationList.items'>
+            <div class="notification" ng-class="{'last-child': $last, 'unread': item.new}">
+                <a class="notification-media pull-left" href="#">
+                    <img class="profile-picture" ng-src="{{item.user.profile_picture}}" alt="Profile Picture" />
+                    <span ng-switch="item.type">
+                      <span ng-switch-when="mention"><span class="fa fa-comment icon mention"></span></span>
+                      <span ng-switch-when="like"><span class="fa fa-heart icon like"></span></span>
+                      <span ng-switch-when="rerawr"><span class="glyphicon glyphicon-retweet icon rerawr"></span></span>
+                      <span ng-switch-when="follow"> <span class="fa fa-address-book icon follow"></span></span>
+                      <span ng-switch-when="unfollow"><span class="fa fa-trash icon unfollow"></span></span>
+                    </span>
+                </a>
+                <div class="notification-body">
+                    <p class="title">
+                      <a href="">{{item.user.first_name}} {{item.user.last_name}}</a>
+                      <span ng-switch="item.type">
+                        <span ng-switch-when="mention"> {{ 'NOTIFICATIONS_MENTION' | translate}}</span>
+                        <span ng-switch-when="like"> {{ 'NOTIFICATIONS_LIKE' | translate}}</span>
+                        <span ng-switch-when="follow"> {{ 'NOTIFICATIONS_FOLLOW' | translate}}</span>
+                        <span ng-switch-when="unfollow"> {{ 'NOTIFICATIONS_UNFOLLOW' | translate}}</span>
+                        <span ng-switch-when="rerawr"> {{ 'NOTIFICATIONS_RERAWR' | translate}}</span>
+                      </span>
+                    </p>
+                    <p class="time" translate="TIME_SINCE" translate-value-number="{{item.created_time.number}}" translate-value-unit="{{(item.created_time.unit | uppercase) | translate}}"></p>
+                </div>
+            </div>
+        </div> <!-- , unit: ((item.created_time.unit | uppercase) | translate)-->
+    </div>
+    <div class="empty-loading border-top" ng-show="notificationList.busy">
+        <img class="spinner" src="../images/spinner.png" />
+    </div>
+    <div class="empty-loading" ng-show="notificationList.disabled && notificationList.items.length === 0">
+        <p class="title" ng-click="loadMore()">No notifications</p>
+    </div>
 </div>

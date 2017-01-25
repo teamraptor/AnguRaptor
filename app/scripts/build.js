@@ -19,12 +19,14 @@ require.config({
         json3: '../../bower_components/json3/lib/json3',
         modal: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/modal',
         moment: '../../bower_components/moment/moment',
+        'infinite-scroll': '../../bower_components/ngInfiniteScroll/build/ng-infinite-scroll',
         popover: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/popover',
         requirejs: '../../bower_components/requirejs/require',
         scrollspy: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/scrollspy',
         tab: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/tab',
         tooltip: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/tooltip',
-        transition: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/transition'
+        transition: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/transition',
+        ngInfiniteScroll: '../../bower_components/ngInfiniteScroll/build/ng-infinite-scroll'
     },
     shim: {
         angular: {
@@ -51,6 +53,11 @@ require.config({
         modal: {
             deps: [
                 'jquery'
+            ]
+        },
+        'infinite-scroll': {
+            deps: [
+                'angular'
             ]
         },
         tooltip: {

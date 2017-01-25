@@ -25,6 +25,14 @@
   font-weight: bold;
 }
 
+.notification-list .empty-loading {
+  min-height: 80px;
+}
+
+.notification-list .empty-loading.border-top {
+  border-top: 1px solid $dark-blue-color;
+}
+
 .notification {
   display: inline-block;
   min-width: 350px;
@@ -48,7 +56,7 @@
   }
 }
 
-.notification:last-child {
+.notification.last-child {
   border-style: none;
 }
 
@@ -94,7 +102,7 @@
   border: 2px solid white;
 }
 
-.icon.heart {
+.icon.like {
   background-color: $heart-color;
 }
 
@@ -106,4 +114,12 @@
   background-color: $rerawr-color;
   padding-top: 6px;
   top: 18px;
+}
+
+.icon.follow {
+  background-color: $follow-color;
+}
+
+.icon.unfollow {
+  background-color: $unfollow-color;
 }

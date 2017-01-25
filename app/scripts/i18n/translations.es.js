@@ -17,6 +17,21 @@ define([], function() {
 		NOTIFICATIONS: 'Notificaciones',
 		EMPTY_NOTIFICATIONS: 'No hay notificaciones',
 
-		RAWR_PLACEHOLDER: '¿Qué hay de nuevo?'
+		NOTIFICATIONS_MENTION: 'te mencionó',
+		NOTIFICATIONS_LIKE: 'le gusta tu rawr',
+		NOTIFICATIONS_FOLLOW: 'te sigue',
+		NOTIFICATIONS_UNFOLLOW: 'dejó de seguirte',
+		NOTIFICATIONS_RERAWR: 'rerawreó tu rawr',
+
+		RAWR_PLACEHOLDER: '¿Qué hay de nuevo?',
+
+		TIME_SINCE: 'Hace {{number}} {{unit}}',
+
+		MINUTE: 'minuto',
+		MINUTES: 'minutos',
+		HOUR: 'hora',
+		HOURS: 'horas',
+		DAY: 'día',
+		DAYS: 'días'
 	};
 });

@@ -6,12 +6,14 @@ define(['routes',
 	'angular-route',
 	'bootstrap',
 	'angular-translate',
-	'angular-cookies'],
+	'angular-cookies',
+	'infinite-scroll'],
 	function(config, dependencyResolverFor, i18n) {
 		var AnguRaptor = angular.module('AnguRaptor', [
 			'ngRoute',
 			'pascalprecht.translate',
-			'ngCookies'
+			'ngCookies',
+			'infinite-scroll'
 		]);
 		AnguRaptor
 			.config(
