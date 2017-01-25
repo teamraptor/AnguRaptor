@@ -226,6 +226,10 @@ a.link {
     margin-right: 15px;
 }
 
+.open > .card.card-login {
+    max-height: 200px;
+}
+
 .card-login input[type="password"],
 .card-login input[type="text"] {
     background-color: $light-blue-color;
@@ -274,7 +278,7 @@ a.link {
 }
 
 .open > .card.card-notifications {
-    max-height: 500px;
+    max-height: 450px;
 }
 
 @media screen and (max-width: 767px) {

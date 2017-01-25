@@ -7,7 +7,7 @@ define(['AnguRaptor', 'services/api', 'services/DateService'], function(AnguRapt
             items: [],
             busy: false,
             page: 1,
-            fetchLimit: 5,
+            fetchLimit: 2,
             disabled: false
         };
 
@@ -29,7 +29,7 @@ define(['AnguRaptor', 'services/api', 'services/DateService'], function(AnguRapt
 
                 notificationList.page++;
                 notificationList.busy = false;
-                
+
             }).catch(function(error) {
                 notificationList.busy = false;
                 notificationList.disabled = true;

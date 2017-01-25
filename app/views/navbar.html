@@ -9,13 +9,13 @@
 			<input type="text" class="form-control" placeholder="{{ 'SEARCH_PLACEHOLDER' | translate}}">
 		</div>
 	</div>
-	<ul class="nav navbar-nav navbar-right navbar-menu" ng-if="loggedIn">
+	<ul class="nav navbar-nav navbar-right navbar-menu" ng-if="navbar.loggedIn">
 		<!-- User navbar -->
 		<li class="navbar-user">
 			<a href="#" class="navbar-menu-item" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> Tomi</a>
 			<ul class="card card-user">
 				<li class="list-item"><a href="#">{{ 'PROFILE' | translate}}</a></li>
-				<li class="list-item"><a href="#">{{ 'LOG_OUT' | translate}}</a></li>
+				<li class="list-item"><a href="#" ng-click="navbar.logout()">{{ 'LOG_OUT' | translate}}</a></li>
 			</ul>
 		</li>
 		<li class="navbar-user">
@@ -23,22 +23,24 @@
 		</li>
 	</ul>
 	<!-- Login -->
-	<ul class="nav navbar-nav navbar-right navbar-menu" ng-if="!loggedIn">
+	<ul class="nav navbar-nav navbar-right navbar-menu" ng-if="!navbar.loggedIn">
 		<li class="navbar-login">
 			<a href="#" class="navbar-menu-item" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">{{ 'LOG_IN' | translate}} <span class="caret"></span></a>
 			<div class="card card-login">
 				<div class="row">
+					<form name="loginForm">
 					<div class="col-md-12 text-center">
-						<input type="text" class="raptor-input" autocorrect="off" autocapitalize="none" placeholder="{{ 'USERNAME_PLACEHOLDER' | translate}}"/>
-						<input type="password" class="raptor-input" autocorrect="off" autocapitalize="none" placeholder="{{ 'PASSWORD_PLACEHOLDER' | translate}}"/>
-						<a class="btn btn-raptor btn-spacing">{{ 'LOG_IN' | translate}}</a>
+						<input type="text" class="raptor-input" autocorrect="off" autocapitalize="none" name="username" ng-model="navbar.loginDetails.username" placeholder="{{ 'USERNAME_PLACEHOLDER' | translate}}" required/>
+						<input type="password" class="raptor-input" autocorrect="off" autocapitalize="none" name="password" ng-model="navbar.loginDetails.password" placeholder="{{ 'PASSWORD_PLACEHOLDER' | translate}}" required/>
+						<button class="btn btn-raptor btn-spacing" ng-disabled="!!loginForm.$error.required" ng-click="navbar.login()">{{ 'LOG_IN' | translate}}</button>
 						<p>{{ 'NO_ACCOUNT' | translate}} <a class="link">{{ 'SIGN_UP' | translate}}.</a></p>
 					</div>
+					</form>
 				</div>
 			</div>
 		</li>
 	</ul>
-	<ul class="nav navbar-nav navbar-right navbar-menu">
+	<ul class="nav navbar-nav navbar-right navbar-menu" ng-if="navbar.loggedIn">
 		<!-- Notifications -->
 		<li class="navbar-notifications">
 			<a class="glyphicon glyphicon-bell navbar-menu-item" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true" href="#/"><span class="navbar-badge">2</span></a>
@@ -53,7 +55,7 @@
 			<a class="glyphicon glyphicon-search navbar-menu-item" href="#/"></a>
 		</li>
 	</ul>
-	<div class="navbar-form navbar-right navbar-rawr">
+	<div class="navbar-form navbar-right navbar-rawr" ng-if="navbar.loggedIn">
 		<div class="inner-addon right-addon">
 			<a class="button-submit">Rawr</a>
 			<input type="text" class="form-control" placeholder="{{ 'RAWR_PLACEHOLDER' | translate}}">

@@ -4,7 +4,7 @@ define(['AnguRaptor'], function(AnguRaptor) {
 
     var root = 'http://localhost:10101';
 
-    AnguRaptor.service('api', ['$http', '$q', '$cookies', '$rootScope', '$window', function($http, $q, $cookies, $rootScope, $window) {
+    AnguRaptor.service('api', ['$http', '$q', '$cookies', '$window', '$rootScope', function($http, $q, $cookies, $window, $rootScope) {
 
         var token = $cookies.get('token');
 
@@ -50,7 +50,7 @@ define(['AnguRaptor'], function(AnguRaptor) {
 
         function buildSession(response) {
             var now = new $window.Date();
-            exp = new $window.Date(now.getFullYear(), now.getMonth(), now.getDate() + 30);
+            var exp = new $window.Date(now.getFullYear(), now.getMonth(), now.getDate() + 30);
             $cookies.put('token', response.token, {
                 expires: exp
             });
@@ -106,7 +106,7 @@ define(['AnguRaptor'], function(AnguRaptor) {
                 });
             },
             isLoggedIn: function() {
-                return !(token === null);
+                return !(token == null);
             }
         };
 
