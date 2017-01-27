@@ -8,9 +8,13 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import 'partials/notification-list';
 @import 'partials/rawr-button';
 @import 'partials/rawr-composer';
+@import 'partials/user-box';
+@import 'partials/trending-box';
 
 body {
   background-color: $light-blue-color;
+  color: $dark-gray-color;
+  padding-top: 70px;
 }
 
 @media screen and (max-width: 767px) {
@@ -59,5 +63,18 @@ body {
   100% {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
+  }
+}
+
+.panel.panel-raptor {
+  border: solid 1px $border-blue-color;
+}
+
+@media screen and (max-width: 767px) {
+  .panel.panel-raptor {
+    border: none;
+    border-top: solid 1px $border-blue-color;
+    border-bottom: solid 1px $border-blue-color;
+    border-radius: 0px;
   }
 }

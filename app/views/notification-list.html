@@ -6,7 +6,7 @@
         <div ng-repeat='item in notificationList.items'>
             <div class="notification" ng-class="{'last-child': $last, 'unread': item.new}">
                 <a class="notification-media pull-left" href="#">
-                    <img class="profile-picture" ng-src="{{item.user.profile_picture}}" alt="Profile Picture" />
+                    <img class="profile-picture" ng-src="{{item.user.profile_pictures.medium}}" alt="Profile Picture" />
                     <span ng-switch="item.type">
                       <span ng-switch-when="mention"><span class="fa fa-comment icon mention"></span></span>
                       <span ng-switch-when="like"><span class="fa fa-heart icon like"></span></span>

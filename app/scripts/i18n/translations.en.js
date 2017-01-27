@@ -33,7 +33,12 @@ define([], function() {
 		HOUR: 'hour',
 		HOURS: 'hours',
 		DAY: 'day',
-		DAYS: 'days'
+		DAYS: 'days',
+
+		FOLLOW: 'Follow',
+		UNFOLLOW: 'Unfollow',
+
+		TRENDING_TITLE: 'Trending on Raptor'
 
 	};
 });

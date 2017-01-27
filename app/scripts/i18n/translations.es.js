@@ -33,5 +33,10 @@ define([], function() {
 		HOURS: 'horas',
 		DAY: 'día',
 		DAYS: 'días'
+
+		FOLLOW: 'Seguir',
+		UNFOLLOW: 'Dejar de seguir',
+
+		TRENDING_TITLE: 'Popular en Raptor'
 	};
 });

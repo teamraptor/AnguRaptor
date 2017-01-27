@@ -1,0 +1,32 @@
+<div class="user-box">
+    <div class="panel panel-raptor profile">
+        <div class="content">
+            <div class="profile-picture">
+                <img ng-src="{{user.profile_pictures.large}}"></img>
+            </div>
+            <div class="user-info">
+              <p>{{user.first_name}} {{user.last_name}}</p>
+              <p>@{{user.username}}</p>
+            </div>
+            <div class="actions" ng-if="!(user.user_follows == null)">
+              <a class="btn btn-raptor" ng-if="!user.user_follows" ng-click="userBox.followingStatusChanged('follow')">{{ 'FOLLOW' | translate}}</a>
+              <a class="btn btn-raptor" ng-if="user.user_follows" ng-click="userBox.followingStatusChanged('unfollow')">{{ 'UNFOLLOW' | translate}}</a>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-raptor counts" ng-if="showCounts">
+      <div class="count-item">
+        <p class="count">{{user.counts.followers}}</p>
+        <p>followers</p>
+      </div>
+      <div class="count-item">
+        <p class="count">{{user.counts.rawrs}}</p>
+        <p>rawrs</p>
+      </div>
+      <div class="count-item">
+        <p class="count">{{user.counts.following}}</p>
+        <p>following</p>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+</div>

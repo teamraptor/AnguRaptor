@@ -7,6 +7,7 @@
 }
 
 .navbar-raptor {
+    border-bottom: 1px solid $light-blue-color;
     @include raptor-gradient( 'horizontal');
 }
 

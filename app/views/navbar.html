@@ -14,12 +14,12 @@
 		<li class="navbar-user">
 			<a href="#" class="navbar-menu-item" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> {{navbar.user.first_name}}</a>
 			<ul class="card card-user">
-				<li class="list-item"><a href="#">{{ 'PROFILE' | translate}}</a></li>
-				<li class="list-item"><a href="#" ng-click="navbar.logout()">{{ 'LOG_OUT' | translate}}</a></li>
+				<li class="list-item"><a href="">{{ 'PROFILE' | translate}}</a></li>
+				<li class="list-item"><a href="" ng-click="navbar.logout()">{{ 'LOG_OUT' | translate}}</a></li>
 			</ul>
 		</li>
 		<li class="navbar-user">
-			<a class="navbar-menu-item img-item" href="#"><img class="profile-picture" ng-src="{{navbar.user.profile_picture}}"/></a>
+			<a class="navbar-menu-item img-item" ><img class="profile-picture" ng-src="{{navbar.user.profile_pictures.small}}"/></a>
 		</li>
 	</ul>
 	<!-- Login -->
@@ -32,7 +32,7 @@
 					<div class="col-md-12 text-center">
 						<input type="text" class="raptor-input" autocorrect="off" autocapitalize="none" name="username" ng-model="navbar.loginDetails.username" placeholder="{{ 'USERNAME_PLACEHOLDER' | translate}}" required/>
 						<input type="password" class="raptor-input" autocorrect="off" autocapitalize="none" name="password" ng-model="navbar.loginDetails.password" placeholder="{{ 'PASSWORD_PLACEHOLDER' | translate}}" required/>
-						<a class="btn btn-raptor btn-spacing" ng-disabled="!!loginForm.$error.required" ng-click="navbar.login()" href="#">{{ 'LOG_IN' | translate}}</a>
+						<a class="btn btn-raptor btn-spacing" ng-disabled="!!loginForm.$error.required" ng-click="navbar.login()" href="">{{ 'LOG_IN' | translate}}</a>
 						<p>{{ 'NO_ACCOUNT' | translate}} <a class="link">{{ 'SIGN_UP' | translate}}.</a></p>
 					</div>
 					</form>
@@ -43,7 +43,7 @@
 	<ul class="nav navbar-nav navbar-right navbar-menu" ng-if="navbar.loggedIn">
 		<!-- Notifications -->
 		<li class="navbar-notifications">
-			<a class="glyphicon glyphicon-bell navbar-menu-item" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true" href="#/"><span class="navbar-badge">2</span></a>
+			<a class="glyphicon glyphicon-bell navbar-menu-item" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"><span class="navbar-badge">2</span></a>
 			<div class="card card-notifications">
 				<notification-list></notification-list>
 			</div>

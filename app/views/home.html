@@ -1,16 +1,2 @@
-<!--<div class="jumbotron">
-	<div>
-		<div ng-if="user!=null">
-			<p><strong>{{'USERNAME' | translate}}:</strong> {{user.username}}</p>
-			<p><strong>{{'FULL_NAME' | translate}}:</strong> {{user.first_name}} {{user.last_name}}</p>
-			<img ng-src="{{user.profile_picture}}"/>
-		</div>
-		<br/>
-		<p><a class="btn btn-success" ng-click="login()" ng-show="user==null">{{'LOGIN' | translate}}</a> <a class="btn btn-default" ng-click="logout()" ng-show="user!=null">{{'LOGOUT' | translate}}</a></p>
-	</div>
-</div>-->
-<!--<div style="margin-top: 100px">
-  <div class="card card-open">
-    MAC
-  </div>
-</div>-->
+<user-box user="home.user" show-counts="true"></user-box>
+<trending-box></trending-box>

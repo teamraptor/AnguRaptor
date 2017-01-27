@@ -7,7 +7,7 @@
           {{rawrComposer.status.length?rawrComposer.status.length:'0'}}/255
         </div>
         <div class="col-md-3 pull-right">
-          <a class="btn btn-raptor" ng-disabled="(composerForm.rawr.$error.required || rawrComposer.status.length > 255)" ng-click="rawrComposer.postRawr()" href="#">{{ 'RAWR' | translate}}</a>
+          <a class="btn btn-raptor" ng-disabled="(composerForm.rawr.$error.required || rawrComposer.status.length > 255)" ng-click="rawrComposer.postRawr()">{{ 'RAWR' | translate}}</a>
         </div>
       </div>
     </div>

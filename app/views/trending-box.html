@@ -1,0 +1,12 @@
+<div class="trending-box">
+  <div class="panel panel-raptor">
+    <div class="title">
+      <h4>{{ 'TRENDING_TITLE' | translate}}</h4>
+    </div>
+    <div class="trends">
+      <div ng-repeat='trend in trendingBox.trends' class="trend">
+        <a href="">#{{trend.hashtag}}</a>
+      </div>
+    </div>
+  </div>
+</div>

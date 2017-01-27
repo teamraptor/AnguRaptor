@@ -1,0 +1,59 @@
+@import 'modules/variables';
+
+.user-box .profile {
+  @include raptor-gradient( 'vertical');
+  font-weight: 500;
+  color: white;
+}
+
+.user-box .content {
+  margin: 0 auto;
+  padding: 20px 0px;
+  text-align: center;
+}
+
+.user-box .profile .user-info {
+  margin: 10px 0px;
+}
+
+.user-box .profile .user-info p {
+  margin: 0px;
+  padding-top: 5px;
+}
+
+.user-box .profile .profile-picture {
+  margin: 10px 0px;
+}
+
+.user-box .profile .profile-picture img {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  border: 2px solid white;
+  background-color: $darker-blue-color;
+}
+
+.user-box .profile .actions {
+  margin: 10px 0px;
+}
+
+.user-box .counts {
+  padding: 8px 0px;
+  margin-top: -21px;
+}
+
+.user-box .counts .count-item {
+  float: left;
+  width: 33%;
+  text-align: center;
+}
+
+.user-box .counts .count-item p {
+  margin: 0px;
+  font-weight: 500;
+  color: $blue-color;
+}
+
+.user-box .counts .count-item p.count {
+  font-size: 1.4em;
+}

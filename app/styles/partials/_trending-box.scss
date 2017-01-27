@@ -1,0 +1,23 @@
+@import 'modules/variables';
+
+.trending-box .title {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin: 20px;
+  color: $dark-gray-color;
+}
+
+.trending-box .trends {
+  margin: 20px;
+}
+
+.trending-box .trends .trend {
+  padding-bottom: 5px;
+}
+
+.trending-box .trends .trend a {
+  font-weight: 500;
+  text-decoration: none;
+  color: $blue-color;
+}
