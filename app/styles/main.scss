@@ -6,6 +6,8 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import 'partials/home';
 @import 'partials/navbar';
 @import 'partials/notification-list';
+@import 'partials/rawr-button';
+@import 'partials/rawr-composer';
 
 body {
   background-color: $light-blue-color;

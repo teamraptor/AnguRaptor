@@ -1,0 +1,22 @@
+@import 'modules/variables';
+
+.rawr-composer textarea {
+    resize: none;
+    width: 100%;
+    outline: none;
+    height: 100px;
+}
+
+.rawr-composer .options {
+    padding-top: 15px;
+}
+
+.rawr-composer .options .character-count {
+    line-height: 38px;
+    height: 38px;
+    font-weight: 500;
+}
+
+.rawr-composer .options .character-count.exceeded {
+    color: $red-color;
+}

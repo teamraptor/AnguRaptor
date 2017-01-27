@@ -1,8 +1,20 @@
 'use strict';
-define(['AnguRaptor', 'directives/navbar'], function(AnguRaptor) {
+define(['AnguRaptor', 'directives/navbar', 'directives/rawr-button', 'services/api'], function(AnguRaptor) {
 
-	AnguRaptor.controller('IndexCtrl', function($scope) {
-		$scope.welcomeText = 'Welcome to your AnguRaptor page';
-	});
+    AnguRaptor.controller('IndexCtrl', ['$scope', 'api', function($scope, api) {
+
+        var index = {
+            isLoggedIn: api.user.isLoggedIn()
+        };
+
+        var sessionListener = $scope.$on('session.change', function() {
+            index.isLoggedIn = api.user.isLoggedIn();
+        }, true);
+
+        $scope.$on('$destroy', sessionListener);
+
+				$scope.index = index;
+				
+    }]);
 
 });

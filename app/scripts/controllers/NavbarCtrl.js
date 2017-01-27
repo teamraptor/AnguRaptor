@@ -1,7 +1,7 @@
 'use strict';
 define(['AnguRaptor', 'directives/notification-list', 'services/api'], function(AnguRaptor) {
 
-    AnguRaptor.controller('NavbarCtrl', ['$scope', 'api', function($scope, api) {
+    AnguRaptor.controller('NavbarCtrl', ['$scope', 'api', '$window', function($scope, api, $window) {
 
         var navbar = {
             user: null,
@@ -11,7 +11,7 @@ define(['AnguRaptor', 'directives/notification-list', 'services/api'], function(
 
         navbar.login = function() {
             api.user.login(navbar.loginDetails.username, navbar.loginDetails.password).then(function(response) {
-
+                navbar.loginDetails = {};
             });
         };
 

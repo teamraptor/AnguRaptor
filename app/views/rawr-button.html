@@ -1,0 +1,9 @@
+<div class="rawr-button" ng-show="!rawrMobile.opened">
+  <a class="fa fa-paper-plane" aria-hidden="true" ng-click="rawrMobile.open()"></a>
+</div>
+<div class="card card-composer" ng-class="{'open': rawrMobile.opened}">
+  <div class="close pull-left">
+    <a class="fa fa-times" aria-hidden="true" ng-click="rawrMobile.close()"></a>
+  </div>
+  <rawr-composer post-callback="rawrMobile.postRawr(status)"></rawr-composer>
+</div>

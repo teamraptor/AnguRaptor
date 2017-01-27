@@ -1,0 +1,53 @@
+@import 'modules/variables';
+
+.card.card-composer.open {
+    max-height: 250px;
+    opacity: 1;
+    visibility: visible;
+    -webkit-transition: max-height 0.3s, opacity 0.2s, visibility 0s;
+    -moz-transition: max-height 0.3s, opacity 0.2s, visibility 0s;
+    -ms-transition: max-height 0.3s, opacity 0.2s, visibility 0s;
+    -o-transition: max-height 0.3s, opacity 0.2s, visibility 0s;
+    transition: max-height 0.3s, opacity 0.2s, visibility 0s;
+}
+
+.card.card-composer {
+    z-index: 1200;
+    margin-top: 15px;
+    position: fixed;
+    margin-right: 0;
+    width: 96%;
+    right: 2%;
+}
+
+.card-composer > .close a {
+    margin: -10px 0 10px -10px;
+    font-size: 25px;
+    line-height: 30px;
+    width: 30px;
+    text-align: center;
+    opacity: 1;
+    color: $dark-gray-color;
+    text-decoration: none;
+}
+
+.rawr-button {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    height: 65px;
+    width: 65px;
+    border-radius: 50%;
+    background-color: $blue-color;
+    border: 2px solid white;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.rawr-button a {
+    padding: 15px;
+    font-size: 28px;
+    color: white;
+    text-decoration: none;
+}

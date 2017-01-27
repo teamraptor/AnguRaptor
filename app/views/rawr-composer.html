@@ -1,0 +1,15 @@
+<div class="rawr-composer">
+  <form name="composerForm">
+    <textarea type="text" name="rawr" class="raptor-input" autocorrect="off" ng-model="rawrComposer.status" placeholder="{{ 'RAWR_PLACEHOLDER' | translate}}" required/>
+    <div class="options">
+      <div class="row">
+        <div class="col-md-3 pull-left character-count"  ng-class="{'exceeded': (rawrComposer.status.length > 255)}">
+          {{rawrComposer.status.length?rawrComposer.status.length:'0'}}/255
+        </div>
+        <div class="col-md-3 pull-right">
+          <a class="btn btn-raptor" ng-disabled="(composerForm.rawr.$error.required || rawrComposer.status.length > 255)" ng-click="rawrComposer.postRawr()" href="#">{{ 'RAWR' | translate}}</a>
+        </div>
+      </div>
+    </div>
+  </from>
+</div>

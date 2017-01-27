@@ -138,6 +138,8 @@ a.navbar-menu-item.img-item {
 
 .navbar-user img.profile-picture {
   height: 40px;
+  width: 40px;
+  background-color: $dark-blue-color;
   border-radius: 50%;
   border: 2px solid white;
 }
@@ -170,7 +172,7 @@ a.navbar-menu-item.img-item {
     padding-right: 54px;
 }
 
-@media screen and (max-width: 980px) {
+@media screen and (max-width: 991px) {
     .navbar-rawr {
         display: none;
     }
@@ -227,7 +229,7 @@ a.link {
 }
 
 .open > .card.card-login {
-    max-height: 200px;
+    max-height: 210px;
 }
 
 .card-login input[type="password"],

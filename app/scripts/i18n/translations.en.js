@@ -24,6 +24,7 @@ define([], function() {
 		NOTIFICATIONS_RERAWR: 'rerawred your rawr',
 
 		RAWR_PLACEHOLDER: 'What\'s going on?',
+		RAWR: 'Rawr',
 
 		TIME_SINCE: '{{number}} {{unit}} ago',
 
