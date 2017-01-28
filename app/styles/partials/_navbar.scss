@@ -196,6 +196,7 @@ a.navbar-menu-item.img-item {
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
     background-clip: padding-box;
     list-style: none;
+    right: 0px;
 
     display: block;
     visibility: hidden;
@@ -208,6 +209,16 @@ a.navbar-menu-item.img-item {
     -ms-transition: max-height 0.3s, opacity 0.2s 0.1s, visibility 0s 0.3s;
     -o-transition: max-height 0.3s, opacity 0.2s 0.1s, visibility 0s 0.3s;
     transition: max-height 0.3s, opacity 0.2s 0.1s, visibility 0s 0.3s;
+}
+
+@media (max-width: 767px) {
+    .card {
+        margin-top: 15px;
+        position: fixed;
+        margin-right: 0;
+        right: 15px;
+        width:calc(100% - 30px);
+    }
 }
 
 a.link {
@@ -243,7 +254,6 @@ a.link {
 }
 
 .card-user {
-  right: 0px;
   padding: 0px;
   list-style: none;
 }
@@ -276,7 +286,6 @@ a.link {
 }
 
 .card-notifications {
-  right: 15px;
   padding: 0px;
   overflow-y: scroll;
 }
@@ -350,16 +359,6 @@ a.btn-raptor {
 .card-login .btn-spacing {
   margin-top: 5px;
   margin-bottom: 15px;
-}
-
-@media (max-width: 767px) {
-    .card {
-        margin-top: 15px;
-        position: fixed;
-        margin-right: 0;
-        width: 96%;
-        right: 2%;
-    }
 }
 
 /* Disable Responsiveness in navbar */

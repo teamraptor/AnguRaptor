@@ -12,14 +12,34 @@
 .notification-list .header {
   border-bottom: 1px solid $dark-blue-color;
   color: $darker-blue-color;
+  position: fixed;
+  background-color: white;
+  z-index: 1200;
+  border-radius:4px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.notification-list .notifications {
+  padding-top: 36px;
+}
+
+
+@media screen and (max-width: 767px) {
+  .notification-list .header {
+    left: 16px;
+    right: 16px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .notification-list .header {
+    width: 350px;
+  }
 }
 
 .notification-list .header .glyphicon {
   top: 3px;
-}
-
-.notification-list .empty-loading.border-top {
-  border-top: 1px solid $darker-blue-color;
 }
 
 .notification-list .header .title {

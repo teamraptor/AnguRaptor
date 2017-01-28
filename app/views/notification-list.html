@@ -2,7 +2,7 @@
     <div class="header">
         <p class="title"><i class="glyphicon glyphicon-bell"></i> {{ 'NOTIFICATIONS' | translate}}</p>
     </div>
-    <div infinite-scroll='nextPage()' infinite-scroll-distance="0" infinite-scroll-container="'.card-notifications'" infinite-scroll-disabled='isLoading || disabled'>
+    <div class="notifications" infinite-scroll='nextPage()' infinite-scroll-distance="0" infinite-scroll-container="'.card-notifications'" infinite-scroll-disabled='isLoading || disabled'>
         <div ng-repeat='item in notifications'>
             <div class="notification" ng-class="{'last-child': $last, 'unread': item.new}">
                 <a class="notification-media pull-left" href="#">

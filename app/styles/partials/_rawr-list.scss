@@ -13,14 +13,14 @@
 }
 
 .rawr-list .header .title {
-  padding: 15px;
+  padding: 12px;
   min-width: 80px;
   display: inline-block;
 }
 
 .rawr-list .header .title.active {
   color: $blue-color;
-  border-bottom: 2px solid $blue-color;
+  border-bottom: 3px solid $blue-color;
 }
 
 .rawr-list .header a.title {
@@ -71,4 +71,8 @@
 .rawr-list .rawr-body .rawr-header p.time {
   font-size: 0.9em;
   color: $darker-blue-color;
+}
+
+.rawr-list .rawr-body .rawr-content .status {
+  font-size: 1.1em;
 }
