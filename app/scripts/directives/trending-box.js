@@ -6,7 +6,7 @@ define(['AnguRaptor', 'controllers/TrendingBoxCtrl'], function(AnguRaptor) {
             restrict: 'E',
             templateUrl: '../../views/trending-box.html',
             controller: 'TrendingBoxCtrl'
-        }
+        };
     });
 
 });

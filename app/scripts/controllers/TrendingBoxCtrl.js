@@ -7,7 +7,7 @@ define(['AnguRaptor', 'services/api'], function(AnguRaptor) {
         trends: {}
       };
 
-      api.trends.get().then(function(trends){
+      api.trends.get().then(function(trends) {
         trendingBox.trends = trends;
       });
 

@@ -32,7 +32,7 @@ define([], function() {
 		HOUR: 'hora',
 		HOURS: 'horas',
 		DAY: 'día',
-		DAYS: 'días'
+		DAYS: 'días',
 
 		FOLLOW: 'Seguir',
 		UNFOLLOW: 'Dejar de seguir',

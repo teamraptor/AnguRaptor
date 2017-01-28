@@ -2,8 +2,8 @@
     <div class="header">
         <p class="title"><i class="glyphicon glyphicon-bell"></i> {{ 'NOTIFICATIONS' | translate}}</p>
     </div>
-    <div infinite-scroll='notificationList.nextPage()' infinite-scroll-distance="0" infinite-scroll-container="'.card-notifications'" infinite-scroll-disabled='notificationList.busy || notificationList.disabled'>
-        <div ng-repeat='item in notificationList.items'>
+    <div infinite-scroll='nextPage()' infinite-scroll-distance="0" infinite-scroll-container="'.card-notifications'" infinite-scroll-disabled='isLoading || disabled'>
+        <div ng-repeat='item in notifications'>
             <div class="notification" ng-class="{'last-child': $last, 'unread': item.new}">
                 <a class="notification-media pull-left" href="#">
                     <img class="profile-picture" ng-src="{{item.user.profile_pictures.medium}}" alt="Profile Picture" />
@@ -31,10 +31,10 @@
             </div>
         </div>
     </div>
-    <div class="empty-loading border-top" ng-show="notificationList.busy">
+    <div class="empty-loading border-top" ng-show="isLoading">
         <img class="spinner" src="../images/spinner.png" />
     </div>
-    <div class="empty-loading" ng-show="notificationList.disabled && notificationList.items.length === 0">
+    <div class="empty-loading" ng-show="disabled && notifications.length === 0">
         <p class="title" ng-click="loadMore()">No notifications</p>
     </div>
 </div>

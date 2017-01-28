@@ -10,7 +10,7 @@ define(['AnguRaptor'], function(AnguRaptor) {
           rawrComposer.postRawr = function() {
             $scope.postCallback({status: rawrComposer.status});
             rawrComposer.status = '';
-          }
+          };
 
           $scope.rawrComposer = rawrComposer;
 

@@ -1,7 +1,7 @@
 'use strict';
-define(['AnguRaptor', 'directives/notification-list', 'services/api'], function(AnguRaptor) {
+define(['AnguRaptor', 'directives/notification-list', 'services/DateService', 'services/api'], function(AnguRaptor) {
 
-    AnguRaptor.controller('NavbarCtrl', ['$scope', 'api', '$window', function($scope, api, $window) {
+    AnguRaptor.controller('NavbarCtrl', ['$scope', 'api', '$window', 'DateService', function($scope, api, $window, DateService) {
 
         var navbar = {
             user: null,
@@ -10,7 +10,7 @@ define(['AnguRaptor', 'directives/notification-list', 'services/api'], function(
         };
 
         navbar.login = function() {
-            api.user.login(navbar.loginDetails.username, navbar.loginDetails.password).then(function(response) {
+            api.user.login(navbar.loginDetails.username, navbar.loginDetails.password).then(function() {
                 navbar.loginDetails = {};
             });
         };
@@ -30,6 +30,42 @@ define(['AnguRaptor', 'directives/notification-list', 'services/api'], function(
             navbar.user = null;
             navbar.loggedIn = false;
         }
+
+        var notificationList = {
+            items: [],
+            busy: false,
+            page: 1,
+            fetchLimit: 2,
+            disabled: false
+        };
+
+        notificationList.nextPage = function() {
+            if (notificationList.busy) {
+              return;
+            }
+            notificationList.busy = true;
+            api.user.notifications.get(notificationList.page, notificationList.fetchLimit).then(function(notifications) {
+                if (notifications.length < notificationList.fetchLimit) {
+                    notificationList.disabled = true;
+                }
+
+                for (var i = 0; i < notifications.length; i++) {
+                    notifications[i].created_time = DateService.calculateDateDifference(notifications[i].created_time);
+                    notificationList.items.push(notifications[i]);
+                }
+
+                notificationList.page++;
+                notificationList.busy = false;
+
+            }).catch(function() {
+                notificationList.busy = false;
+                notificationList.disabled = true;
+            });
+        };
+
+        notificationList.nextPage();
+
+        navbar.notificationList = notificationList;
 
         $scope.navbar = navbar;
 

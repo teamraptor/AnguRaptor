@@ -18,7 +18,8 @@ define(['AnguRaptor'], function(AnguRaptor) {
                     $scope.user.user_follows = false;
                     $scope.unfollowCallback(user);
                     break;
-
+                default:
+                    break;
             }
         };
 

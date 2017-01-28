@@ -9,7 +9,7 @@ define(['AnguRaptor', 'controllers/RawrComposerCtrl'], function(AnguRaptor) {
             scope: {
               postCallback: '&'
             }
-        }
+        };
     });
 
 });

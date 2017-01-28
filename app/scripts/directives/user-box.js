@@ -12,7 +12,7 @@ define(['AnguRaptor', 'controllers/UserBoxCtrl'], function(AnguRaptor) {
                 followCallback: '&',
                 unfollowCallback: '&'
             }
-        }
+        };
     });
 
 });

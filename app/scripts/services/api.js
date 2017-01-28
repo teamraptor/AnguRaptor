@@ -2,7 +2,7 @@
 
 define(['AnguRaptor'], function(AnguRaptor) {
 
-    //var root = 'http://10.0.1.2:10101';
+    //  var root = 'http://10.0.1.2:10101';
     var root = 'http://localhost:10101';
 
     AnguRaptor.service('api', ['$http', '$q', '$cookies', '$window', '$rootScope', function($http, $q, $cookies, $window, $rootScope) {
@@ -60,7 +60,7 @@ define(['AnguRaptor'], function(AnguRaptor) {
             return response;
         }
 
-        function destroySession(response) {
+        function destroySession() {
             $cookies.remove('token');
             token = undefined;
             $rootScope.$broadcast('session.change');
