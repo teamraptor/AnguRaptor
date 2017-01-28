@@ -53,6 +53,7 @@
     background-color: $blue-color;
     line-height: 14px;
     font-weight: 500;
+    font-size: 14px;
 }
 
 /* Themed and rounded text input with circular button */
@@ -192,7 +193,7 @@ a.navbar-menu-item.img-item {
     background-color: #fff;
     border-radius: 4px;
     border: 1px solid $dark-blue-color;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.175);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
     background-clip: padding-box;
     list-style: none;
 

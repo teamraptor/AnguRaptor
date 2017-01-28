@@ -1,0 +1,74 @@
+@import 'modules/variables';
+
+.rawr-list {
+  color: $dark-gray-color;
+}
+
+.rawr-list .header {
+  text-transform: uppercase;
+  border-bottom: 1px solid $border-blue-color;
+  white-space: nowrap;
+  overflow: hidden;
+  overflow-x: scroll;
+}
+
+.rawr-list .header .title {
+  padding: 15px;
+  min-width: 80px;
+  display: inline-block;
+}
+
+.rawr-list .header .title.active {
+  color: $blue-color;
+  border-bottom: 2px solid $blue-color;
+}
+
+.rawr-list .header a.title {
+  font-size: 16px;
+  text-align: center;
+  color: $dark-gray-color;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.rawr-list .rawr {
+  padding: 20px;
+  border-bottom: 1px solid $border-blue-color;
+}
+
+.rawr-list .rawr.last-child {
+  border: none;
+}
+
+.rawr-list .rawr .rawr-media .profile-picture {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  border: 2px solid $border-blue-color;
+  background-color: $darker-blue-color;
+}
+
+.rawr-list .rawr-body {
+  display: inline-block;
+  padding-left: 20px;
+  width: calc(100% - 60px);
+}
+
+.rawr-list .rawr-body .rawr-header a.name {
+  color: $dark-gray-color;
+  font-weight: 500;
+  text-decoration: none;
+  padding-right: 5px;
+}
+
+.rawr-list .rawr-body .rawr-header a.username {
+  color: $darker-blue-color;
+  font-size: 0.9em;
+  text-decoration: none;
+}
+
+.rawr-list .rawr-body .rawr-header span.time,
+.rawr-list .rawr-body .rawr-header p.time {
+  font-size: 0.9em;
+  color: $darker-blue-color;
+}

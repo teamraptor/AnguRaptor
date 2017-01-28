@@ -2,12 +2,11 @@
 
 .notification-list {
   color: $dark-gray-color;
-  font-size: 1.1em;
 }
 
 .notification-list a {
   color: $dark-gray-color;
-  font-weight: bold;
+  font-weight: 500;
 }
 
 .notification-list .header {
@@ -19,25 +18,26 @@
   top: 3px;
 }
 
+.notification-list .empty-loading.border-top {
+  border-top: 1px solid $darker-blue-color;
+}
+
 .notification-list .header .title {
   margin: 0px;
   padding: 5px 5px 5px 10px;
-  font-weight: bold;
+  font-weight: 500;
+  font-size: 1.1em;
 }
 
 .notification-list .empty-loading {
   min-height: 80px;
 }
 
-.notification-list .empty-loading.border-top {
-  border-top: 1px solid $dark-blue-color;
-}
-
 .notification {
   display: inline-block;
   min-width: 350px;
   padding: 15px;
-  border-bottom: 1px solid $dark-blue-color;
+  border-bottom: 1px solid $border-blue-color;
 }
 
 .notification.unread {
@@ -75,6 +75,7 @@
 .notification-body .time {
   margin-bottom: 0px;
   color: $dark-blue-color;
+  font-size: 0.9em;
 }
 
 .notification-media {

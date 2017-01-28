@@ -38,7 +38,9 @@ define([], function() {
 		FOLLOW: 'Follow',
 		UNFOLLOW: 'Unfollow',
 
-		TRENDING_TITLE: 'Trending on Raptor'
+		TRENDING_TITLE: 'Trending on Raptor',
+
+		EMPTY_RAWRS: 'No rawrs'
 
 	};
 });

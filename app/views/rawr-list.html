@@ -1,8 +1,34 @@
-<div class="notification-list">
+<div class="rawr-list">
+  <div class="panel panel-raptor">
     <div class="header">
-        <p class="title"><i class="glyphicon glyphicon-bell"></i> {{ 'NOTIFICATIONS' | translate}}</p>
+      <span ng-repeat='item in header'>
+        <a class="title" href="" ng-class="{'active': item.active}">{{item.title}}</a>
+      </span>
+      <div class="clearfix"></div>
     </div>
-    <div infinite-scroll='nextPage()' infinite-scroll-distance="0" infinite-scroll-container="'.card-notifications'" infinite-scroll-disabled='isLoading || disabled'>
+    <div infinite-scroll='nextPage()' infinite-scroll-distance="0" infinite-scroll-disabled='isLoading || disabled'>
+      <div ng-repeat='item in rawrs'>
+        <div class="rawr" ng-class="{'last-child': $last}">
+          <div class="rawr-media pull-left">
+            <img class="profile-picture" ng-src="{{item.owner.profile_pictures.large}}" alt="Profile Picture" />
+          </div>
+          <div class="rawr-body">
+            <div class="rawr-header">
+              <a class="name">{{item.owner.first_name}} {{item.owner.last_name}}</a><a class="username">@{{item.owner.username}}</a>
+              <span class="time pull-right hidden-xs" translate="TIME_SINCE" translate-value-number="{{item.created_time.number}}" translate-value-unit="{{(item.created_time.unit | uppercase) | translate}}"></span>
+              <p class="time visible-xs" translate="TIME_SINCE" translate-value-number="{{item.created_time.number}}" translate-value-unit="{{(item.created_time.unit | uppercase) | translate}}"></p>
+            </div>
+            <div class="rawr-content">
+              <div class="status">
+                {{item.status}}
+              </div>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+    <!--<div infinite-scroll='nextPage()' infinite-scroll-distance="0" infinite-scroll-container="'.card-notifications'" infinite-scroll-disabled='isLoading || disabled'>
         <div ng-repeat='item in notifications'>
             <div class="notification" ng-class="{'last-child': $last, 'unread': item.new}">
                 <a class="notification-media pull-left" href="#">
@@ -30,11 +56,12 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
     <div class="empty-loading border-top" ng-show="isLoading">
         <img class="spinner" src="../images/spinner.png" />
     </div>
-    <div class="empty-loading" ng-show="disabled && notifications.length === 0">
-        <p class="title" ng-click="loadMore()">{{ 'EMPTY_NOTIFICATIONS' | translate}}</p>
+    <div class="empty-loading" ng-show="disabled && rawrs.length === 0">
+        <p class="title" ng-click="loadMore()">{{ 'EMPTY_RAWRS' | translate}}</p>
     </div>
+  </div>
 </div>

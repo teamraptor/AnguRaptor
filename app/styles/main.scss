@@ -10,11 +10,13 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import 'partials/rawr-composer';
 @import 'partials/user-box';
 @import 'partials/trending-box';
+@import 'partials/rawr-list';
 
 body {
   background-color: $light-blue-color;
   color: $dark-gray-color;
   padding-top: 70px;
+  font-size: 16px;
 }
 
 @media screen and (max-width: 767px) {
@@ -45,6 +47,10 @@ body {
   -webkit-animation: spin 1s linear infinite;
   -moz-animation: spin 1s linear infinite;
   animation: spin 1s linear infinite;
+}
+
+.empty-loading.border-top {
+  border-top: 1px solid $border-blue-color;
 }
 
 @-moz-keyframes spin {

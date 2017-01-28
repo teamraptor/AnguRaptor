@@ -37,6 +37,9 @@ define([], function() {
 		FOLLOW: 'Seguir',
 		UNFOLLOW: 'Dejar de seguir',
 
-		TRENDING_TITLE: 'Popular en Raptor'
+		TRENDING_TITLE: 'Popular en Raptor',
+
+		EMPTY_RAWRS: 'No hay rawrs'
+
 	};
 });
