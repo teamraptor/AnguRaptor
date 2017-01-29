@@ -1,16 +1,13 @@
 'use strict';
-define(['AnguRaptor'], function(AnguRaptor) {
+define(['AnguRaptor', 'controllers/RawrListCtrl'], function(AnguRaptor) {
 
     AnguRaptor.directive('rawrList', function() {
         return {
             restrict: 'E',
             templateUrl: '../../views/rawr-list.html',
+            controller: 'RawrListCtrl',
             scope: {
-              rawrs: '=',
-              header: '=',
-              isLoading: '=',
-              disabled: '=',
-              nextPage: '&'
+              items: '='
             }
         };
     });

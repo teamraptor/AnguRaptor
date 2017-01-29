@@ -1,7 +1,7 @@
 'use strict';
 define(['AnguRaptor', 'services/api', 'directives/user-box', 'directives/trending-box', 'directives/rawr-list'], function(AnguRaptor) {
 
-    AnguRaptor.controller('HomeCtrl', ['$scope', 'api', 'DateService', function($scope, api, DateService) {
+    AnguRaptor.controller('HomeCtrl', ['$scope', 'api', function($scope, api) {
 
         var home = {
             user: null
@@ -11,49 +11,15 @@ define(['AnguRaptor', 'services/api', 'directives/user-box', 'directives/trendin
             home.user = user;
         });
 
-        var rawrList = {
-            items: [],
-            busy: false,
-            page: 1,
-            fetchLimit: 2,
-            disabled: false
-        };
+        var rawrList = {};
 
-        rawrList.header = [{
+        rawrList.items = [{
             title: 'Feed',
-            link: 'www.google.com.ar',
-            active: true
+            nextPage: api.user.feed.get
         }, {
             title: 'Global',
-            link: 'www.facebook.com'
+            nextPage: api.feed.get
         }];
-
-        rawrList.nextPage = function() {
-            console.log('Mac');
-            if (rawrList.busy) {
-                return;
-            }
-            rawrList.busy = true;
-            api.user.feed.get(rawrList.page, rawrList.fetchLimit).then(function(rawrs) {
-                if (rawrs.length < rawrList.fetchLimit) {
-                    rawrList.disabled = true;
-                }
-
-                for (var i = 0; i < rawrs.length; i++) {
-                    rawrs[i].created_time = DateService.calculateDateDifference(rawrs[i].created_time);
-                    rawrList.items.push(rawrs[i]);
-                }
-
-                rawrList.page++;
-                rawrList.busy = false;
-
-            }).catch(function() {
-                rawrList.busy = false;
-                rawrList.disabled = true;
-            });
-        };
-
-        rawrList.nextPage();
 
         home.rawrList = rawrList;
 

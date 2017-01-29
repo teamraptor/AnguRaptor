@@ -1,67 +1,38 @@
 <div class="rawr-list">
-  <div class="panel panel-raptor">
-    <div class="header">
-      <span ng-repeat='item in header'>
-        <a class="title" href="" ng-class="{'active': item.active}">{{item.title}}</a>
+    <div class="panel panel-raptor">
+        <div class="header">
+            <span ng-repeat='item in items'>
+        <a class="title" href="" ng-click="rawrList.switchSelection($index)" ng-class="{'active': $index == rawrList.selected }">{{rawrList.items[$index].title}}</a>
       </span>
-      <div class="clearfix"></div>
-    </div>
-    <div infinite-scroll='nextPage()' infinite-scroll-distance="0" infinite-scroll-disabled='isLoading || disabled'>
-      <div ng-repeat='item in rawrs'>
-        <div class="rawr" ng-class="{'last-child': $last}">
-          <div class="rawr-media pull-left">
-            <img class="profile-picture" ng-src="{{item.owner.profile_pictures.large}}" alt="Profile Picture" />
-          </div>
-          <div class="rawr-body">
-            <div class="rawr-header">
-              <a class="name">{{item.owner.first_name}} {{item.owner.last_name}}</a><a class="username">@{{item.owner.username}}</a>
-              <span class="time pull-right hidden-xs" translate="TIME_SINCE" translate-value-number="{{item.created_time.number}}" translate-value-unit="{{(item.created_time.unit | uppercase) | translate}}"></span>
-              <p class="time visible-xs" translate="TIME_SINCE" translate-value-number="{{item.created_time.number}}" translate-value-unit="{{(item.created_time.unit | uppercase) | translate}}"></p>
-            </div>
-            <div class="rawr-content">
-              <div class="status">
-                {{item.status}}
-              </div>
-            </div>
-          </div>
-          <div class="clearfix"></div>
+            <div class="clearfix"></div>
         </div>
-      </div>
-    </div>
-    <!--<div infinite-scroll='nextPage()' infinite-scroll-distance="0" infinite-scroll-container="'.card-notifications'" infinite-scroll-disabled='isLoading || disabled'>
-        <div ng-repeat='item in notifications'>
-            <div class="notification" ng-class="{'last-child': $last, 'unread': item.new}">
-                <a class="notification-media pull-left" href="#">
-                    <img class="profile-picture" ng-src="{{item.user.profile_pictures.medium}}" alt="Profile Picture" />
-                    <span ng-switch="item.type">
-                      <span ng-switch-when="mention"><span class="fa fa-comment icon mention"></span></span>
-                      <span ng-switch-when="like"><span class="fa fa-heart icon like"></span></span>
-                      <span ng-switch-when="rerawr"><span class="glyphicon glyphicon-retweet icon rerawr"></span></span>
-                      <span ng-switch-when="follow"> <span class="fa fa-address-book icon follow"></span></span>
-                      <span ng-switch-when="unfollow"><span class="fa fa-trash icon unfollow"></span></span>
-                    </span>
-                </a>
-                <div class="notification-body">
-                    <p class="title">
-                      <a href="">{{item.user.first_name}} {{item.user.last_name}}</a>
-                      <span ng-switch="item.type">
-                        <span ng-switch-when="mention"> {{ 'NOTIFICATIONS_MENTION' | translate}}</span>
-                        <span ng-switch-when="like"> {{ 'NOTIFICATIONS_LIKE' | translate}}</span>
-                        <span ng-switch-when="follow"> {{ 'NOTIFICATIONS_FOLLOW' | translate}}</span>
-                        <span ng-switch-when="unfollow"> {{ 'NOTIFICATIONS_UNFOLLOW' | translate}}</span>
-                        <span ng-switch-when="rerawr"> {{ 'NOTIFICATIONS_RERAWR' | translate}}</span>
-                      </span>
-                    </p>
-                    <p class="time" translate="TIME_SINCE" translate-value-number="{{item.created_time.number}}" translate-value-unit="{{(item.created_time.unit | uppercase) | translate}}"></p>
+        <div infinite-scroll='rawrList.loadMore()' infinite-scroll-distance="0" infinite-scroll-disabled='rawrList.items[rawrList.selected].busy || rawrList.items[rawrList.selected].disabled'>
+            <div ng-repeat='item in rawrList.items[rawrList.selected].rawrs'>
+                <div class="rawr" ng-class="{'last-child': $last}">
+                    <div class="rawr-media pull-left">
+                        <img class="profile-picture" ng-src="{{item.owner.profile_pictures.large}}" alt="Profile Picture" />
+                    </div>
+                    <div class="rawr-body">
+                        <div class="rawr-header">
+                            <a class="name">{{item.owner.first_name}} {{item.owner.last_name}}</a><a class="username">@{{item.owner.username}}</a>
+                            <span class="time pull-right hidden-xs" translate="TIME_SINCE" translate-value-number="{{item.created_time.number}}" translate-value-unit="{{(item.created_time.unit | uppercase) | translate}}"></span>
+                            <p class="time visible-xs" translate="TIME_SINCE" translate-value-number="{{item.created_time.number}}" translate-value-unit="{{(item.created_time.unit | uppercase) | translate}}"></p>
+                        </div>
+                        <div class="rawr-content">
+                            <div class="status">
+                                {{item.status}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
                 </div>
             </div>
         </div>
-    </div>-->
-    <div class="empty-loading border-top" ng-show="isLoading">
-        <img class="spinner" src="../images/spinner.png" />
+        <div class="empty-loading border-top" ng-show="rawrList.items[rawrList.selected].busy">
+            <img class="spinner" src="../images/spinner.png" />
+        </div>
+        <div class="empty-loading" ng-show="rawrList.items[rawrList.selected].disabled && rawrList.items[rawrList.selected].rawrs.length === 0">
+            <p class="title" ng-click="loadMore()">{{ 'EMPTY_RAWRS' | translate}}</p>
+        </div>
     </div>
-    <div class="empty-loading" ng-show="disabled && rawrs.length === 0">
-        <p class="title" ng-click="loadMore()">{{ 'EMPTY_RAWRS' | translate}}</p>
-    </div>
-  </div>
 </div>
