@@ -71,8 +71,59 @@
 .rawr-list .rawr-body .rawr-header p.time {
   font-size: 0.9em;
   color: $darker-blue-color;
+  margin-bottom: 0px;
 }
 
 .rawr-list .rawr-body .rawr-content .status {
+  font-size: 1.2em;
+  padding: 10px 0px;
+}
+
+.rawr-list .rawr-body .rawr-content .actions {
+
+}
+
+.rawr-list .rawr-body .rawr-content .actions .icon {
+  min-width: 30px;
+  height: 17px;
+  line-height: 17px;
+}
+
+.rawr-list .rawr-body .rawr-content .actions a.icon {
+  text-decoration: none;
+  font-weight: 500;
   font-size: 1.1em;
+  color: $dark-gray-color;
+}
+
+.rawr-list .rawr-body .rawr-content .actions .icon.icon-like {
+  background: url("../images/favorite-icon.png") no-repeat left;
+  background-size: 18px 17px;
+  padding-left: 26px;
+  margin-right: 10px;
+}
+
+.rawr-list .rawr-body .rawr-content .actions .icon.icon-like.selected,
+.rawr-list .rawr-body .rawr-content .actions .icon.icon-like:hover {
+  background: url("../images/favorite-icon-filled.png") no-repeat left;
+  color: $like-color;
+  background-size: 18px 17px;
+  padding-left: 26px;
+  margin-right: 10px;
+}
+
+.rawr-list .rawr-body .rawr-content .actions .icon.icon-rerawr {
+  background: url("../images/retweet-icon.png") no-repeat left;
+  background-size: 25px 17px;
+  padding-left: 33px;
+  margin-right: 10px;
+}
+
+.rawr-list .rawr-body .rawr-content .actions .icon.icon-rerawr.selected,
+.rawr-list .rawr-body .rawr-content .actions .icon.icon-rerawr:hover {
+  background: url("../images/retweet-icon-filled.png") no-repeat left;
+  color: $rerawr-color;
+  background-size: 25px 17px;
+  padding-left: 33px;
+  margin-right: 10px;
 }

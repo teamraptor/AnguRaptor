@@ -16,7 +16,8 @@ body {
   background-color: $light-blue-color;
   color: $dark-gray-color;
   padding-top: 70px;
-  font-size: 16px;
+  font-size: 14px;
+  font-family: 'Helvetica Neue', Helvetica , Arial , sans-serif;
 }
 
 @media screen and (max-width: 767px) {
@@ -31,7 +32,7 @@ body {
 .empty-loading {
   display: flex;
   min-height: 100px;
-  min-width: 350px;
+  min-width: 300px;
 }
 
 .empty-loading p.title {

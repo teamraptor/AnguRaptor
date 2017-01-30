@@ -30,8 +30,6 @@ define(['AnguRaptor', 'services/api', 'bootstrap'], function(AnguRaptor) {
 
             item.busy = true;
 
-            console.log('Selected:' + rawrList.selected + ', Page: ' + item.page);
-
             item.nextPage(item.page, item.fetchLimit).then(function(rawrs) {
                 if (rawrs.length < item.fetchLimit) {
                     item.disabled = true;
@@ -59,6 +57,28 @@ define(['AnguRaptor', 'services/api', 'bootstrap'], function(AnguRaptor) {
             if (rawrList.items[selected].rawrs.length === 0) {
                 rawrList.loadMore();
             }
+        };
+
+        rawrList.like = function(rawr) {
+            if (rawr.user_has_liked) {
+              api.rawr.like(rawr.id);
+              rawr.counts.likes--;
+            } else {
+              api.rawr.unlike(rawr.id);
+              rawr.counts.likes++;
+            }
+            rawr.user_has_liked = !rawr.user_has_liked;
+        };
+
+        rawrList.rerawr = function(rawr) {
+            if (rawr.user_has_rerawred) {
+              api.rawr.rerawr(rawr.id);
+              rawr.counts.rerawrs--;
+            } else {
+              api.rawr.unrerawr(rawr.id);
+              rawr.counts.rerawrs++;
+            }
+            rawr.user_has_rerawred = !rawr.user_has_rerawred;
         };
 
         $scope.rawrList = rawrList;
