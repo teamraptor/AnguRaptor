@@ -41,7 +41,13 @@ define([], function() {
 		TRENDING_TITLE: 'Trending on Raptor',
 		EMPTY_TRENDING: 'There\'s nothing is currently trending',
 
-		EMPTY_RAWRS: 'No rawrs'
+		EMPTY_RAWRS: 'No rawrs',
 
+		FEED_TITLE: 'Feed',
+		GLOBAL_TITLE: 'Global',
+
+		TIMELINE_TITLE: 'Timeline',
+		MENTIONS_TITLE: 'Mentions',
+		FAVORITES_TITLE: 'Likes'
 	};
 });

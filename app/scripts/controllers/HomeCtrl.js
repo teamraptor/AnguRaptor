@@ -1,15 +1,9 @@
 'use strict';
-define(['AnguRaptor', 'services/api', 'directives/user-box', 'directives/trending-box', 'directives/rawr-list'], function(AnguRaptor) {
+define(['AnguRaptor', 'services/api', 'directives/trending-box', 'directives/rawr-list'], function(AnguRaptor) {
 
-    AnguRaptor.controller('HomeCtrl', ['$scope', 'api', function($scope, api) {
+    AnguRaptor.controller('HomeCtrl', ['$scope', 'api', '$translate', function($scope, api, $translate) {
 
-        var home = {
-            user: null
-        };
-
-        api.user.get().then(function(user) {
-            home.user = user;
-        });
+        var home = {};
 
         var rawrList = {};
 
@@ -20,6 +14,11 @@ define(['AnguRaptor', 'services/api', 'directives/user-box', 'directives/trendin
             title: 'Global',
             nextPage: api.feed.get
         }];
+
+        $translate(['FEED_TITLE', 'GLOBAL_TITLE']).then(function(translations) {
+            rawrList.items[0].title = translations.FEED_TITLE;
+            rawrList.items[1].title = translations.GLOBAL_TITLE;
+        });
 
         home.rawrList = rawrList;
 

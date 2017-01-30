@@ -14,7 +14,7 @@
                     </div>
                     <div class="rawr-body">
                         <div class="rawr-header">
-                            <a class="name" href="">{{item.owner.first_name}} {{item.owner.last_name}}</a><a class="username" href="">@{{item.owner.username}}</a>
+                            <a class="name" ng-href="#/profile/{{item.owner.username}}">{{item.owner.first_name}} {{item.owner.last_name}}</a><a class="username" ng-href="#/profile/{{item.owner.username}}">@{{item.owner.username}}</a>
                             <span class="time pull-right hidden-xs" translate="TIME_SINCE" translate-value-number="{{item.created_time.number}}" translate-value-unit="{{(item.created_time.unit | uppercase) | translate}}"></span>
                             <p class="time visible-xs" translate="TIME_SINCE" translate-value-number="{{item.created_time.number}}" translate-value-unit="{{(item.created_time.unit | uppercase) | translate}}"></p>
                         </div>

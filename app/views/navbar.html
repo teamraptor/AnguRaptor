@@ -14,12 +14,12 @@
 		<li class="navbar-user">
 			<a href="#" class="navbar-menu-item" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> {{navbar.user.first_name}}</a>
 			<ul class="card card-user">
-				<li class="list-item"><a href="">{{ 'PROFILE' | translate}}</a></li>
+				<li class="list-item"><a ng-href="#/profile/{{navbar.user.username}}">{{ 'PROFILE' | translate}}</a></li>
 				<li class="list-item"><a href="" ng-click="navbar.logout()">{{ 'LOG_OUT' | translate}}</a></li>
 			</ul>
 		</li>
 		<li class="navbar-user">
-			<a class="navbar-menu-item img-item" ><img class="profile-picture" ng-src="{{navbar.user.profile_pictures.small}}"/></a>
+			<a class="navbar-menu-item img-item" ng-href="#/profile/{{navbar.user.username}}"><img class="profile-picture" ng-src="{{navbar.user.profile_pictures.small}}"/></a>
 		</li>
 	</ul>
 	<!-- Login -->

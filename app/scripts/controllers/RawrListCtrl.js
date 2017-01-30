@@ -61,10 +61,10 @@ define(['AnguRaptor', 'services/api', 'bootstrap'], function(AnguRaptor) {
 
         rawrList.like = function(rawr) {
             if (rawr.user_has_liked) {
-              api.rawr.like(rawr.id);
+              api.rawr.unlike(rawr.id);
               rawr.counts.likes--;
             } else {
-              api.rawr.unlike(rawr.id);
+              api.rawr.like(rawr.id);
               rawr.counts.likes++;
             }
             rawr.user_has_liked = !rawr.user_has_liked;
@@ -72,10 +72,10 @@ define(['AnguRaptor', 'services/api', 'bootstrap'], function(AnguRaptor) {
 
         rawrList.rerawr = function(rawr) {
             if (rawr.user_has_rerawred) {
-              api.rawr.rerawr(rawr.id);
+              api.rawr.unrerawr(rawr.id);
               rawr.counts.rerawrs--;
             } else {
-              api.rawr.unrerawr(rawr.id);
+              api.rawr.rerawr(rawr.id);
               rawr.counts.rerawrs++;
             }
             rawr.user_has_rerawred = !rawr.user_has_rerawred;

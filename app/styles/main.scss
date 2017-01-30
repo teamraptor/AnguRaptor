@@ -32,7 +32,6 @@ body {
 .empty-loading {
   display: flex;
   min-height: 100px;
-  min-width: 300px;
 }
 
 .empty-loading p.title {
@@ -84,5 +83,12 @@ body {
     border-top: solid 1px $border-blue-color;
     border-bottom: solid 1px $border-blue-color;
     border-radius: 0px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .no-padding [class*='col-'] {
+      padding-right: 0px;
+      padding-left: 0px;
   }
 }

@@ -10,15 +10,11 @@ define(['AnguRaptor', 'directives/notification-list', 'services/DateService', 's
         };
 
         navbar.login = function() {
-            api.user.login(navbar.loginDetails.username, navbar.loginDetails.password).then(function() {
-                navbar.loginDetails = {};
-            });
+            api.user.login(navbar.loginDetails.username, navbar.loginDetails.password);
         };
 
         navbar.logout = function() {
-            api.user.logout().then(function() {
-
-            });
+            api.user.logout();
         };
 
         if (api.user.isLoggedIn()) {
@@ -41,7 +37,7 @@ define(['AnguRaptor', 'directives/notification-list', 'services/DateService', 's
 
         notificationList.nextPage = function() {
             if (notificationList.busy) {
-              return;
+                return;
             }
             notificationList.busy = true;
             api.user.notifications.get(notificationList.page, notificationList.fetchLimit).then(function(notifications) {
@@ -70,15 +66,7 @@ define(['AnguRaptor', 'directives/notification-list', 'services/DateService', 's
         $scope.navbar = navbar;
 
         var sessionListener = $scope.$on('session.change', function() {
-            if (api.user.isLoggedIn()) {
-                api.user.get().then(function(user) {
-                    navbar.user = user;
-                    navbar.loggedIn = true;
-                });
-            } else {
-                navbar.user = null;
-                navbar.loggedIn = false;
-            }
+            $window.location.reload();
         }, true);
 
         $scope.$on('$destroy', sessionListener);

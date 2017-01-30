@@ -40,7 +40,14 @@ define([], function() {
 		TRENDING_TITLE: 'Popular en Raptor',
 		EMPTY_TRENDING: 'No hay temas populares actualmente',
 
-		EMPTY_RAWRS: 'No hay rawrs'
+		EMPTY_RAWRS: 'No hay rawrs',
+
+		FEED_TITLE: 'Feed',
+		GLOBAL_TITLE: 'Global',
+
+		TIMELINE_TITLE: 'Biografía',
+		MENTIONS_TITLE: 'Menciones',
+		FAVORITES_TITLE: 'Favoritos'
 
 	};
 });
