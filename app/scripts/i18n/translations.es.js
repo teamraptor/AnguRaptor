@@ -38,6 +38,7 @@ define([], function() {
 		UNFOLLOW: 'Dejar de seguir',
 
 		TRENDING_TITLE: 'Popular en Raptor',
+		EMPTY_TRENDING: 'No hay temas populares actualmente',
 
 		EMPTY_RAWRS: 'No hay rawrs'
 

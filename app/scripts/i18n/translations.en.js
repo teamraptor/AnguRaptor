@@ -39,6 +39,7 @@ define([], function() {
 		UNFOLLOW: 'Unfollow',
 
 		TRENDING_TITLE: 'Trending on Raptor',
+		EMPTY_TRENDING: 'There\'s nothing is currently trending',
 
 		EMPTY_RAWRS: 'No rawrs'
 

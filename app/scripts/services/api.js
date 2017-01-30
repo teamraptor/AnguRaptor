@@ -2,7 +2,7 @@
 
 define(['AnguRaptor'], function(AnguRaptor) {
 
-    //  var root = 'http://10.0.1.2:10101';
+    //  var root = 'http://10.0.1.6:10101';
       var root = 'http://localhost:10101';
 
     AnguRaptor.service('api', ['$http', '$q', '$cookies', '$window', '$rootScope', function($http, $q, $cookies, $window, $rootScope) {

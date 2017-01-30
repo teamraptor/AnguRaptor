@@ -2,11 +2,11 @@
     <div class="panel panel-raptor">
         <div class="header">
             <span ng-repeat='item in items'>
-        <a class="title" href="" ng-click="rawrList.switchSelection($index)" ng-class="{'active': $index == rawrList.selected }">{{rawrList.items[$index].title}}</a>
-      </span>
+              <a class="title" href="" ng-click="rawrList.switchSelection($index)" ng-class="{'active': $index == rawrList.selected }">{{rawrList.items[$index].title}}</a>
+            </span>
             <div class="clearfix"></div>
         </div>
-        <div infinite-scroll='rawrList.loadMore()' infinite-scroll-distance="0" infinite-scroll-disabled='rawrList.items[rawrList.selected].busy || rawrList.items[rawrList.selected].disabled'>
+        <div class="content" infinite-scroll='rawrList.loadMore()' infinite-scroll-distance="0" infinite-scroll-disabled='rawrList.items[rawrList.selected].busy || rawrList.items[rawrList.selected].disabled'>
             <div ng-repeat='item in rawrList.items[rawrList.selected].rawrs'>
                 <div class="rawr" ng-class="{'last-child': $last}">
                     <div class="rawr-media pull-left">
@@ -23,8 +23,8 @@
                                 {{item.status}}
                             </div>
                             <div class="actions">
-                              <a href="" class="icon icon-rerawr" ng-if="!(item.user_has_rerawred == null)" ng-class="{'selected': item.user_has_rerawred }" ng-click="rawrList.rerawr(item)"> {{item.counts.rerawrs}}</a>
-                              <a href="" class="icon icon-like" ng-if="!(item.user_has_liked == null)" ng-class="{'selected': item.user_has_liked }" ng-click="rawrList.like(item)"> {{item.counts.likes}}</a>
+                                <a href="" class="icon icon-rerawr" ng-if="!(item.user_has_rerawred == null)" ng-class="{'selected': item.user_has_rerawred }" ng-click="rawrList.rerawr(item)"> {{item.counts.rerawrs}}</a>
+                                <a href="" class="icon icon-like" ng-if="!(item.user_has_liked == null)" ng-class="{'selected': item.user_has_liked }" ng-click="rawrList.like(item)"> {{item.counts.likes}}</a>
                             </div>
                         </div>
                     </div>
@@ -32,7 +32,7 @@
                 </div>
             </div>
         </div>
-        <div class="empty-loading border-top" ng-show="rawrList.items[rawrList.selected].busy">
+        <div class="empty-loading" ng-show="rawrList.items[rawrList.selected].busy">
             <img class="spinner" src="../images/spinner.png" />
         </div>
         <div class="empty-loading" ng-show="rawrList.items[rawrList.selected].disabled && rawrList.items[rawrList.selected].rawrs.length === 0">
