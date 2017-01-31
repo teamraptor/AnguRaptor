@@ -8,7 +8,6 @@ define(['AnguRaptor', 'controllers/UserBoxCtrl'], function(AnguRaptor) {
             controller: 'UserBoxCtrl',
             scope: {
                 user: '=',
-                showCounts: '=',
                 followCallback: '&',
                 unfollowCallback: '&'
             }

@@ -1,0 +1,53 @@
+<div class="rawr-list">
+    <div class="panel panel-raptor">
+        <div class="header">
+            <a class="title active" translate="SEARCH_TITLE" translate-values='{ term: search.term }' href=""></a>
+            <div class="clearfix"></div>
+        </div>
+        <div class="content" infinite-scroll='search.nextPage()' infinite-scroll-distance="0" infinite-scroll-disabled='search.busy || search.disabled'>
+
+          <span ng-if="search.type === 'rawrs'">
+            <div ng-repeat='item in search.results'>
+                <div class="rawr" ng-class="{'last-child': $last}">
+                    <div class="rawr-media pull-left">
+                        <img class="profile-picture" ng-src="{{item.owner.profile_pictures.large}}" alt="Profile Picture" />
+                    </div>
+                    <div class="rawr-body">
+                        <div class="rawr-header">
+                            <a class="name" ng-href="#/profile/{{item.owner.username}}">{{item.owner.first_name}} {{item.owner.last_name}}</a><a class="username" ng-href="#/profile/{{item.owner.username}}">@{{item.owner.username}}</a>
+                            <span class="time pull-right hidden-xs" translate="TIME_SINCE" translate-value-number="{{item.created_time.number}}" translate-value-unit="{{(item.created_time.unit | uppercase) | translate}}"></span>
+                            <p class="time visible-xs" translate="TIME_SINCE" translate-value-number="{{item.created_time.number}}" translate-value-unit="{{(item.created_time.unit | uppercase) | translate}}"></p>
+                        </div>
+                        <div class="rawr-content">
+                            <div class="status">
+                                {{item.status}}
+                            </div>
+                            <div class="actions">
+                                <a href="" class="icon icon-rerawr" ng-if="!(item.user_has_rerawred == null)" ng-class="{'selected': item.user_has_rerawred }" ng-click="rawrList.rerawr(item)"> {{item.counts.rerawrs}}</a>
+                                <a href="" class="icon icon-like" ng-if="!(item.user_has_liked == null)" ng-class="{'selected': item.user_has_liked }" ng-click="rawrList.like(item)"> {{item.counts.likes}}</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+          </span>
+
+        <div class="user-list" ng-if="search.type === 'users'">
+            <div ng-repeat='item in search.results' class="user-item">
+              <a ng-href="#/profile/{{item.username}}">
+                <user-box user="item"></user-box>
+              </a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        </div>
+        <div class="empty-loading" ng-show="search.busy">
+            <img class="spinner" src="../images/spinner.png" />
+        </div>
+        <div class="empty-loading" ng-show="search.disabled && search.results.length === 0">
+            <p class="title" translate="EMPTY_SEARCH" translate-values='{ term: search.term }' ng-click="loadMore()"></p>
+        </div>
+    </div>
+</div>

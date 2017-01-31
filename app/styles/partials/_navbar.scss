@@ -50,6 +50,7 @@
 
 .navbar .navbar-form .button-submit {
     color: white;
+    text-decoration: none;
     background-color: $blue-color;
     line-height: 14px;
     font-weight: 500;
@@ -58,17 +59,19 @@
 
 /* Themed and rounded text input with circular button */
 
-.inner-addon input[type="text"] {
-    border-radius: 50px;
+.navbar-form input[type="text"] {
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
     border: none;
     height: 34px;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     transition: all 0.5s ease;
-    width: 200px;
+    width: 180px;
+    float: left;
 }
 
-.inner-addon input[type="text"]:focus {
+.navbar-form input[type="text"]:focus {
     width: 275px;
 }
 
@@ -76,13 +79,22 @@
     position: relative;
 }
 
-.inner-addon .button-submit {
-    position: absolute;
-    padding: 9px;
-    pointer-events: none;
-    top: 1px;
+.navbar-form .button-submit-wrapper {
+  float: left;
+  background-color: white;
+  height: 34px;
+  padding-right: 1px;
+  margin-left: -4px;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+
+.navbar-form .button-submit {
+    padding: 7px;
     height: 32px;
-    border-radius: 30px;
+    min-width: 32px;
+    border-radius: 40px;
+    margin-top: 1px;
 }
 
 .left-addon .button-submit {

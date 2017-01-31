@@ -5,7 +5,7 @@
     </div>
     <div class="trends">
       <div ng-repeat='trend in trendingBox.trends' class="trend">
-        <a href="">#{{trend.hashtag}}</a>
+        <a ng-href="#/search?term={{encodeURIComponent('#' + trend.hashtag)}}">#{{trend.hashtag}}</a>
       </div>
     </div>
     <div class="empty-loading" ng-show="trendingBox.busy">

@@ -48,6 +48,9 @@ define([], function() {
 
 		TIMELINE_TITLE: 'Timeline',
 		MENTIONS_TITLE: 'Mentions',
-		FAVORITES_TITLE: 'Likes'
+		FAVORITES_TITLE: 'Likes',
+
+		SEARCH_TITLE: 'Result(s) found for \"{{term}}\"',
+		EMPTY_SEARCH: 'No results found for \"{{term}}\"'
 	};
 });

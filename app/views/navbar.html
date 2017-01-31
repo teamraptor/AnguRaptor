@@ -4,10 +4,11 @@
 	</div>
 	<!-- Search desktop -->
 	<div class="navbar-form navbar-left navbar-search hidden-xs">
-		<div class="inner-addon right-addon">
-			<a class="glyphicon glyphicon-search button-submit"></a>
-			<input type="text" class="form-control" placeholder="{{ 'SEARCH_PLACEHOLDER' | translate}}">
-		</div>
+			<input type="text" class="form-control" ng-model="navbar.searchField" placeholder="{{ 'SEARCH_PLACEHOLDER' | translate}}">
+			<div class="button-submit-wrapper">
+				<a class="btn button-submit" ng-click="navbar.search(navbar.searchField)"><i class="glyphicon glyphicon-search"></i></a>
+			</div>
+			<div class="clearfix"></div>
 	</div>
 	<ul class="nav navbar-nav navbar-right navbar-menu" ng-if="navbar.loggedIn">
 		<!-- User navbar -->
@@ -56,9 +57,10 @@
 		</li>
 	</ul>
 	<div class="navbar-form navbar-right navbar-rawr" ng-if="navbar.loggedIn">
-		<div class="inner-addon right-addon">
-			<a class="button-submit">Rawr</a>
-			<input type="text" class="form-control" placeholder="{{ 'RAWR_PLACEHOLDER' | translate}}">
+		<input type="text" class="form-control" placeholder="{{ 'RAWR_PLACEHOLDER' | translate}}">
+		<div class="button-submit-wrapper">
+			<a class="btn button-submit" href="#/">Rawr</a>
 		</div>
+		<div class="clearfix"></div>
 	</div>
 </nav>

@@ -1,7 +1,7 @@
 'use strict';
 define(['AnguRaptor', 'services/api'], function(AnguRaptor) {
 
-    AnguRaptor.controller('TrendingBoxCtrl', ['$scope', 'api', function($scope, api) {
+    AnguRaptor.controller('TrendingBoxCtrl', ['$scope', 'api', '$window', function($scope, api, $window) {
 
       var trendingBox = {
         trends: [],
@@ -15,6 +15,9 @@ define(['AnguRaptor', 'services/api'], function(AnguRaptor) {
       });
 
       $scope.trendingBox = trendingBox;
+      $scope.encodeURIComponent = function(term) {
+        return $window.encodeURIComponent(term);
+      }
 
     }]);
 

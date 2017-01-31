@@ -6,7 +6,7 @@ define(['AnguRaptor', 'services/api', 'directives/trending-box', 'directives/raw
         var home = {};
 
         var rawrList = {};
-
+        
         rawrList.items = [{
             title: 'Feed',
             nextPage: api.user.feed.get

@@ -1,9 +1,14 @@
 @import 'modules/variables';
 
+.user-box {
+  height: 100%;
+}
+
 .user-box .profile {
   @include raptor-gradient( 'vertical');
   font-weight: 500;
   color: white;
+  height: 100%;
 }
 
 .user-box .content {
@@ -56,4 +61,43 @@
 
 .user-box .counts .count-item p.count {
   font-size: 1.4em;
+}
+
+.user-list .panel {
+  margin-bottom: 0px;
+}
+
+.user-list {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 8px;
+}
+
+.user-list .user-item {
+  width: 25%;
+  display: inline-block;
+}
+
+@media screen and (max-width: 992px) and (min-width: 768px) {
+  .user-list .user-item {
+    width: 33%;
+    display: inline-block;
+  }
+  .user-list {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 8px 8px 8px 16px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .user-list .user-item {
+    width: 100%;
+    display: inline-block;
+  }
+  .user-list {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0px;
+  }
 }

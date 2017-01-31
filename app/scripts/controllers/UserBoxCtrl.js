@@ -11,12 +11,12 @@ define(['AnguRaptor'], function(AnguRaptor) {
             switch (newStatus) {
                 case 'follow':
                     $scope.user.user_follows = true;
-                    $scope.followCallback(user);
+                    $scope.followCallback($scope.user);
                     break;
 
                 case 'unfollow':
                     $scope.user.user_follows = false;
-                    $scope.unfollowCallback(user);
+                    $scope.unfollowCallback($scope.user);
                     break;
                 default:
                     break;

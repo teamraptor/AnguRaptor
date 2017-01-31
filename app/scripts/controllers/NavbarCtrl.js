@@ -1,12 +1,13 @@
 'use strict';
 define(['AnguRaptor', 'directives/notification-list', 'services/DateService', 'services/api'], function(AnguRaptor) {
 
-    AnguRaptor.controller('NavbarCtrl', ['$scope', 'api', '$window', 'DateService', function($scope, api, $window, DateService) {
+    AnguRaptor.controller('NavbarCtrl', ['$scope', 'api', '$window', '$location', 'DateService', function($scope, api, $window, $location, DateService) {
 
         var navbar = {
             user: null,
             loggedIn: false,
-            loginDetails: {}
+            loginDetails: {},
+            searchField: ''
         };
 
         navbar.login = function() {
@@ -26,6 +27,11 @@ define(['AnguRaptor', 'directives/notification-list', 'services/DateService', 's
             navbar.user = null;
             navbar.loggedIn = false;
         }
+
+        navbar.search = function(term) {
+          $location.path('/search').search('term', term);
+          navbar.searchField = '';
+        };
 
         var notificationList = {
             items: [],

@@ -47,7 +47,9 @@ define([], function() {
 
 		TIMELINE_TITLE: 'Biografía',
 		MENTIONS_TITLE: 'Menciones',
-		FAVORITES_TITLE: 'Favoritos'
+		FAVORITES_TITLE: 'Favoritos',
 
+		SEARCH_TITLE: 'Resultado(s) encontrado(s) para \"{{term}}\"',
+		EMPTY_SEARCH: 'No se encontraron resultados para \"{{term}}\"'
 	};
 });
