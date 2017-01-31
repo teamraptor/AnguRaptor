@@ -1,7 +1,7 @@
 'use strict';
-define(['AnguRaptor', 'directives/navbar', 'directives/rawr-button', 'services/api'], function(AnguRaptor) {
+define(['AnguRaptor', 'directives/navbar', 'directives/rawr-button', 'services/api', 'services/PageTitleService'], function(AnguRaptor) {
 
-    AnguRaptor.controller('IndexCtrl', ['$scope', 'api', function($scope, api) {
+    AnguRaptor.controller('IndexCtrl', ['$scope', 'api', 'PageTitleService', function($scope, api, PageTitleService) {
 
         var index = {
             isLoggedIn: api.user.isLoggedIn()
@@ -14,7 +14,7 @@ define(['AnguRaptor', 'directives/navbar', 'directives/rawr-button', 'services/a
         $scope.$on('$destroy', sessionListener);
 
 				$scope.index = index;
-				
+
     }]);
 
 });

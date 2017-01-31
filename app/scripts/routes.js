@@ -10,11 +10,13 @@ define([], function() {
             },
             '/profile/:username': {
                 templateUrl: '/views/profile.html',
-                controller: 'ProfileCtrl'
+                controller: 'ProfileCtrl',
+                title: 'Profile'
             },
             '/search': {
                 templateUrl: '/views/search.html',
-                controller: 'SearchCtrl'
+                controller: 'SearchCtrl',
+                title: 'Raptor Search'
             }
             /* ===== yeoman hook ===== */
             /* Do not remove these commented lines! Needed for auto-generation */

@@ -1,8 +1,8 @@
 'use strict';
 
-define(['AnguRaptor', 'services/api', 'directives/user-box', 'directives/trending-box', 'directives/rawr-list'], function(AnguRaptor) {
+define(['AnguRaptor', 'services/api', 'directives/user-box', 'directives/trending-box', 'directives/rawr-list', 'services/PageTitleService'], function(AnguRaptor) {
 
-    AnguRaptor.controller('ProfileCtrl', ['$scope', '$routeParams', 'api', '$translate', function($scope, $routeParams, api, $translate) {
+    AnguRaptor.controller('ProfileCtrl', ['$scope', '$routeParams', 'api', '$translate', 'PageTitleService', function($scope, $routeParams, api, $translate, PageTitleService) {
 
         var profile = {
             user: null,
@@ -13,6 +13,9 @@ define(['AnguRaptor', 'services/api', 'directives/user-box', 'directives/trendin
         api.users.get($routeParams.username).then(function(user) {
             profile.user = user;
             profile.busy = false;
+            PageTitleService.setTitle('' + user.first_name + ' ' + user.last_name + ' (@' + user.username + ')');
+        }).catch(function() {
+            PageTitleService.setTitle(':(');
         });
 
         var rawrList = {};

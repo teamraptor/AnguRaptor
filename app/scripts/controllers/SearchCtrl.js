@@ -1,7 +1,7 @@
 'use strict';
-define(['AnguRaptor', 'services/api', 'directives/trending-box', 'directives/rawr-list', 'directives/user-box'], function(AnguRaptor) {
+define(['AnguRaptor', 'services/api', 'directives/trending-box', 'directives/rawr-list', 'directives/user-box', 'services/PageTitleService'], function(AnguRaptor) {
 
-    AnguRaptor.controller('SearchCtrl', ['$scope', 'api', '$routeParams', 'DateService', function($scope, api, $routeParams, DateService) {
+    AnguRaptor.controller('SearchCtrl', ['$scope', 'api', '$routeParams', 'DateService', 'PageTitleService', function($scope, api, $routeParams, DateService, PageTitleService) {
 
         var search = {
             term: $routeParams.term,
@@ -11,6 +11,8 @@ define(['AnguRaptor', 'services/api', 'directives/trending-box', 'directives/raw
             disabled: false,
             results: []
         };
+
+        PageTitleService.setTranslatedTitle('PAGE_SEARCH_TITLE', {term: search.term});
 
         search.nextPage = function() {
 

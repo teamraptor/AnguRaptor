@@ -5,7 +5,7 @@
     <div class="notifications" infinite-scroll='nextPage()' infinite-scroll-distance="0" infinite-scroll-container="'.card-notifications'" infinite-scroll-disabled='isLoading || disabled'>
         <div ng-repeat='item in notifications'>
             <div class="notification" ng-class="{'last-child': $last, 'unread': item.new}">
-                <a class="notification-media pull-left" href="#">
+                <a class="notification-media pull-left" ng-href="#/profile/{{item.user.username}}">
                     <img class="profile-picture" ng-src="{{item.user.profile_pictures.medium}}" alt="Profile Picture" />
                     <span ng-switch="item.type">
                       <span ng-switch-when="mention"><span class="fa fa-comment icon mention"></span></span>
@@ -17,7 +17,7 @@
                 </a>
                 <div class="notification-body">
                     <p class="title">
-                      <a href="">{{item.user.first_name}} {{item.user.last_name}}</a>
+                      <a>{{item.user.first_name}} {{item.user.last_name}}</a>
                       <span ng-switch="item.type">
                         <span ng-switch-when="mention"> {{ 'NOTIFICATIONS_MENTION' | translate}}</span>
                         <span ng-switch-when="like"> {{ 'NOTIFICATIONS_LIKE' | translate}}</span>

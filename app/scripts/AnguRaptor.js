@@ -33,7 +33,7 @@ define(['routes',
 
 					if (config.routes !== undefined) {
 						angular.forEach(config.routes, function(route, path) {
-							$routeProvider.when(path, {templateUrl: route.templateUrl, resolve: dependencyResolverFor(['controllers/' + route.controller]), controller: route.controller, gaPageTitle: route.gaPageTitle});
+							$routeProvider.when(path, {templateUrl: route.templateUrl, resolve: dependencyResolverFor(['controllers/' + route.controller]), controller: route.controller, gaPageTitle: route.gaPageTitle, title: (route.title || 'Raptor')});
 						});
 					}
 					if (config.defaultRoutePath !== undefined) {

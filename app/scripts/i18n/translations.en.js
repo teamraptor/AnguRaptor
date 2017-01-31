@@ -51,6 +51,7 @@ define([], function() {
 		FAVORITES_TITLE: 'Likes',
 
 		SEARCH_TITLE: 'Result(s) found for \"{{term}}\"',
-		EMPTY_SEARCH: 'No results found for \"{{term}}\"'
+		EMPTY_SEARCH: 'No results found for \"{{term}}\"',
+		PAGE_SEARCH_TITLE: '{{term}} - Raptor Search'
 	};
 });
