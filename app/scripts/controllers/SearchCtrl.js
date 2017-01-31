@@ -2,7 +2,7 @@
 define(['AnguRaptor', 'services/api', 'directives/trending-box', 'directives/rawr-list', 'directives/user-box'], function(AnguRaptor) {
 
     AnguRaptor.controller('SearchCtrl', ['$scope', 'api', '$routeParams', 'DateService', function($scope, api, $routeParams, DateService) {
-      
+
         var search = {
             term: $routeParams.term,
             busy: false,
@@ -47,6 +47,29 @@ define(['AnguRaptor', 'services/api', 'directives/trending-box', 'directives/raw
             });
 
         };
+
+        search.like = function(rawr) {
+            if (rawr.user_has_liked) {
+              api.rawr.unlike(rawr.id);
+              rawr.counts.likes--;
+            } else {
+              api.rawr.like(rawr.id);
+              rawr.counts.likes++;
+            }
+            rawr.user_has_liked = !rawr.user_has_liked;
+        };
+
+        search.rerawr = function(rawr) {
+            if (rawr.user_has_rerawred) {
+              api.rawr.unrerawr(rawr.id);
+              rawr.counts.rerawrs--;
+            } else {
+              api.rawr.rerawr(rawr.id);
+              rawr.counts.rerawrs++;
+            }
+            rawr.user_has_rerawred = !rawr.user_has_rerawred;
+        };
+
 
         $scope.search = search;
 

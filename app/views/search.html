@@ -23,8 +23,8 @@
                                 {{item.status}}
                             </div>
                             <div class="actions">
-                                <a href="" class="icon icon-rerawr" ng-if="!(item.user_has_rerawred == null)" ng-class="{'selected': item.user_has_rerawred }" ng-click="rawrList.rerawr(item)"> {{item.counts.rerawrs}}</a>
-                                <a href="" class="icon icon-like" ng-if="!(item.user_has_liked == null)" ng-class="{'selected': item.user_has_liked }" ng-click="rawrList.like(item)"> {{item.counts.likes}}</a>
+                                <a href="" class="icon icon-rerawr" ng-if="!(item.user_has_rerawred == null)" ng-class="{'selected': item.user_has_rerawred }" ng-click="search.rerawr(item)"> {{item.counts.rerawrs}}</a>
+                                <a href="" class="icon icon-like" ng-if="!(item.user_has_liked == null)" ng-class="{'selected': item.user_has_liked }" ng-click="search.like(item)"> {{item.counts.likes}}</a>
                             </div>
                         </div>
                     </div>

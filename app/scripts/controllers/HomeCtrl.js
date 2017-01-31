@@ -6,19 +6,28 @@ define(['AnguRaptor', 'services/api', 'directives/trending-box', 'directives/raw
         var home = {};
 
         var rawrList = {};
-        
-        rawrList.items = [{
+
+        rawrList.items = [];
+
+        var feed = {
             title: 'Feed',
             nextPage: api.user.feed.get
-        }, {
+        };
+
+        var globalFeed = {
             title: 'Global',
             nextPage: api.feed.get
-        }];
+        };
 
         $translate(['FEED_TITLE', 'GLOBAL_TITLE']).then(function(translations) {
-            rawrList.items[0].title = translations.FEED_TITLE;
-            rawrList.items[1].title = translations.GLOBAL_TITLE;
+            feed.title = translations.FEED_TITLE;
+            globalFeed.title = translations.GLOBAL_TITLE;
         });
+
+        if (api.user.isLoggedIn()) {
+          rawrList.items.push(feed);
+        }
+        rawrList.items.push(globalFeed);
 
         home.rawrList = rawrList;
 

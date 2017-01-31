@@ -17,7 +17,7 @@ define(['AnguRaptor', 'services/api'], function(AnguRaptor) {
       $scope.trendingBox = trendingBox;
       $scope.encodeURIComponent = function(term) {
         return $window.encodeURIComponent(term);
-      }
+      };
 
     }]);
 
