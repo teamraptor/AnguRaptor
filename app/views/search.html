@@ -1,4 +1,13 @@
 <div class="search-results">
-  <rawr-list items="search.items" ng-if="search.type === 'rawrs'"></rawr-list>
-  <user-list items="search.items" ng-if="search.type === 'users'"></user-list>
+    <div class="panel panel-raptor" ng-if="search.mobile">
+      <div class="input-group search-bar">
+         <input type="text" class="form-control raptor-input" ng-model="search.term" placeholder="{{ 'SEARCH_PLACEHOLDER' | translate}}">
+         <span class="input-group-btn">
+              <a class="btn btn-raptor btn-search" type="button" ng-click="search.find(search.term)"><i class="glyphicon glyphicon-search"></i></a>
+         </span>
+      </div>
+    </div>
+    <trending-box ng-if="search.mobile"></trending-box>
+    <rawr-list items="search.items" ng-if="search.type === 'rawrs'"></rawr-list>
+    <user-list items="search.items" ng-if="search.type === 'users'"></user-list>
 </div>

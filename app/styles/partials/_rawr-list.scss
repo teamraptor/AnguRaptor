@@ -88,19 +88,10 @@
   padding-bottom: 5px;
 }
 
-.rawr-list .rawr-body .rawr-content .videos .video iframe {
+.rawr-list .rawr-body .rawr-content .videos iframe {
   border: 1px solid $border-blue-color;
   border-radius: 6px;
   background-color: $light-blue-color;
-  height: 300px;
-  width: 100%;
-}
-
-@media screen and (max-width: 767px) {
-  .rawr-list .rawr-body .rawr-content .videos .video iframe {
-    width: 250px;
-    height: 250px;
-  }
 }
 
 .rawr-list .rawr-body .rawr-content .images .image {

@@ -27,8 +27,8 @@
                               <div class="clearfix"></div>
                             </div>
                             <div class="videos" ng-if="item.youtubeIds.length > 0">
-                              <div class="video">
-                                <iframe ng-src="{{ item.youtubeIds[0] | youtubeEmbedUrl }}"></iframe>
+                              <div class="embed-responsive embed-responsive-16by9">
+                                <iframe class="embed-responsive-item" ng-src="{{ item.youtubeIds[0] | youtubeEmbedUrl }}"></iframe>
                               </div>
                               <div class="clearfix"></div>
                             </div>

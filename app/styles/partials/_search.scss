@@ -1,0 +1,19 @@
+@import 'modules/variables';
+
+.search-results .search-bar {
+    padding: 20px;
+}
+
+.search-results .search-bar input[type="text"],
+.search-results .search-bar input[type="text"]:focus {
+    outline: none;
+    box-shadow: none;
+    border-radius: 8px;
+}
+
+.search-results .search-bar .btn-search {
+    margin-left: 10px;
+    border-radius: 50px;
+    height: 34px;
+    line-height: 16px;
+}
