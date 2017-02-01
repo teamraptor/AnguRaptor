@@ -8,6 +8,7 @@ require.config({
         angular: '../../bower_components/angular/angular',
         'angular-cookies': '../../bower_components/angular-cookies/angular-cookies',
         'angular-route': '../../bower_components/angular-route/angular-route',
+        'angular-sanitize': '../../bower_components/angular-sanitize/angular-sanitize',
         'angular-translate': '../../bower_components/angular-translate/angular-translate',
         button: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/button',
         bootstrap: '../../bower_components/bootstrap/dist/js/bootstrap',
@@ -40,6 +41,11 @@ require.config({
             ]
         },
         'angular-route': {
+            deps: [
+                'angular'
+            ]
+        },
+        'angular-sanitize': {
             deps: [
                 'angular'
             ]

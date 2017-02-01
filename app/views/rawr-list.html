@@ -19,9 +19,7 @@
                             <p class="time visible-xs" translate="TIME_SINCE" translate-value-number="{{item.created_time.number}}" translate-value-unit="{{(item.created_time.unit | uppercase) | translate}}"></p>
                         </div>
                         <div class="rawr-content">
-                            <div class="status">
-                                {{item.status}}
-                            </div>
+                            <div class="status" ng-bind-html="item.status | mentions | hashtags | newlines | myLinky:'_blank'"></div>
                             <div class="actions">
                                 <a href="" class="icon icon-rerawr" ng-if="!(item.user_has_rerawred == null)" ng-class="{'selected': item.user_has_rerawred }" ng-click="rawrList.rerawr(item)"> {{item.counts.rerawrs}}</a>
                                 <a href="" class="icon icon-like" ng-if="!(item.user_has_liked == null)" ng-class="{'selected': item.user_has_liked }" ng-click="rawrList.like(item)"> {{item.counts.likes}}</a>

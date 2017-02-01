@@ -1,5 +1,5 @@
 'use strict';
-define(['AnguRaptor', 'services/api', 'bootstrap'], function(AnguRaptor) {
+define(['AnguRaptor', 'services/api', 'filters/htmlize'], function(AnguRaptor) {
 
     AnguRaptor.controller('RawrListCtrl', ['$scope', 'api', 'DateService', function($scope, api, DateService) {
 
