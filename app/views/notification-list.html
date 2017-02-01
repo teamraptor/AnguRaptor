@@ -4,7 +4,7 @@
     </div>
     <div class="notifications" infinite-scroll='nextPage()' infinite-scroll-distance="0" infinite-scroll-container="'.card-notifications'" infinite-scroll-disabled='isLoading || disabled'>
         <div ng-repeat='item in notifications'>
-            <div class="notification" ng-class="{'last-child': $last, 'unread': item.new}">
+            <div class="notification" ng-class="{'last-child': $last, 'unread': item.new}" ng-click="notificationList.notificationPressed(item)">
                 <a class="notification-media pull-left" ng-href="#/profile/{{item.user.username}}">
                     <img class="profile-picture" ng-src="{{item.user.profile_pictures.medium}}" alt="Profile Picture" />
                     <span ng-switch="item.type">

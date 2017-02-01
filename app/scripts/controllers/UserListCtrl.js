@@ -8,17 +8,20 @@ define(['AnguRaptor', 'directives/user-box'], function(AnguRaptor) {
             items: []
         };
 
-        for (var i = 0; i < $scope.items.length; i++) {
-            userList.items.push({
-                users: [],
-                busy: false,
-                page: 1,
-                fetchLimit: $scope.items[i].fetchLimit || 15,
-                nextPage: $scope.items[i].nextPage,
-                title: $scope.items[i].title,
-                disabled: false
-            });
-        }
+        $scope.$watch('items', function() {
+          userList.items = [];
+          for (var i = 0; i < $scope.items.length; i++) {
+              userList.items.push({
+                  users: [],
+                  busy: false,
+                  page: 1,
+                  fetchLimit: $scope.items[i].fetchLimit || 15,
+                  nextPage: $scope.items[i].nextPage,
+                  title: $scope.items[i].title,
+                  disabled: false
+              });
+          }
+        });
 
         userList.loadMore = function() {
 

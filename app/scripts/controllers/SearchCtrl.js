@@ -1,7 +1,7 @@
 'use strict';
 define(['AnguRaptor', 'services/api', 'directives/trending-box', 'directives/rawr-list', 'directives/user-list', 'services/PageTitleService'], function(AnguRaptor) {
 
-    AnguRaptor.controller('SearchCtrl', ['$scope', 'api', '$routeParams', 'PageTitleService', '$translate', '$location', function($scope, api, $routeParams, PageTitleService, $translate, $location) {
+    AnguRaptor.controller('SearchCtrl', ['$scope', 'api', '$routeParams', 'PageTitleService', '$translate', function($scope, api, $routeParams, PageTitleService, $translate) {
 
         var search = {
             term: $routeParams.term ? $routeParams.term : '',
@@ -16,7 +16,7 @@ define(['AnguRaptor', 'services/api', 'directives/trending-box', 'directives/raw
           };
         };
 
-        var processSearch = function() {
+        search.processSearch = function() {
             search.items = [];
             search.type = '';
             switch (search.term.charAt(0)) {
@@ -49,12 +49,8 @@ define(['AnguRaptor', 'services/api', 'directives/trending-box', 'directives/raw
             });
         };
 
-        search.find = function(term) {
-          $location.path('/search').search('term', term).search('mobile', 1);
-        };
-
-        if (!(search.mobile && search.term === '')) {
-          processSearch();
+        if (!search.mobile) {
+          search.processSearch();
         }
 
         PageTitleService.setTranslatedTitle('PAGE_SEARCH_TITLE', {term: search.term});
