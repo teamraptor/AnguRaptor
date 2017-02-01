@@ -77,10 +77,45 @@
 .rawr-list .rawr-body .rawr-content .status {
   font-size: 1.2em;
   padding: 10px 0px;
+  word-wrap: break-word;
 }
 
 .rawr-list .rawr-body .rawr-content .status a {
   color: $blue-color;
+}
+
+.rawr-list .rawr-body .rawr-content .videos {
+  padding-bottom: 5px;
+}
+
+.rawr-list .rawr-body .rawr-content .videos .video iframe {
+  border: 1px solid $border-blue-color;
+  border-radius: 6px;
+  background-color: $light-blue-color;
+  height: 300px;
+  width: 100%;
+}
+
+@media screen and (max-width: 767px) {
+  .rawr-list .rawr-body .rawr-content .videos .video iframe {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+.rawr-list .rawr-body .rawr-content .images .image {
+  float: left;
+  padding-right: 10px;
+  padding-bottom: 10px;
+}
+
+.rawr-list .rawr-body .rawr-content .images .image img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border: 1px solid $border-blue-color;
+  border-radius: 6px;
+  background-color: $light-blue-color;
 }
 
 .rawr-list .rawr-body .rawr-content .actions {

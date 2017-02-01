@@ -1,11 +1,11 @@
 'use strict';
 
-define(['AnguRaptor'], function(AnguRaptor) {
+define(['AnguRaptor', 'services/DateService', 'services/MediaService'], function(AnguRaptor) {
 
     //  var root = 'http://10.0.1.6:10101';
-      var root = 'http://localhost:10101';
+     var root = 'http://localhost:10101';
 
-    AnguRaptor.service('api', ['$http', '$q', '$cookies', '$window', '$rootScope', function($http, $q, $cookies, $window, $rootScope) {
+    AnguRaptor.service('api', ['$http', '$q', '$cookies', '$window', '$rootScope', 'DateService', 'MediaService', function($http, $q, $cookies, $window, $rootScope, DateService, MediaService) {
 
         var token = $cookies.get('token');
 
@@ -66,6 +66,19 @@ define(['AnguRaptor'], function(AnguRaptor) {
             $rootScope.$broadcast('session.change');
         }
 
+        function buildRawr(rawr) {
+            rawr.time = DateService.calculateDateDifference(rawr.created_time);
+            rawr.images = MediaService.extractAll(rawr);
+            return rawr;
+        }
+
+        function buildRawrList(rawrList) {
+            angular.forEach(rawrList, function(rawr) {
+                buildRawr(rawr);
+            });
+            return rawrList;
+        }
+
         this.user = {
             get: function() {
                 return endpoint({
@@ -119,7 +132,8 @@ define(['AnguRaptor'], function(AnguRaptor) {
                         'page': page,
                         'limit': limit
                     },
-                    auth: true
+                    auth: true,
+                    after: buildRawrList
                 });
             }
         };
@@ -180,7 +194,8 @@ define(['AnguRaptor'], function(AnguRaptor) {
                     params: {
                         'page': page,
                         'limit': limit
-                    }
+                    },
+                    after: buildRawrList
                 });
             }
         };
@@ -192,7 +207,8 @@ define(['AnguRaptor'], function(AnguRaptor) {
                     params: {
                         'page': page,
                         'limit': limit
-                    }
+                    },
+                    after: buildRawrList
                 });
             }
         };
@@ -204,7 +220,8 @@ define(['AnguRaptor'], function(AnguRaptor) {
                     params: {
                         'page': page,
                         'limit': limit
-                    }
+                    },
+                    after: buildRawrList
                 });
             }
         };
@@ -216,7 +233,8 @@ define(['AnguRaptor'], function(AnguRaptor) {
                     params: {
                         'page': page,
                         'limit': limit
-                    }
+                    },
+                    after: buildRawrList
                 });
             }
         };
@@ -229,15 +247,45 @@ define(['AnguRaptor'], function(AnguRaptor) {
             }
         };
 
-        this.search = {
+        this.search = {};
+
+        this.search.rawrs = {
             find: function(term, page, limit) {
                 return endpoint({
-                    url: '/search',
+                    url: '/search/rawrs',
+                    params: {
+                        'term': term,
+                        'page': page,
+                        'limit': limit
+                    },
+                    after: buildRawrList
+                });
+            }
+        };
+
+        this.search.users = {
+            find: function(term, page, limit) {
+                return endpoint({
+                    url: '/search/users',
                     params: {
                         'term': term,
                         'page': page,
                         'limit': limit
                     }
+                });
+            }
+        };
+
+        this.search.hashtags = {
+            find: function(term, page, limit) {
+                return endpoint({
+                    url: '/search/hashtags',
+                    params: {
+                        'term': term,
+                        'page': page,
+                        'limit': limit
+                    },
+                    after: buildRawrList
                 });
             }
         };

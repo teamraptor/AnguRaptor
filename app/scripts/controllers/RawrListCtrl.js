@@ -1,7 +1,7 @@
 'use strict';
 define(['AnguRaptor', 'services/api', 'filters/htmlize'], function(AnguRaptor) {
 
-    AnguRaptor.controller('RawrListCtrl', ['$scope', 'api', 'DateService', function($scope, api, DateService) {
+    AnguRaptor.controller('RawrListCtrl', ['$scope', 'api', function($scope, api) {
 
         var rawrList = {
             selected: 0,
@@ -36,7 +36,6 @@ define(['AnguRaptor', 'services/api', 'filters/htmlize'], function(AnguRaptor) {
                 }
 
                 for (var i = 0; i < rawrs.length; i++) {
-                    rawrs[i].created_time = DateService.calculateDateDifference(rawrs[i].created_time);
                     item.rawrs.push(rawrs[i]);
                 }
 

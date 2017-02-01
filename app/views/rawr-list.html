@@ -10,23 +10,34 @@
             <div ng-repeat='item in rawrList.items[rawrList.selected].rawrs'>
                 <div class="rawr" ng-class="{'last-child': $last}">
                     <div class="rawr-media pull-left">
-                        <img class="profile-picture" ng-src="{{item.owner.profile_pictures.large}}" alt="Profile Picture" />
+                        <a ng-href="#/profile/{{item.owner.username}}"><img class="profile-picture" ng-src="{{item.owner.profile_pictures.large}}" alt="Profile Picture" /></a>
                     </div>
                     <div class="rawr-body">
                         <div class="rawr-header">
                             <a class="name" ng-href="#/profile/{{item.owner.username}}">{{item.owner.first_name}} {{item.owner.last_name}}</a><a class="username" ng-href="#/profile/{{item.owner.username}}">@{{item.owner.username}}</a>
-                            <span class="time pull-right hidden-xs" translate="TIME_SINCE" translate-value-number="{{item.created_time.number}}" translate-value-unit="{{(item.created_time.unit | uppercase) | translate}}"></span>
-                            <p class="time visible-xs" translate="TIME_SINCE" translate-value-number="{{item.created_time.number}}" translate-value-unit="{{(item.created_time.unit | uppercase) | translate}}"></p>
+                            <span class="time pull-right hidden-xs" translate="TIME_SINCE" translate-value-number="{{item.time.number}}" translate-value-unit="{{(item.time.unit | uppercase) | translate}}"></span>
+                            <p class="time visible-xs" translate="TIME_SINCE" translate-value-number="{{item.time.number}}" translate-value-unit="{{(item.time.unit | uppercase) | translate}}"></p>
                         </div>
                         <div class="rawr-content">
-                            <div class="status" ng-bind-html="item.status | mentions | hashtags | newlines | myLinky:'_blank'"></div>
+                            <div class="status" ng-bind-html="item.status | noImages | mentions | hashtags | newlines | myLinky:'_blank'"></div>
+                            <div class="images" ng-if="item.imagesUrl.length > 0">
+                              <div ng-repeat="image in item.imagesUrl" class="image">
+                                <a ng-href="{{image}}" target="_blank"><img ng-src="{{image}}"></img></a>
+                              </div>
+                              <div class="clearfix"></div>
+                            </div>
+                            <div class="videos" ng-if="item.youtubeIds.length > 0">
+                              <div class="video">
+                                <iframe ng-src="{{ item.youtubeIds[0] | youtubeEmbedUrl }}"></iframe>
+                              </div>
+                              <div class="clearfix"></div>
+                            </div>
                             <div class="actions">
                                 <a href="" class="icon icon-rerawr" ng-if="!(item.user_has_rerawred == null)" ng-class="{'selected': item.user_has_rerawred }" ng-click="rawrList.rerawr(item)"> {{item.counts.rerawrs}}</a>
                                 <a href="" class="icon icon-like" ng-if="!(item.user_has_liked == null)" ng-class="{'selected': item.user_has_liked }" ng-click="rawrList.like(item)"> {{item.counts.likes}}</a>
                             </div>
                         </div>
                     </div>
-                    <div class="clearfix"></div>
                 </div>
             </div>
         </div>

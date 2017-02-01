@@ -11,7 +11,7 @@ define(['AnguRaptor'], function(AnguRaptor) {
     }]);
 
     AnguRaptor.filter('myLinky', [function() {
-      var LINKY_URL_REGEXP = /((https?:\/\/)|(www\.){1}[A-Za-z0-9._%+-])\S*[^\s.;,(){}<>"\u201d\u2019]/i;
+      var LINKY_URL_REGEXP = /((https?:\/\/)|(www\.)[A-Za-z0-9._%+-]*)\S*[^\s.;,(){}<>"\u201d\u2019]/i;
 
       return function(text, target) {
         if (!text) {
@@ -57,6 +57,13 @@ define(['AnguRaptor'], function(AnguRaptor) {
         }
       };
     }]);
+
+    AnguRaptor.filter('noImages', function() {
+      return function(string) {
+          var imagePattern = /((https?:\/\/)|(www\.)[A-Za-z0-9._%+-]*)\S*[^\s.;,(){}<>"\u201d\u2019]\.(jpeg|jpg|gif|png)/gim;
+          return string.replace(imagePattern, '');
+      };
+    });
 
     AnguRaptor.filter('hashtags', function() {
 

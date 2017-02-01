@@ -29,6 +29,10 @@ body {
   }
 }
 
+.clearfix {
+  clear: both;
+}
+
 .empty-loading {
   display: flex;
   min-height: 100px;

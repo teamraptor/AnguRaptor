@@ -1,7 +1,7 @@
 'use strict';
-define(['AnguRaptor'], function(AnguRaptor) {
+define(['AnguRaptor', 'services/api'], function(AnguRaptor) {
 
-    AnguRaptor.controller('UserBoxCtrl', ['$scope', function($scope) {
+    AnguRaptor.controller('UserBoxCtrl', ['$scope', 'api', function($scope, api) {
 
         var userBox = {
 
@@ -11,12 +11,12 @@ define(['AnguRaptor'], function(AnguRaptor) {
             switch (newStatus) {
                 case 'follow':
                     $scope.user.user_follows = true;
-                    $scope.followCallback($scope.user);
+                    api.users.follow($scope.user.username);
                     break;
 
                 case 'unfollow':
                     $scope.user.user_follows = false;
-                    $scope.unfollowCallback($scope.user);
+                    api.users.unfollow($scope.user.username);
                     break;
                 default:
                     break;

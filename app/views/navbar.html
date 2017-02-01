@@ -56,11 +56,16 @@
 			<a class="glyphicon glyphicon-search navbar-menu-item" href="#/"></a>
 		</li>
 	</ul>
-	<div class="navbar-form navbar-right navbar-rawr" ng-if="navbar.loggedIn">
-		<input type="text" class="form-control" placeholder="{{ 'RAWR_PLACEHOLDER' | translate}}">
-		<div class="button-submit-wrapper">
-			<a class="btn button-submit" href="#/">Rawr</a>
-		</div>
-		<div class="clearfix"></div>
-	</div>
+	<!-- Rawr desktop -->
+	<ul class="nav navbar-nav navbar-right navbar-menu hidden-xs" ng-if="navbar.loggedIn">
+		<!-- Notifications -->
+		<li class="navbar-notifications">
+			<a class="navbar-menu-item" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true" href="">
+				<i class="fa fa-paper-plane "></i>
+			</a>
+			<div class="card card-rawr-composer">
+			  <rawr-composer post-callback="navbar.postRawr(status)"></rawr-composer>
+			</div>
+		</li>
+	</ul>
 </nav>

@@ -7,9 +7,7 @@ define(['AnguRaptor', 'controllers/UserBoxCtrl'], function(AnguRaptor) {
             templateUrl: '../../views/user-box.html',
             controller: 'UserBoxCtrl',
             scope: {
-                user: '=',
-                followCallback: '&',
-                unfollowCallback: '&'
+                user: '='
             }
         };
     });

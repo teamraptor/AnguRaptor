@@ -1,5 +1,5 @@
 'use strict';
-define(['AnguRaptor', 'directives/notification-list', 'services/DateService', 'services/api'], function(AnguRaptor) {
+define(['AnguRaptor', 'directives/notification-list', 'directives/rawr-composer', 'services/DateService', 'services/api'], function(AnguRaptor) {
 
     AnguRaptor.controller('NavbarCtrl', ['$scope', 'api', '$window', '$location', 'DateService', function($scope, api, $window, $location, DateService) {
 
@@ -16,6 +16,10 @@ define(['AnguRaptor', 'directives/notification-list', 'services/DateService', 's
 
         navbar.logout = function() {
             api.user.logout();
+        };
+
+        navbar.postRawr = function(status) {
+            console.log(status);
         };
 
         if (api.user.isLoggedIn()) {

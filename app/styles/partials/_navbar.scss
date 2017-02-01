@@ -312,6 +312,15 @@ a.link {
   }
 }
 
+.open > .card.card-rawr-composer {
+    max-height: 400px;
+}
+
+.card-rawr-composer {
+  width: 400px;
+  right: 15px;
+}
+
 /* raptor input */
 
 .raptor-input {
