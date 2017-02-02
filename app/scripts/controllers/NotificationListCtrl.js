@@ -22,7 +22,7 @@ define(['AnguRaptor'], function(AnguRaptor) {
         notificationList.notificationPressed = function(notification) {
             var path = itemRef(notification);
             if (path) {
-              $location.path(itemRef(notification));
+              $location.url(itemRef(notification));
             }
         };
 
