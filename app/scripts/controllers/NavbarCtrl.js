@@ -41,7 +41,7 @@ define(['AnguRaptor', 'directives/notification-list', 'directives/rawr-composer'
             items: [],
             busy: false,
             page: 1,
-            fetchLimit: 2,
+            fetchLimit: 15,
             disabled: false
         };
 

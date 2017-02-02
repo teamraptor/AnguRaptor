@@ -60,8 +60,8 @@
 /* Themed and rounded text input with circular button */
 
 .navbar-form input[type="text"] {
-    border-top-left-radius: 50px;
-    border-bottom-left-radius: 50px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
     border: none;
     height: 34px;
     -webkit-transition: all 0.5s ease;
@@ -81,19 +81,19 @@
 
 .navbar-form .button-submit-wrapper {
   float: left;
-  background-color: white;
+  background-color: $light-blue-color;
   height: 34px;
   padding-right: 1px;
   margin-left: -4px;
-  border-top-right-radius: 50px;
-  border-bottom-right-radius: 50px;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
 }
 
 .navbar-form .button-submit {
     padding: 7px;
     height: 32px;
     min-width: 32px;
-    border-radius: 40px;
+    border-radius: 4px;
     margin-top: 1px;
 }
 
@@ -154,7 +154,7 @@ a.navbar-menu-item.img-item {
   height: 40px;
   width: 40px;
   background-color: $dark-blue-color;
-  border-radius: 50%;
+  border-radius: 4px;
   border: 2px solid white;
 }
 
@@ -286,7 +286,7 @@ a.link {
 }
 
 .card li.list-item {
-  border-bottom: 1px solid $dark-blue-color;
+  border-bottom: 1px solid $border-blue-color;
 }
 
 .card li.list-item:hover {
@@ -332,7 +332,7 @@ a.link {
     background-color: $light-blue-color;
     background-image: none;
     border-style: none;
-    border-radius: 0;
+    border-radius: 4px;
 }
 
 .raptor-input::-webkit-input-placeholder {
@@ -360,7 +360,7 @@ input:focus.raptor-input {
 .btn-raptor {
   color: white;
   background-color: $blue-color;
-  border-radius: 30px;
+  border-radius: 4px;
   padding: 8px 16px;
   font-weight: 500;
 }

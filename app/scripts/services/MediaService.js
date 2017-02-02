@@ -16,7 +16,7 @@ define(['AnguRaptor', 'angular-sanitize'], function(AnguRaptor) {
             return rawr;
         };
         this.youtubeExtractor = function(rawr) {
-            var YOUTUBE_URL_REGEX = /(?:[?&]v=|\/embed\/|\/1\/|\/v\/|https:\/\/(?:www\.)?youtu\.be\/)([^&\n?#]+)/i;
+            var YOUTUBE_URL_REGEX = /(?:[?&]v=|\/embed\/|\/1\/|\/v\/|https:\/\/(?:www\.)?youtu\.be\/)([^&\n?#&\s]+)/i;
             rawr.youtubeIds = [];
             var raw = rawr.status;
             var match;

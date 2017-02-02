@@ -3,7 +3,7 @@
 define(['AnguRaptor', 'services/DateService', 'services/MediaService'], function(AnguRaptor) {
 
     //  var root = 'http://10.0.1.6:10101';
-     var root = 'http://localhost:10101';
+    var root = 'http://localhost:10101';
 
     AnguRaptor.service('api', ['$http', '$q', '$cookies', '$window', '$rootScope', 'DateService', 'MediaService', function($http, $q, $cookies, $window, $rootScope, DateService, MediaService) {
 

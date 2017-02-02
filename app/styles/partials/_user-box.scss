@@ -33,7 +33,7 @@
 .user-box .profile .profile-picture img {
   height: 80px;
   width: 80px;
-  border-radius: 50%;
+  border-radius: 8px;
   border: 2px solid white;
   background-color: $darker-blue-color;
 }
@@ -44,7 +44,7 @@
 
 .user-box .counts {
   padding: 8px 0px;
-  margin-top: -21px;
+  margin-top: -25px;
 }
 
 .user-box .counts .count-item {
