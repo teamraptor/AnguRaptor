@@ -17,6 +17,10 @@ define([], function() {
                 templateUrl: '/views/search.html',
                 controller: 'SearchCtrl',
                 title: 'Raptor Search'
+            },
+            '/rawrs/:rawr_id': {
+                templateUrl: '/views/rawr.html',
+                controller: 'RawrCtrl'
             }
             /* ===== yeoman hook ===== */
             /* Do not remove these commented lines! Needed for auto-generation */

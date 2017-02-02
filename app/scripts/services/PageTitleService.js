@@ -20,7 +20,7 @@ define(['AnguRaptor'], function(AnguRaptor) {
         var destroyer = $rootScope.$on('$routeChangeSuccess', function(event, route) {
             var pageTitle;
             if (route && angular.isDefined(route.$$route)) {
-                pageTitle = route.$$route.title || null;
+                pageTitle = route.$$route.title || 'Raptor';
             }
             setTitle(pageTitle);
         });

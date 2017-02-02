@@ -293,7 +293,8 @@ define(['AnguRaptor', 'services/DateService', 'services/MediaService'], function
         this.rawr = {
             get: function(rawrId) {
                 return endpoint({
-                    url: '/rawrs/' + rawrId
+                    url: '/rawrs/' + rawrId,
+                    after: buildRawr
                 });
             },
             create: function(status) {

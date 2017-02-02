@@ -1,7 +1,7 @@
 'use strict';
-define(['AnguRaptor'], function(AnguRaptor) {
+define(['AnguRaptor', 'angular-sanitize'], function(AnguRaptor) {
 
-    AnguRaptor.service('MediaService', function() {
+    AnguRaptor.service('MediaService', ['$sanitize', function($sanitize) {
         this.imageExtractor = function(rawr) {
             var IMAGE_URL_REGEX = /((https?:\/\/)|(www\.)[A-Za-z0-9._%+-]*)\S*[^\s.;,(){}<>"\u201d\u2019]\.(jpeg|jpg|gif|png)/i;
             rawr.imagesUrl = [];
@@ -9,7 +9,7 @@ define(['AnguRaptor'], function(AnguRaptor) {
             var match;
             var i;
             while ((match = raw.match(IMAGE_URL_REGEX))) {
-                rawr.imagesUrl.push(match[0]);
+                rawr.imagesUrl.push($sanitize(match[0]));
                 i = match.index;
                 raw = raw.substring(i + match[0].length);
             }
@@ -22,7 +22,7 @@ define(['AnguRaptor'], function(AnguRaptor) {
             var match;
             var i;
             while ((match = raw.match(YOUTUBE_URL_REGEX))) {
-                rawr.youtubeIds.push(match[1]);
+                rawr.youtubeIds.push($sanitize(match[1]));
                 i = match.index;
                 raw = raw.substring(i + match[1].length);
             }
@@ -31,7 +31,7 @@ define(['AnguRaptor'], function(AnguRaptor) {
         this.extractAll = function(rawr) {
             return this.imageExtractor(this.youtubeExtractor(rawr));
         };
-    });
+    }]);
 
     AnguRaptor.filter('youtubeEmbedUrl', ['$sce', function($sce) {
         return function(videoId) {

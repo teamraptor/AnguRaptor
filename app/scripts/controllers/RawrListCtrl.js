@@ -12,13 +12,13 @@ define(['AnguRaptor', 'services/api', 'filters/htmlize'], function(AnguRaptor) {
           rawrList.items = [];
           for (var i = 0; i < $scope.items.length; i++) {
               rawrList.items.push({
-                  rawrs: [],
+                  rawrs: $scope.items[i].rawrs || [],
                   busy: false,
                   page: 1,
                   fetchLimit: $scope.items[i].fetchLimit || 15,
                   nextPage: $scope.items[i].nextPage,
                   title: $scope.items[i].title,
-                  disabled: false
+                  disabled: $scope.items[i].disabled || false
               });
           }
         });
