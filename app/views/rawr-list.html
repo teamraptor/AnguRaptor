@@ -6,8 +6,8 @@
             </span>
             <div class="clearfix"></div>
         </div>
-        <div class="new-content" ng-if="rawrList.items[rawrList.selected].newRawrs.length > 0">
-          <p class="title" translate="UNREAD_RAWR" translate-value-number="{{rawrList.items[rawrList.selected].newRawrs.length}}" ng-click="rawrList.showNew()"></p>
+        <div class="new-content" ng-if="rawrList.items[rawrList.selected].newRawrs.length > 0" ng-click="rawrList.showNew()">
+          <p class="title" translate="UNREAD_RAWR" translate-value-number="{{rawrList.items[rawrList.selected].newRawrs.length}}"></p>
         </div>
         <div class="content" infinite-scroll='rawrList.fetchOld()' infinite-scroll-distance="0" infinite-scroll-disabled='rawrList.items[rawrList.selected].busy || rawrList.items[rawrList.selected].disabled'>
             <div ng-repeat='item in rawrList.items[rawrList.selected].rawrs'>

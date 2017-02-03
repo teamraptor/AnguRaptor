@@ -7,10 +7,10 @@ define(['AnguRaptor', 'controllers/NotificationListCtrl'], function(AnguRaptor) 
             templateUrl: '../../views/notification-list.html',
             controller: 'NotificationListCtrl',
             scope: {
-              notifications: '=',
-              isLoading: '=',
-              disabled: '=',
-              nextPage: '&'
+                notifications: '=',
+                isLoading: '=',
+                disabled: '=',
+                nextPage: '&'
             }
         };
     });

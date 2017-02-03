@@ -44,9 +44,9 @@
 	<ul class="nav navbar-nav navbar-right navbar-menu" ng-if="navbar.loggedIn">
 		<!-- Notifications -->
 		<li class="navbar-notifications">
-			<a class="glyphicon glyphicon-bell navbar-menu-item" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true" href=""><span class="navbar-badge">2</span></a>
+			<a class="glyphicon glyphicon-bell navbar-menu-item" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true" href="" on-toggle="navbar.toggleNotifications()"><span class="navbar-badge" ng-show="navbar.notificationList.badge > 0">{{navbar.notificationList.badge}}</span></a>
 			<div class="card card-notifications">
-				<notification-list notifications="navbar.notificationList.items" disabled="navbar.notificationList.disabled" is-loading="navbar.notificationList.busy" next-page="navbar.notificationList.nextPage()"></notification-list>
+				<notification-list notifications="navbar.notificationList.items" disabled="navbar.notificationList.disabled" is-loading="navbar.notificationList.busy" next-page="navbar.notificationList.fetch()"></notification-list>
 			</div>
 		</li>
 	</ul>

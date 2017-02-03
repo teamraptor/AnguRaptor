@@ -79,6 +79,18 @@ define(['AnguRaptor', 'services/DateService', 'services/MediaService'], function
             return rawrList;
         }
 
+        function buildNotification(notification) {
+          notification.time = DateService.calculateDateDifference(notification.created_time);
+          return notification;
+        }
+
+        function buildNotifications(notifications) {
+          angular.forEach(notifications, function(notification) {
+              buildNotification(notification);
+          });
+          return notifications;
+        }
+
         this.user = {
             get: function() {
                 return endpoint({
@@ -125,12 +137,13 @@ define(['AnguRaptor', 'services/DateService', 'services/MediaService'], function
         };
 
         this.user.feed = {
-            get: function(page, limit) {
+            get: function(limit, max_position, min_position) {
                 return endpoint({
                     url: '/user/feed',
                     params: {
-                        'page': page,
-                        'limit': limit
+                        'limit': limit,
+                        'max_position': max_position,
+                        'min_position': min_position
                     },
                     auth: true,
                     after: buildRawrList
@@ -139,14 +152,16 @@ define(['AnguRaptor', 'services/DateService', 'services/MediaService'], function
         };
 
         this.user.notifications = {
-            get: function(page, limit) {
+            get: function(limit, max_position, min_position) {
                 return endpoint({
                     url: '/user/notifications',
                     params: {
-                        'page': page,
-                        'limit': limit
+                        'limit': limit,
+                        'max_position': max_position,
+                        'min_position': min_position
                     },
-                    auth: true
+                    auth: true,
+                    after: buildNotifications
                 });
             },
             unreadCount: function() {
@@ -188,12 +203,13 @@ define(['AnguRaptor', 'services/DateService', 'services/MediaService'], function
         };
 
         this.users.timeline = {
-            get: function(username, page, limit) {
+            get: function(username, limit, max_position, min_position) {
                 return endpoint({
                     url: '/users/' + username + '/timeline',
                     params: {
-                        'page': page,
-                        'limit': limit
+                        'limit': limit,
+                        'max_position': max_position,
+                        'min_position': min_position
                     },
                     after: buildRawrList
                 });
@@ -201,12 +217,13 @@ define(['AnguRaptor', 'services/DateService', 'services/MediaService'], function
         };
 
         this.users.mentions = {
-            get: function(username, page, limit) {
+            get: function(username, limit, max_position, min_position) {
                 return endpoint({
                     url: '/users/' + username + '/mentions',
                     params: {
-                        'page': page,
-                        'limit': limit
+                        'limit': limit,
+                        'max_position': max_position,
+                        'min_position': min_position
                     },
                     after: buildRawrList
                 });
@@ -214,12 +231,13 @@ define(['AnguRaptor', 'services/DateService', 'services/MediaService'], function
         };
 
         this.users.likes = {
-            get: function(username, page, limit) {
+            get: function(username, limit, max_position, min_position) {
                 return endpoint({
                     url: '/users/' + username + '/likes',
                     params: {
-                        'page': page,
-                        'limit': limit
+                        'limit': limit,
+                        'max_position': max_position,
+                        'min_position': min_position
                     },
                     after: buildRawrList
                 });
@@ -227,12 +245,13 @@ define(['AnguRaptor', 'services/DateService', 'services/MediaService'], function
         };
 
         this.feed = {
-            get: function(page, limit) {
+            get: function(limit, max_position, min_position) {
                 return endpoint({
                     url: '/feed',
                     params: {
-                        'page': page,
-                        'limit': limit
+                        'limit': limit,
+                        'max_position': max_position,
+                        'min_position': min_position
                     },
                     after: buildRawrList
                 });
@@ -250,13 +269,14 @@ define(['AnguRaptor', 'services/DateService', 'services/MediaService'], function
         this.search = {};
 
         this.search.rawrs = {
-            find: function(term, page, limit) {
+            find: function(term, limit, max_position, min_position) {
                 return endpoint({
                     url: '/search/rawrs',
                     params: {
                         'term': term,
-                        'page': page,
-                        'limit': limit
+                        'limit': limit,
+                        'max_position': max_position,
+                        'min_position': min_position
                     },
                     after: buildRawrList
                 });
@@ -277,13 +297,14 @@ define(['AnguRaptor', 'services/DateService', 'services/MediaService'], function
         };
 
         this.search.hashtags = {
-            find: function(term, page, limit) {
+            find: function(term, limit, max_position, min_position) {
                 return endpoint({
                     url: '/search/hashtags',
                     params: {
                         'term': term,
-                        'page': page,
-                        'limit': limit
+                        'limit': limit,
+                        'max_position': max_position,
+                        'min_position': min_position
                     },
                     after: buildRawrList
                 });
