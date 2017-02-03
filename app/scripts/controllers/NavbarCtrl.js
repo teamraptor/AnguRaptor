@@ -20,7 +20,7 @@ define(['AnguRaptor', 'directives/notification-list', 'directives/rawr-composer'
         };
 
         navbar.postRawr = function(status) {
-            console.log(status);
+            api.rawr.create(status);
         };
 
         if (api.user.isLoggedIn()) {
@@ -81,26 +81,25 @@ define(['AnguRaptor', 'directives/notification-list', 'directives/rawr-composer'
             notificationList.items = notifications.concat(notificationList.items);
             console.log(notificationList);
           });
-        }, 5000);*/
+        }, 30000);*/
 
         notificationList.fetch();
 
         navbar.notificationList = notificationList;
 
         navbar.toggleNotifications = function() {
-            if (navbar.notificationsOpen) { // closing
+              notificationList.badge = 0;
               var ids = [];
               for (var i = 0; i < notificationList.items.length; i++) {
+                  if(notificationList.items[i].new) {
+                    ids.push(notificationList.items[i].id);
+                  }
                   notificationList.items[i].new = false;
-                  ids.push(notificationList.items[i].id);
               }
               if (ids.length > 0) {
                   api.user.notifications.markRead(ids);
               }
-            } else {                        // opening
-              notificationList.badge = 0;
-            }
-            navbar.notificationsOpen = !navbar.notificationsOpen;
+              navbar.notificationsOpen = !navbar.notificationsOpen;
         };
 
         $scope.navbar = navbar;

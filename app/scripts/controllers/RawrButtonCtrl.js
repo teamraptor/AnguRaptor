@@ -1,7 +1,7 @@
 'use strict';
 define(['AnguRaptor', 'directives/rawr-composer', 'services/api'], function(AnguRaptor) {
 
-    AnguRaptor.controller('RawrButtonCtrl', ['$scope', function($scope) {
+    AnguRaptor.controller('RawrButtonCtrl', ['$scope', 'api', function($scope, api) {
 
         var rawrMobile = {
           opened: false
@@ -17,7 +17,7 @@ define(['AnguRaptor', 'directives/rawr-composer', 'services/api'], function(Angu
 
         rawrMobile.postRawr = function(status) {
             rawrMobile.close();
-            console.log(status);
+            api.rawr.create(status);
         };
 
         $scope.rawrMobile = rawrMobile;
