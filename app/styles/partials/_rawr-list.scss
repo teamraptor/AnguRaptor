@@ -1,174 +1,195 @@
 @import 'modules/variables';
 
 .rawr-list {
-  color: $dark-gray-color;
+    color: $dark-gray-color;
 }
 
 .rawr-list .header {
-  text-transform: uppercase;
-  border-bottom: 1px solid $border-blue-color;
-  white-space: nowrap;
-  overflow: hidden;
-  overflow-x: scroll;
+    text-transform: uppercase;
+    border-bottom: 1px solid $border-blue-color;
+    white-space: nowrap;
+    overflow: hidden;
+    overflow-x: scroll;
 }
 
 .rawr-list .header .title {
-  padding: 12px;
-  min-width: 80px;
-  display: inline-block;
+    padding: 12px;
+    min-width: 80px;
+    display: inline-block;
 }
 
 .rawr-list .header .title.active {
-  color: $blue-color;
-  border-bottom: 3px solid $blue-color;
+    color: $blue-color;
+    border-bottom: 3px solid $blue-color;
 }
 
 .rawr-list .header a.title {
-  font-size: 16px;
-  text-align: center;
-  color: $dark-gray-color;
-  text-decoration: none;
-  font-weight: 500;
+    font-size: 16px;
+    text-align: center;
+    color: $dark-gray-color;
+    text-decoration: none;
+    font-weight: 500;
 }
 
 .rawr-list .new-content {
-  height: 50px;
-  display: flex;
-  background-color: $not-so-lighter-blue-color;
-  border-bottom: 1px solid $border-blue-color;
-  cursor: pointer;
+    height: 50px;
+    display: flex;
+    background-color: $not-so-lighter-blue-color;
+    border-bottom: 1px solid $border-blue-color;
+    cursor: pointer;
 }
 
 .rawr-list .new-content p.title {
-  margin: auto;
-  color: $darker-blue-color;
-  font-weight: 500;
-  text-transform: none;
+    margin: auto;
+    color: $darker-blue-color;
+    font-weight: 500;
+    text-transform: none;
 }
 
 .rawr-list .rawr {
-  padding: 20px;
-  border-bottom: 1px solid $border-blue-color;
+    padding: 20px;
+    border-bottom: 1px solid $border-blue-color;
+}
+
+.rawr-list .rerawr {
+    margin-top: -10px;
+    margin-bottom: 5px;
+    margin-left: 80px;
+}
+
+.rawr-list .rerawr .icon {
+    height: 18px;
+    width: 20px;
+    float: left;
+    margin-right: 5px;
+    background-size: 20px 18px;
+    background: url("../images/retweet-mini.png") no-repeat center;
+}
+
+
+.rawr-list .rerawr .text,
+.rawr-list .rerawr .text a{
+    color: $darker-blue-color;
+    font-size: 0.9em;
+    text-decoration: none;
 }
 
 .rawr-list .rawr.last-child {
-  border: none;
+    border: none;
 }
 
 .rawr-list .rawr .rawr-media .profile-picture {
-  height: 60px;
-  width: 60px;
-  border-radius: 4px;
-  border: 1px solid $border-blue-color;
-  background-color: $darker-blue-color;
+    height: 60px;
+    width: 60px;
+    border-radius: 4px;
+    border: 1px solid $border-blue-color;
+    background-color: $darker-blue-color;
 }
 
 .rawr-list .rawr-body {
-  display: inline-block;
-  padding-left: 20px;
-  width: calc(100% - 60px);
+    display: inline-block;
+    padding-left: 20px;
+    width: calc(100% - 60px);
 }
 
 .rawr-list .rawr-body .rawr-header a.name {
-  color: $dark-gray-color;
-  font-weight: 500;
-  text-decoration: none;
-  padding-right: 5px;
+    color: $dark-gray-color;
+    font-weight: 500;
+    text-decoration: none;
+    padding-right: 5px;
 }
 
 .rawr-list .rawr-body .rawr-header a.username {
-  color: $darker-blue-color;
-  font-size: 0.9em;
-  text-decoration: none;
+    color: $darker-blue-color;
+    font-size: 0.9em;
+    text-decoration: none;
 }
 
-.rawr-list .rawr-body .rawr-header span.time,
-.rawr-list .rawr-body .rawr-header p.time {
-  font-size: 0.9em;
-  color: $darker-blue-color;
-  margin-bottom: 0px;
+.rawr-list .rawr-body .rawr-header p.time,
+.rawr-list .rawr-body .rawr-header span.time {
+    font-size: 0.9em;
+    color: $darker-blue-color;
+    margin-bottom: 0;
 }
 
 .rawr-list .rawr-body .rawr-content .status {
-  font-size: 1.2em;
-  padding: 10px 0px;
-  word-wrap: break-word;
+    font-size: 1.2em;
+    padding: 10px 0;
+    word-wrap: break-word;
 }
 
 .rawr-list .rawr-body .rawr-content .status a {
-  color: $blue-color;
+    color: $blue-color;
 }
 
 .rawr-list .rawr-body .rawr-content .videos {
-  padding-bottom: 5px;
+    padding-bottom: 5px;
 }
 
 .rawr-list .rawr-body .rawr-content .videos iframe {
-  border: 1px solid $border-blue-color;
-  border-radius: 6px;
-  background-color: $light-blue-color;
+    border: 1px solid $border-blue-color;
+    border-radius: 6px;
+    background-color: $light-blue-color;
 }
 
 .rawr-list .rawr-body .rawr-content .images .image {
-  float: left;
-  padding-right: 10px;
-  padding-bottom: 10px;
+    float: left;
+    padding-right: 10px;
+    padding-bottom: 10px;
 }
 
 .rawr-list .rawr-body .rawr-content .images .image img {
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
-  border: 1px solid $border-blue-color;
-  border-radius: 6px;
-  background-color: $light-blue-color;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border: 1px solid $border-blue-color;
+    border-radius: 6px;
+    background-color: $light-blue-color;
 }
 
-.rawr-list .rawr-body .rawr-content .actions {
-
-}
+.rawr-list .rawr-body .rawr-content .actions {}
 
 .rawr-list .rawr-body .rawr-content .actions .icon {
-  min-width: 30px;
-  height: 17px;
-  line-height: 17px;
+    min-width: 30px;
+    height: 17px;
+    line-height: 17px;
 }
 
 .rawr-list .rawr-body .rawr-content .actions a.icon {
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 1.1em;
-  color: $dark-gray-color;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1em;
+    color: $dark-gray-color;
 }
 
 .rawr-list .rawr-body .rawr-content .actions .icon.icon-like {
-  background: url("../images/favorite-icon.png") no-repeat left;
-  background-size: 18px 17px;
-  padding-left: 26px;
-  margin-right: 10px;
+    background: url("../images/favorite-icon.png") no-repeat left;
+    background-size: 18px 17px;
+    padding-left: 26px;
+    margin-right: 10px;
 }
 
 .rawr-list .rawr-body .rawr-content .actions .icon.icon-like.selected,
 .rawr-list .rawr-body .rawr-content .actions .icon.icon-like:hover {
-  background: url("../images/favorite-icon-filled.png") no-repeat left;
-  color: $like-color;
-  background-size: 18px 17px;
-  padding-left: 26px;
-  margin-right: 10px;
+    background: url("../images/favorite-icon-filled.png") no-repeat left;
+    color: $like-color;
+    background-size: 18px 17px;
+    padding-left: 26px;
+    margin-right: 10px;
 }
 
 .rawr-list .rawr-body .rawr-content .actions .icon.icon-rerawr {
-  background: url("../images/retweet-icon.png") no-repeat left;
-  background-size: 25px 17px;
-  padding-left: 33px;
-  margin-right: 10px;
+    background: url("../images/retweet-icon.png") no-repeat left;
+    background-size: 25px 17px;
+    padding-left: 33px;
+    margin-right: 10px;
 }
 
 .rawr-list .rawr-body .rawr-content .actions .icon.icon-rerawr.selected,
 .rawr-list .rawr-body .rawr-content .actions .icon.icon-rerawr:hover {
-  background: url("../images/retweet-icon-filled.png") no-repeat left;
-  color: $rerawr-color;
-  background-size: 25px 17px;
-  padding-left: 33px;
-  margin-right: 10px;
+    background: url("../images/retweet-icon-filled.png") no-repeat left;
+    color: $rerawr-color;
+    background-size: 25px 17px;
+    padding-left: 33px;
+    margin-right: 10px;
 }

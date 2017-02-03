@@ -12,6 +12,10 @@
         <div class="content" infinite-scroll='rawrList.fetchOld()' infinite-scroll-distance="0" infinite-scroll-disabled='rawrList.items[rawrList.selected].busy || rawrList.items[rawrList.selected].disabled'>
             <div ng-repeat='item in rawrList.items[rawrList.selected].rawrs'>
                 <div class="rawr" ng-class="{'last-child': $last}">
+                    <div class="rerawr" ng-if="item.rerawr">
+                      <div class="icon"></div>
+                      <span class="text">{{ 'RERAWR_BY' | translate}} <a ng-href="#/profile/{{item.rerawr.owner.username}}">{{item.rerawr.owner.first_name}} {{item.rerawr.owner.last_name}}</a></span>
+                    </div>
                     <div class="rawr-media pull-left">
                         <a ng-href="#/profile/{{item.owner.username}}"><img class="profile-picture" ng-src="{{item.owner.profile_pictures.large}}" alt="Profile Picture" /></a>
                     </div>

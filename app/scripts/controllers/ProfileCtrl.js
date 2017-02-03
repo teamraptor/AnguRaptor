@@ -6,7 +6,8 @@ define(['AnguRaptor', 'services/api', 'directives/user-box', 'directives/trendin
 
         var profile = {
             user: null,
-            busy: false
+            busy: false,
+            userDoesNotExist: false
         };
 
         profile.busy = true;
@@ -15,6 +16,8 @@ define(['AnguRaptor', 'services/api', 'directives/user-box', 'directives/trendin
             profile.busy = false;
             PageTitleService.setTitle('' + user.first_name + ' ' + user.last_name + ' (@' + user.username + ')');
         }).catch(function() {
+            profile.busy = false;
+            profile.userDoesNotExist = true;
             PageTitleService.setTitle(':(');
         });
 

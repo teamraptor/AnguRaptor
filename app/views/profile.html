@@ -1,6 +1,6 @@
 <div class="container">
 	<div class="row no-padding">
-		<div ng-if="!profile.busy">
+		<div ng-if="!profile.busy && !profile.userDoesNotExist">
 			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
 				<user-box user="profile.user" show-counts="true"></user-box>
 				<trending-box class="hidden-xs hidden-lg"></trending-box>
@@ -12,10 +12,13 @@
 				<trending-box></trending-box>
 			</div>
 		</div>
-		<div class="col-md-12" ng-if="profile.busy">
-			<div class="panel panel-raptor">
-				<div class="empty-loading">
+		<div class="col-md-12">
+			<div class="panel panel-raptor" ng-show="profile.busy || profile.userDoesNotExist">
+				<div class="empty-loading" ng-if="profile.busy">
 					<img class="spinner" src="../images/spinner.png" />
+				</div>
+				<div class="empty-loading" ng-if="profile.userDoesNotExist">
+						<p class="title">{{ 'USER_DOES_NOT_EXIST' | translate}}</p>
 				</div>
 			</div>
 		</div>

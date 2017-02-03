@@ -49,6 +49,7 @@ define([], function() {
 		TIMELINE_TITLE: 'Biografía',
 		MENTIONS_TITLE: 'Menciones',
 		FAVORITES_TITLE: 'Favoritos',
+		USER_DOES_NOT_EXIST: 'El usuario no existe',
 
 		SEARCH_TITLE: 'Resultado(s) encontrado(s) para \"{{term}}\"',
 		EMPTY_SEARCH: 'No se encontraron resultados para \"{{term}}\"',
@@ -56,6 +57,7 @@ define([], function() {
 
 		EMPTY_USER_LIST: 'No hay usuarios',
 
-		UNREAD_RAWR: 'Ver {{number}} nuevo Rawr(s)'
+		UNREAD_RAWR: 'Ver {{number}} nuevo Rawr(s)',
+		RERAWR_BY: 'Rerawred por'
 	};
 });

@@ -27,7 +27,8 @@ require.config({
         tab: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/tab',
         tooltip: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/tooltip',
         transition: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/transition',
-        ngInfiniteScroll: '../../bower_components/ngInfiniteScroll/build/ng-infinite-scroll'
+        ngInfiniteScroll: '../../bower_components/ngInfiniteScroll/build/ng-infinite-scroll',
+        'angular-bootstrap': '../../bower_components/angular-bootstrap/ui-bootstrap-tpls'
     },
     shim: {
         angular: {
