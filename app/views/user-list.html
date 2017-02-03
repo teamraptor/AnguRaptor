@@ -15,7 +15,7 @@
             <div class="clearfix"></div>
         </div>
         <div class="empty-loading" ng-show="userList.items[userList.selected].busy">
-            <img class="spinner" src="../images/spinner.png" />
+            <img class="spinner" src="./images/spinner.png" />
         </div>
         <div class="empty-loading" ng-show="userList.items[userList.selected].disabled && userList.items[userList.selected].users.length === 0">
             <p class="title" ng-click="loadMore()">{{ 'EMPTY_USER_LIST' | translate}}</p>

@@ -5,21 +5,21 @@ define([], function() {
         defaultRoutePath: '/',
         routes: {
             '/': {
-                templateUrl: '/views/home.html',
+                templateUrl: './views/home.html',
                 controller: 'HomeCtrl'
             },
             '/profile/:username': {
-                templateUrl: '/views/profile.html',
+                templateUrl: './views/profile.html',
                 controller: 'ProfileCtrl',
                 title: 'Profile'
             },
             '/search': {
-                templateUrl: '/views/search.html',
+                templateUrl: './views/search.html',
                 controller: 'SearchCtrl',
                 title: 'Raptor Search'
             },
             '/rawrs/:rawr_id': {
-                templateUrl: '/views/rawr.html',
+                templateUrl: './views/rawr.html',
                 controller: 'RawrCtrl'
             }
             /* ===== yeoman hook ===== */

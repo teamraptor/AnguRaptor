@@ -66,9 +66,12 @@
     background: url("../images/retweet-mini.png") no-repeat center;
 }
 
+.rawr-list .rerawr .text a {
+    color: $darker-blue-color;
+    text-decoration: none;
+}
 
-.rawr-list .rerawr .text,
-.rawr-list .rerawr .text a{
+.rawr-list .rerawr .text {
     color: $darker-blue-color;
     font-size: 0.9em;
     text-decoration: none;
