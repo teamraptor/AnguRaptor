@@ -31,6 +31,21 @@
   font-weight: 500;
 }
 
+.rawr-list .new-content {
+  height: 50px;
+  display: flex;
+  background-color: $not-so-lighter-blue-color;
+  border-bottom: 1px solid $border-blue-color;
+  cursor: pointer;
+}
+
+.rawr-list .new-content p.title {
+  margin: auto;
+  color: $darker-blue-color;
+  font-weight: 500;
+  text-transform: none;
+}
+
 .rawr-list .rawr {
   padding: 20px;
   border-bottom: 1px solid $border-blue-color;

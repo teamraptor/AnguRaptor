@@ -54,6 +54,8 @@ define([], function() {
 		EMPTY_SEARCH: 'No results found for \"{{term}}\"',
 		PAGE_SEARCH_TITLE: '{{term}} - Raptor Search',
 
-		EMPTY_USER_LIST: 'No users'
+		EMPTY_USER_LIST: 'No users',
+
+		UNREAD_RAWR: 'View {{number}} new Rawr(s)'
 	};
 });

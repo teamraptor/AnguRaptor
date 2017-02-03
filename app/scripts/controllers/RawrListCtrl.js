@@ -1,29 +1,62 @@
 'use strict';
 define(['AnguRaptor', 'services/api', 'filters/htmlize'], function(AnguRaptor) {
 
-    AnguRaptor.controller('RawrListCtrl', ['$scope', 'api', function($scope, api) {
+    AnguRaptor.controller('RawrListCtrl', ['$scope', 'api', '$interval', function($scope, api, $interval) {
 
         var rawrList = {
             selected: 0,
             items: []
         };
 
-        $scope.$watch('items', function() {
+        var setListener = function(item) {
+          item.cancelInterval = $interval(function() {
+            fetchNew(item);
+          }, item.interval);
+        };
+
+        var clearListeners = function() {
+          angular.forEach(rawrList.items, function(item) {
+            if (item.cancelInterval) {
+              item.cancelInterval();
+            }
+          });
+        };
+
+        var fetchNew = function(item) {
+          if (item.index !== rawrList.selected) {
+            return;
+          };
+          var last = (item.newRawrs.length === 0) ? (item.rawrs[0].created_time) : (item.newRawrs[0].created_time);
+          item.nextPage(1, item.fetchLimit, last).then(function(newRawrs) {
+            item.newRawrs = newRawrs.concat(item.newRawrs);
+          });
+        };
+
+        var itemListener = $scope.$watch('items', function() {
+          clearListeners();
           rawrList.items = [];
           for (var i = 0; i < $scope.items.length; i++) {
+
               rawrList.items.push({
+                  index: i,
                   rawrs: $scope.items[i].rawrs || [],
+                  newRawrs: [],
                   busy: false,
                   page: 1,
                   fetchLimit: $scope.items[i].fetchLimit || 15,
                   nextPage: $scope.items[i].nextPage,
                   title: $scope.items[i].title,
+                  interval: $scope.items[i].interval,
                   disabled: $scope.items[i].disabled || false
               });
+
+              if (rawrList.items[i].interval) {
+                setListener(rawrList.items[i]);
+              }
           }
         });
 
-        rawrList.loadMore = function() {
+        rawrList.fetchOld = function() {
 
             var item = rawrList.items[rawrList.selected];
 
@@ -51,13 +84,22 @@ define(['AnguRaptor', 'services/api', 'filters/htmlize'], function(AnguRaptor) {
             });
         };
 
+        rawrList.showNew = function() {
+
+          var item = rawrList.items[rawrList.selected];
+
+          item.rawrs = item.newRawrs.concat(item.rawrs);
+          item.newRawrs = [];
+
+        };
+
         rawrList.switchSelection = function(selected) {
             if (selected === rawrList.selected) {
                 return;
             }
             rawrList.selected = selected;
             if (rawrList.items[selected].rawrs.length === 0) {
-                rawrList.loadMore();
+                rawrList.fetchOld();
             }
         };
 
@@ -84,6 +126,9 @@ define(['AnguRaptor', 'services/api', 'filters/htmlize'], function(AnguRaptor) {
         };
 
         $scope.rawrList = rawrList;
+
+        $scope.$on('$destroy', itemListener);
+        $scope.$on('$destroy', clearListeners);
 
     }]);
 

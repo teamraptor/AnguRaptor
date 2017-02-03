@@ -6,7 +6,10 @@
             </span>
             <div class="clearfix"></div>
         </div>
-        <div class="content" infinite-scroll='rawrList.loadMore()' infinite-scroll-distance="0" infinite-scroll-disabled='rawrList.items[rawrList.selected].busy || rawrList.items[rawrList.selected].disabled'>
+        <div class="new-content" ng-if="rawrList.items[rawrList.selected].newRawrs.length > 0">
+          <p class="title" translate="UNREAD_RAWR" translate-value-number="{{rawrList.items[rawrList.selected].newRawrs.length}}" ng-click="rawrList.showNew()"></p>
+        </div>
+        <div class="content" infinite-scroll='rawrList.fetchOld()' infinite-scroll-distance="0" infinite-scroll-disabled='rawrList.items[rawrList.selected].busy || rawrList.items[rawrList.selected].disabled'>
             <div ng-repeat='item in rawrList.items[rawrList.selected].rawrs'>
                 <div class="rawr" ng-class="{'last-child': $last}">
                     <div class="rawr-media pull-left">
@@ -45,7 +48,7 @@
             <img class="spinner" src="../images/spinner.png" />
         </div>
         <div class="empty-loading" ng-show="rawrList.items[rawrList.selected].disabled && rawrList.items[rawrList.selected].rawrs.length === 0">
-            <p class="title" ng-click="loadMore()">{{ 'EMPTY_RAWRS' | translate}}</p>
+            <p class="title">{{ 'EMPTY_RAWRS' | translate}}</p>
         </div>
     </div>
 </div>
