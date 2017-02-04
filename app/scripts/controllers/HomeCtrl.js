@@ -24,9 +24,12 @@ define(['AnguRaptor', 'services/api', 'directives/trending-box', 'directives/raw
             globalFeed.title = translations.GLOBAL_TITLE;
         });
 
-        if (api.user.isLoggedIn()) {
-          rawrList.items.push(feed);
-        }
+        api.user.isLoggedIn().then(function(loggedIn) {
+          if (loggedIn) {
+            rawrList.items.push(feed);
+          }
+        });
+
         rawrList.items.push(globalFeed);
 
         home.rawrList = rawrList;

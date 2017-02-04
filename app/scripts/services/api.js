@@ -3,11 +3,12 @@
 define(['AnguRaptor', 'services/DateService', 'services/MediaService'], function(AnguRaptor) {
 
     //  var root = 'http://10.0.1.6:10101';
-    var root = 'http://localhost:10101';
+    var root = 'http://localhost:8080';
+    // var root = 'http://api-raptor:8080';
 
     AnguRaptor.service('api', ['$http', '$q', '$cookies', '$window', '$rootScope', 'DateService', 'MediaService', function($http, $q, $cookies, $window, $rootScope, DateService, MediaService) {
 
-        var token = $cookies.get('JSESSIONID');
+        var sessionValid = undefined;
 
         function endpoint(options) {
             options.url = root + options.url;
@@ -17,7 +18,7 @@ define(['AnguRaptor', 'services/DateService', 'services/MediaService'], function
             options.afterError = options.afterError || function(data) {
                 return data;
             };
-            options.headers = options.headers || {};
+            options.headers = options.headers  ||  {};
             options.auth = options.auth || false;
             options.method = options.method || 'GET';
 
@@ -28,7 +29,7 @@ define(['AnguRaptor', 'services/DateService', 'services/MediaService'], function
             headers = Object.assign(headers, options.headers);
 
             if (options.method === 'POST') {
-              headers['X-CSRF-TOKEN'] = $cookies.get('X-CSRF-TOKEN');
+                headers['X-CSRF-TOKEN'] = $cookies.get('X-CSRF-TOKEN');
             }
 
             var httpConfig = {
@@ -36,11 +37,12 @@ define(['AnguRaptor', 'services/DateService', 'services/MediaService'], function
                 method: options.method,
                 params: options.params,
                 data: options.body,
+                withCredentials: true,
                 'headers': headers
             };
 
             if (options.transformRequest) {
-              httpConfig.transformRequest = options.transformRequest;
+                httpConfig.transformRequest = options.transformRequest;
             }
 
             return $http(httpConfig).then(function(response) {
@@ -64,15 +66,15 @@ define(['AnguRaptor', 'services/DateService', 'services/MediaService'], function
             $cookies.put('X-CSRF-TOKEN', headers('X-CSRF-TOKEN'), {
                 expires: exp
             });
-            token = $cookies.get('JSESSIONID');
+            sessionValid = true;
             $rootScope.$broadcast('session.change');
             return response;
         }
 
-        function destroySession() {
+        function destroySession(response) {
+            console.log(response);
             $cookies.remove('X-CSRF-TOKEN');
-            $cookies.remove('JSESSIONID');
-            token = undefined;
+            sessionValid = false;
             $rootScope.$broadcast('session.change');
         }
 
@@ -90,15 +92,26 @@ define(['AnguRaptor', 'services/DateService', 'services/MediaService'], function
         }
 
         function buildNotification(notification) {
-          notification.time = DateService.calculateDateDifference(notification.created_time);
-          return notification;
+            notification.time = DateService.calculateDateDifference(notification.created_time);
+            return notification;
         }
 
         function buildNotifications(notifications) {
-          angular.forEach(notifications, function(notification) {
-              buildNotification(notification);
-          });
-          return notifications;
+            angular.forEach(notifications, function(notification) {
+                buildNotification(notification);
+            });
+            return notifications;
+        }
+
+        function testSession(response) {
+            if (sessionValid == null) {
+                if (response.error) {
+                    sessionValid = false;
+                } else {
+                    sessionValid = true;
+                }
+            }
+            return sessionValid;
         }
 
         this.user = {
@@ -117,12 +130,12 @@ define(['AnguRaptor', 'services/DateService', 'services/MediaService'], function
                         'j_password': password
                     },
                     headers: {
-                      'Content-Type': 'application/x-www-form-urlencoded'
+                        'Content-Type': 'application/x-www-form-urlencoded'
                     },
                     transformRequest: function(obj) {
                         var str = [];
                         for (var p in obj) {
-                          str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]));
+                            str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]));
                         }
                         return str.join('&');
                     },
@@ -133,7 +146,6 @@ define(['AnguRaptor', 'services/DateService', 'services/MediaService'], function
                 return endpoint({
                     url: '/auth/logout',
                     method: 'POST',
-                    auth: true,
                     after: destroySession,
                     afterError: destroySession
                 });
@@ -152,7 +164,18 @@ define(['AnguRaptor', 'services/DateService', 'services/MediaService'], function
                 });
             },
             isLoggedIn: function() {
-                return !(token == null);
+                if (sessionValid == null) {
+                    return endpoint({
+                        url: '/user',
+                        method: 'HEAD',
+                        after: testSession,
+                        afterError: testSession
+                    });
+                } else {
+                  return $q(function(resolve) {
+                    resolve(sessionValid);
+                  });
+                }
             }
         };
 

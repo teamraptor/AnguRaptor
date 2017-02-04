@@ -23,16 +23,6 @@ define(['AnguRaptor', 'directives/notification-list', 'directives/rawr-composer'
             api.rawr.create(status);
         };
 
-        if (api.user.isLoggedIn()) {
-            api.user.get().then(function(user) {
-                navbar.user = user;
-                navbar.loggedIn = true;
-            });
-        } else {
-            navbar.user = null;
-            navbar.loggedIn = false;
-        }
-
         navbar.search = function(term) {
             $location.path('/search').search('term', term);
             navbar.searchField = '';
@@ -85,9 +75,18 @@ define(['AnguRaptor', 'directives/notification-list', 'directives/rawr-composer'
           });
         }, 30000); */
 
-        if (api.user.isLoggedIn()) {
-          notificationList.fetch();
-        }
+        api.user.isLoggedIn().then(function(loggedIn) {
+          if (loggedIn) {
+            notificationList.fetch();
+            api.user.get().then(function(user) {
+                navbar.user = user;
+                navbar.loggedIn = true;
+            });
+          } else {
+            navbar.user = null;
+            navbar.loggedIn = false;
+          }
+        });
 
         navbar.notificationList = notificationList;
 
