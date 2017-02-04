@@ -62,7 +62,9 @@ define(['AnguRaptor', 'directives/notification-list', 'directives/rawr-composer'
                     notificationList.items.push(notifications[i]);
                 }
 
-                notificationList.max_position = notifications[notifications.length - 1].created_time;
+                if (notifications.length > 0) {
+                  notificationList.max_position = notifications[notifications.length - 1].created_time;
+                }
                 notificationList.busy = false;
 
             }).catch(function() {
@@ -71,7 +73,7 @@ define(['AnguRaptor', 'directives/notification-list', 'directives/rawr-composer'
             });
         };
 
-        /*notificationList.interval = $interval(function() {
+        /* notificationList.interval = $interval(function() {
           var min_position = null;
           if (notificationList.items) {
             min_position = notificationList.items[0].created_time;
@@ -81,9 +83,11 @@ define(['AnguRaptor', 'directives/notification-list', 'directives/rawr-composer'
             notificationList.items = notifications.concat(notificationList.items);
             console.log(notificationList);
           });
-        }, 30000);*/
+        }, 30000); */
 
-        notificationList.fetch();
+        if (api.user.isLoggedIn()) {
+          notificationList.fetch();
+        }
 
         navbar.notificationList = notificationList;
 
@@ -91,7 +95,7 @@ define(['AnguRaptor', 'directives/notification-list', 'directives/rawr-composer'
               notificationList.badge = 0;
               var ids = [];
               for (var i = 0; i < notificationList.items.length; i++) {
-                  if(notificationList.items[i].new) {
+                  if (notificationList.items[i].new) {
                     ids.push(notificationList.items[i].id);
                   }
                   notificationList.items[i].new = false;

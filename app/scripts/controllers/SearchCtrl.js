@@ -11,8 +11,8 @@ define(['AnguRaptor', 'services/api', 'directives/trending-box', 'directives/raw
         };
 
         var queryBuilder = function(fn, term) {
-          return function(page, limit) {
-            return fn(term, page, limit);
+          return function(limit, max_position, min_position) {
+            return fn(term, limit, max_position, min_position);
           };
         };
 
@@ -31,7 +31,9 @@ define(['AnguRaptor', 'services/api', 'directives/trending-box', 'directives/raw
                     search.bareTerm = search.term.substring(1);
                     search.type = 'users';
                     search.items.push({
-                        nextPage: queryBuilder(api.search.users.find, search.bareTerm)
+                        nextPage: function(page, limit) {
+                          return api.search.users.find(search.bareTerm, page, limit);
+                        }
                     });
                     break;
                 default:

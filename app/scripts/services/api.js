@@ -7,7 +7,7 @@ define(['AnguRaptor', 'services/DateService', 'services/MediaService'], function
 
     AnguRaptor.service('api', ['$http', '$q', '$cookies', '$window', '$rootScope', 'DateService', 'MediaService', function($http, $q, $cookies, $window, $rootScope, DateService, MediaService) {
 
-        var token = $cookies.get('token');
+        var token = $cookies.get('JSESSIONID');
 
         function endpoint(options) {
             options.url = root + options.url;
@@ -17,6 +17,7 @@ define(['AnguRaptor', 'services/DateService', 'services/MediaService'], function
             options.afterError = options.afterError || function(data) {
                 return data;
             };
+            options.headers = options.headers || {};
             options.auth = options.auth || false;
             options.method = options.method || 'GET';
 
@@ -24,18 +25,26 @@ define(['AnguRaptor', 'services/DateService', 'services/MediaService'], function
                 'Content-Type': 'application/json'
             };
 
-            if (options.auth) {
-                // TODO - add headers for authentication
+            headers = Object.assign(headers, options.headers);
+
+            if (options.method === 'POST') {
+              headers['X-CSRF-TOKEN'] = $cookies.get('X-CSRF-TOKEN');
             }
 
-            return $http({
+            var httpConfig = {
                 url: options.url,
                 method: options.method,
                 params: options.params,
                 data: options.body,
                 'headers': headers
-            }).then(function(response) {
-                return options.after(response.data);
+            };
+
+            if (options.transformRequest) {
+              httpConfig.transformRequest = options.transformRequest;
+            }
+
+            return $http(httpConfig).then(function(response) {
+                return options.after(response.data, response.headers);
             }).catch(function(response) {
                 var error = {
                     'code': response.status,
@@ -49,19 +58,20 @@ define(['AnguRaptor', 'services/DateService', 'services/MediaService'], function
 
         };
 
-        function buildSession(response) {
+        function buildSession(response, headers) {
             var now = new $window.Date();
-            var exp = new $window.Date(now.getFullYear(), now.getMonth(), now.getDate() + 30);
-            $cookies.put('token', response.token, {
+            var exp = new $window.Date(now.getFullYear(), now.getMonth(), now.getDate() + 100);
+            $cookies.put('X-CSRF-TOKEN', headers('X-CSRF-TOKEN'), {
                 expires: exp
             });
-            token = response.token;
+            token = $cookies.get('JSESSIONID');
             $rootScope.$broadcast('session.change');
             return response;
         }
 
         function destroySession() {
-            $cookies.remove('token');
+            $cookies.remove('X-CSRF-TOKEN');
+            $cookies.remove('JSESSIONID');
             token = undefined;
             $rootScope.$broadcast('session.change');
         }
@@ -103,8 +113,18 @@ define(['AnguRaptor', 'services/DateService', 'services/MediaService'], function
                     url: '/auth/login',
                     method: 'POST',
                     body: {
-                        'username': username,
-                        'password': password
+                        'j_username': username,
+                        'j_password': password
+                    },
+                    headers: {
+                      'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    transformRequest: function(obj) {
+                        var str = [];
+                        for (var p in obj) {
+                          str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]));
+                        }
+                        return str.join('&');
                     },
                     after: buildSession
                 });
@@ -261,7 +281,7 @@ define(['AnguRaptor', 'services/DateService', 'services/MediaService'], function
         this.trends = {
             get: function() {
                 return endpoint({
-                    url: '/trending'
+                    url: '/trending?count=10'
                 });
             }
         };

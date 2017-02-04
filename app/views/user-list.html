@@ -9,7 +9,7 @@
         <div class="user-list" infinite-scroll='userList.loadMore()' infinite-scroll-distance="0" infinite-scroll-disabled='userList.items[userList.selected].busy || userList.items[userList.selected].disabled'>
             <div ng-repeat='item in userList.items[userList.selected].users' class="user-item">
                 <a ng-href="#/profile/{{item.username}}">
-                    <user-box user="item"></user-box>
+                    <user-box user="item" show-counts="false"></user-box>
                 </a>
             </div>
             <div class="clearfix"></div>

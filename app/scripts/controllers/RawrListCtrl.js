@@ -79,8 +79,9 @@ define(['AnguRaptor', 'services/api', 'filters/htmlize'], function(AnguRaptor) {
                 }
 
                 var last = rawrs[rawrs.length - 1];
-
-                item.max_position = last.rerawr ? last.rerawr.created_time : last.created_time; // the new max_position is the latest rawr in the response creation_time
+                if (last) {
+                  item.max_position = last.rerawr ? last.rerawr.created_time : last.created_time; // the new max_position is the latest rawr in the response creation_time
+                }
                 item.busy = false;
 
             }).catch(function() {
