@@ -53,7 +53,7 @@ define(['AnguRaptor', 'directives/notification-list', 'directives/rawr-composer'
                 }
 
                 if (notifications.length > 0) {
-                  notificationList.max_position = notifications[notifications.length - 1].created_time;
+                    notificationList.max_position = notifications[notifications.length - 1].created_time;
                 }
                 notificationList.busy = false;
 
@@ -63,7 +63,7 @@ define(['AnguRaptor', 'directives/notification-list', 'directives/rawr-composer'
             });
         };
 
-        /* notificationList.interval = $interval(function() {
+        /*notificationList.interval = $interval(function() {
           var min_position = null;
           if (notificationList.items) {
             min_position = notificationList.items[0].created_time;
@@ -71,38 +71,37 @@ define(['AnguRaptor', 'directives/notification-list', 'directives/rawr-composer'
           api.user.notifications.get(notificationList.fetchLimit, null, min_position).then(function(notifications) {
             notificationList.badge += notifications.length;
             notificationList.items = notifications.concat(notificationList.items);
-            console.log(notificationList);
           });
-        }, 30000); */
+        }, 30000);*/
 
         api.user.isLoggedIn().then(function(loggedIn) {
-          if (loggedIn) {
-            notificationList.fetch();
-            api.user.get().then(function(user) {
-                navbar.user = user;
-                navbar.loggedIn = true;
-            });
-          } else {
-            navbar.user = null;
-            navbar.loggedIn = false;
-          }
+            if (loggedIn) {
+                notificationList.fetch();
+                api.user.get().then(function(user) {
+                    navbar.user = user;
+                    navbar.loggedIn = true;
+                });
+            } else {
+                navbar.user = null;
+                navbar.loggedIn = false;
+            }
         });
 
         navbar.notificationList = notificationList;
 
         navbar.toggleNotifications = function() {
-              notificationList.badge = 0;
-              var ids = [];
-              for (var i = 0; i < notificationList.items.length; i++) {
-                  if (notificationList.items[i].new) {
+            notificationList.badge = 0;
+            var ids = [];
+            for (var i = 0; i < notificationList.items.length; i++) {
+                if (notificationList.items[i].new) {
                     ids.push(notificationList.items[i].id);
-                  }
-                  notificationList.items[i].new = false;
-              }
-              if (ids.length > 0) {
-                  api.user.notifications.markRead(ids);
-              }
-              navbar.notificationsOpen = !navbar.notificationsOpen;
+                }
+                notificationList.items[i].new = false;
+            }
+            if (ids.length > 0) {
+                api.user.notifications.markRead({notifications: ids});
+            }
+            navbar.notificationsOpen = !navbar.notificationsOpen;
         };
 
         $scope.navbar = navbar;

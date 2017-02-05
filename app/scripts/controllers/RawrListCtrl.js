@@ -5,6 +5,7 @@ define(['AnguRaptor', 'services/api', 'filters/htmlize'], function(AnguRaptor) {
 
         var rawrList = {
             selected: 0,
+            globalDisable: true,
             items: [],
             intervals: []
         };
@@ -40,6 +41,7 @@ define(['AnguRaptor', 'services/api', 'filters/htmlize'], function(AnguRaptor) {
         var itemListener = $scope.$watch('items', function() {
             clearIntervals();
             rawrList.items = [];
+            rawrList.globalDisable = true;
             for (var i = 0; i < $scope.items.length; i++) {
                 rawrList.items.push({
                     index: i,
@@ -57,6 +59,9 @@ define(['AnguRaptor', 'services/api', 'filters/htmlize'], function(AnguRaptor) {
                 if (rawrList.items[i].interval) {
                     setInterval(rawrList.items[i]);
                 }
+            }
+            if (rawrList.items.length > 0) {
+              rawrList.globalDisable = false;
             }
         });
 

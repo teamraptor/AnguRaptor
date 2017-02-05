@@ -3,8 +3,8 @@
 define(['AnguRaptor', 'services/DateService', 'services/MediaService'], function(AnguRaptor) {
 
     //  var root = 'http://10.0.1.6:10101';
-    var root = 'http://localhost:8080';
-    // var root = 'http://api-raptor:8080';
+    // var root = 'http://localhost:8080';
+     var root = 'http://api-raptor:8080';
 
     AnguRaptor.service('api', ['$http', '$q', '$cookies', '$window', '$rootScope', 'DateService', 'MediaService', function($http, $q, $cookies, $window, $rootScope, DateService, MediaService) {
 
@@ -21,6 +21,7 @@ define(['AnguRaptor', 'services/DateService', 'services/MediaService'], function
             options.headers = options.headers  ||  {};
             options.auth = options.auth || false;
             options.method = options.method || 'GET';
+            options.body = options.body || {};
 
             var headers = {
                 'Content-Type': 'application/json'

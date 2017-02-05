@@ -11,7 +11,8 @@ define(['AnguRaptor', 'services/api', 'directives/trending-box', 'directives/raw
 
         var feed = {
             title: 'Feed',
-            nextPage: api.user.feed.get
+            nextPage: api.user.feed.get,
+            interval: 10000
         };
 
         var globalFeed = {
@@ -28,9 +29,8 @@ define(['AnguRaptor', 'services/api', 'directives/trending-box', 'directives/raw
           if (loggedIn) {
             rawrList.items.push(feed);
           }
+          rawrList.items.push(globalFeed);
         });
-
-        rawrList.items.push(globalFeed);
 
         home.rawrList = rawrList;
 

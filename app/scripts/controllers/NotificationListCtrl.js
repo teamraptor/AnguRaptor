@@ -8,9 +8,9 @@ define(['AnguRaptor'], function(AnguRaptor) {
         var itemRef = function(notification) {
           switch (notification.type) {
             case 'mention':
-            case 'like':
-            case 'rerawr':
-              return '/rawrs/' + '10012310'; // notification.status_id;
+            case 'favorite':
+            case 'retweet':
+              return '/rawrs/' + notification.status_id;
             case 'follow':
             case 'unfollow':
               return '/profile/' + notification.user.username;
