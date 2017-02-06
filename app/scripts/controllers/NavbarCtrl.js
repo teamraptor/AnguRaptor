@@ -63,16 +63,18 @@ define(['AnguRaptor', 'directives/notification-list', 'directives/rawr-composer'
             });
         };
 
-        /*notificationList.interval = $interval(function() {
+        notificationList.interval = $interval(function() {
           var min_position = null;
           if (notificationList.items) {
             min_position = notificationList.items[0].created_time;
           }
+			console.log(notificationList.items);
           api.user.notifications.get(notificationList.fetchLimit, null, min_position).then(function(notifications) {
             notificationList.badge += notifications.length;
             notificationList.items = notifications.concat(notificationList.items);
+			console.log(notifications);
           });
-        }, 30000);*/
+        }, 30000);
 
         api.user.isLoggedIn().then(function(loggedIn) {
             if (loggedIn) {
@@ -99,7 +101,7 @@ define(['AnguRaptor', 'directives/notification-list', 'directives/rawr-composer'
                 notificationList.items[i].new = false;
             }
             if (ids.length > 0) {
-                api.user.notifications.markRead({notifications: ids});
+                api.user.notifications.markRead({notification_ids: ids});
             }
             navbar.notificationsOpen = !navbar.notificationsOpen;
         };

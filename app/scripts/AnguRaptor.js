@@ -28,7 +28,6 @@ define(['routes',
 				'$httpProvider',
 				function($routeProvider, $controllerProvider, $compileProvider, $filterProvider, $provide, $translateProvider, $httpProvider) {
 
-					$httpProvider.defaults.withCredentials = true;
 
 					AnguRaptor.controller = $controllerProvider.register;
 					AnguRaptor.directive = $compileProvider.directive;
