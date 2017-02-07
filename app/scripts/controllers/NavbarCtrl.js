@@ -63,18 +63,17 @@ define(['AnguRaptor', 'directives/notification-list', 'directives/rawr-composer'
             });
         };
 
-        notificationList.interval = $interval(function() {
-            var min_position = null;
-            if (notificationList.items.length > 0) {
-                min_position = notificationList.items[0].created_time;
-            }
-            api.user.notifications.get(notificationList.fetchLimit, null, min_position).then(function(notifications) {
-                notificationList.badge += notifications.length;
-                notificationList.items = notifications.concat(notificationList.items);
-            });
-        }, 30000);
-
         if (api.user.isLoggedIn()) {
+            notificationList.interval = $interval(function() {
+                var min_position = null;
+                if (notificationList.items.length > 0) {
+                    min_position = notificationList.items[0].created_time;
+                }
+                api.user.notifications.get(notificationList.fetchLimit, null, min_position).then(function(notifications) {
+                    notificationList.badge += notifications.length;
+                    notificationList.items = notifications.concat(notificationList.items);
+                });
+            }, 20000);
             notificationList.fetch();
             api.user.get().then(function(user) {
                 navbar.user = user;

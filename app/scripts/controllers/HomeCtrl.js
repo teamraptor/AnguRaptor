@@ -17,7 +17,8 @@ define(['AnguRaptor', 'services/api', 'directives/trending-box', 'directives/raw
 
         var globalFeed = {
             title: 'Global',
-            nextPage: api.feed.get
+            nextPage: api.feed.get,
+            interval: 15000
         };
 
         $translate(['FEED_TITLE', 'GLOBAL_TITLE']).then(function(translations) {
