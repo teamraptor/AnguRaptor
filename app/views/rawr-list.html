@@ -14,14 +14,14 @@
                 <div class="rawr" ng-class="{'last-child': $last}">
                     <div class="rerawr" ng-if="item.rerawr">
                       <div class="icon"></div>
-                      <span class="text">{{ 'RERAWR_BY' | translate}} <a ng-href="#/profile/{{item.rerawr.owner.username}}">{{item.rerawr.owner.first_name}} {{item.rerawr.owner.last_name}}</a></span>
+                      <span class="text">{{ 'RERAWR_BY' | translate}} <a ng-href="#/profile/{{item.rerawr.owner.username}}">{{item.rerawr.owner.first_name}} {{item.rerawr.owner.last_name}}</a> <i class="fa fa-check-square" aria-hidden="true" ng-show="{{item.rerawr.owner.verified}}"></i></span>
                     </div>
                     <div class="rawr-media pull-left">
                         <a ng-href="#/profile/{{item.owner.username}}"><img class="profile-picture" ng-src="{{item.owner.profile_pictures.large}}" alt="Profile Picture" /></a>
                     </div>
                     <div class="rawr-body">
                         <div class="rawr-header">
-                            <a class="name" ng-href="#/profile/{{item.owner.username}}">{{item.owner.first_name}} {{item.owner.last_name}}</a><a class="username" ng-href="#/profile/{{item.owner.username}}">@{{item.owner.username}}</a>
+                            <a class="name" ng-href="#/profile/{{item.owner.username}}">{{item.owner.first_name}} {{item.owner.last_name}}</a><a class="username" ng-href="#/profile/{{item.owner.username}}">@{{item.owner.username}}</a> <i class="fa fa-check-square verified blue" aria-hidden="true" ng-show="{{item.owner.verified}}"></i>
                             <span class="time pull-right hidden-xs" translate="TIME_SINCE" translate-value-number="{{item.time.number}}" translate-value-unit="{{(item.time.unit | uppercase) | translate}}"></span>
                             <p class="time visible-xs" translate="TIME_SINCE" translate-value-number="{{item.time.number}}" translate-value-unit="{{(item.time.unit | uppercase) | translate}}"></p>
                         </div>
@@ -40,10 +40,14 @@
                               <div class="clearfix"></div>
                             </div>
                             <div class="actions">
+                                <a href="" class="icon icon-reply" ng-if="rawrList.loggedIn" ng-class="{'selected': item.user_has_liked }" ng-click="rawrList.toggleReply(item)"> </a>
                                 <a href="" class="icon icon-rerawr" ng-if="!(item.user_has_rerawred == null)" ng-class="{'selected': item.user_has_rerawred }" ng-click="rawrList.rerawr(item)"> {{item.counts.rerawrs}}</a>
                                 <a href="" class="icon icon-like" ng-if="!(item.user_has_liked == null)" ng-class="{'selected': item.user_has_liked }" ng-click="rawrList.like(item)"> {{item.counts.likes}}</a>
                             </div>
                         </div>
+                    </div>
+                    <div class="rawr-reply" ng-if="item.replyOpen">
+                      <rawr-composer initial-status="'@' + item.owner.username + ' '" callback-arg="item" post-callback="rawrList.postReply(status, item)"></rawr-composer>
                     </div>
                 </div>
             </div>

@@ -126,7 +126,7 @@
 }
 
 .rawr-list .rawr-body .rawr-content .videos {
-    padding-bottom: 5px;
+    padding-bottom: 10px;
 }
 
 .rawr-list .rawr-body .rawr-content .videos iframe {
@@ -165,6 +165,13 @@
     color: $dark-gray-color;
 }
 
+.rawr-list .rawr-body .rawr-content .actions .icon.icon-reply {
+    background: url("../images/reply-icon.png") no-repeat left;
+    background-size: 25px 17px;
+    padding-left: 33px;
+    margin-right: 10px;
+}
+
 .rawr-list .rawr-body .rawr-content .actions .icon.icon-like {
     background: url("../images/favorite-icon.png") no-repeat left;
     background-size: 18px 17px;
@@ -195,4 +202,8 @@
     background-size: 25px 17px;
     padding-left: 33px;
     margin-right: 10px;
+}
+
+.rawr-list .rawr-reply {
+    padding: 20px 10px 0px 10px;
 }

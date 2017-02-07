@@ -28,6 +28,9 @@ body {
   input[type="text"] {
     font-size: inherit;
   }
+  .no-margin {
+    margin: 0px;
+  }
 }
 
 .clearfix {
@@ -58,6 +61,18 @@ body {
 
 .empty-loading.border-top {
   border-top: 1px solid $border-blue-color;
+}
+
+.verified {
+  font-size: 1.2em;
+}
+
+.verified.blue {
+  color: $blue-color;
+}
+
+.verified.white {
+  color: white;
 }
 
 @-moz-keyframes spin {

@@ -1,5 +1,5 @@
 'use strict';
-define(['AnguRaptor', 'services/api', 'filters/htmlize'], function(AnguRaptor) {
+define(['AnguRaptor', 'services/api', 'filters/htmlize', 'directives/rawr-composer'], function(AnguRaptor) {
 
     AnguRaptor.controller('RawrListCtrl', ['$scope', 'api', '$interval', function($scope, api, $interval) {
 
@@ -7,6 +7,7 @@ define(['AnguRaptor', 'services/api', 'filters/htmlize'], function(AnguRaptor) {
             selected: 0,
             globalDisable: true,
             items: [],
+            loggedIn: api.user.isLoggedIn(),
             intervals: []
         };
 
@@ -61,7 +62,7 @@ define(['AnguRaptor', 'services/api', 'filters/htmlize'], function(AnguRaptor) {
                 }
             }
             if (rawrList.items.length > 0) {
-              rawrList.globalDisable = false;
+                rawrList.globalDisable = false;
             }
         });
 
@@ -85,7 +86,7 @@ define(['AnguRaptor', 'services/api', 'filters/htmlize'], function(AnguRaptor) {
 
                 var last = rawrs[rawrs.length - 1];
                 if (last) {
-                  item.max_position = last.rerawr ? last.rerawr.created_time : last.created_time; // the new max_position is the latest rawr in the response creation_time
+                    item.max_position = last.rerawr ? last.rerawr.created_time : last.created_time; // the new max_position is the latest rawr in the response creation_time
                 }
                 item.busy = false;
 
@@ -134,6 +135,19 @@ define(['AnguRaptor', 'services/api', 'filters/htmlize'], function(AnguRaptor) {
                 rawr.counts.rerawrs++;
             }
             rawr.user_has_rerawred = !rawr.user_has_rerawred;
+        };
+
+        rawrList.toggleReply = function(item) {
+            if (item.replyOpen == null || item.replyOpen === false) {
+              item.replyOpen = true;
+            } else {
+              item.replyOpen = false;
+            }
+        };
+
+        rawrList.postReply = function(status, item) {
+          rawrList.toggleReply(item);
+          api.rawr.create(status);
         };
 
         $scope.rawrList = rawrList;

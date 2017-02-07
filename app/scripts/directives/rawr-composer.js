@@ -7,7 +7,9 @@ define(['AnguRaptor', 'controllers/RawrComposerCtrl'], function(AnguRaptor) {
             templateUrl: './views/rawr-composer.html',
             controller: 'RawrComposerCtrl',
             scope: {
-              postCallback: '&'
+              postCallback: '&',
+              initialStatus: '=',
+              callbackArg: '='
             }
         };
     });

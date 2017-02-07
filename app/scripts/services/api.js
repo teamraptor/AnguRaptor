@@ -2,9 +2,8 @@
 
 define(['AnguRaptor', 'services/DateService', 'services/MediaService', 'angular-local-storage'], function(AnguRaptor) {
 
-    //  var root = 'http://10.0.1.6:10101';
-    // var root = 'http://localhost:8080';
     var root = 'http://localhost:8080';
+    // var root = 'http://10.0.1.6:8080';
 
     AnguRaptor.service('api', ['$http', '$q', 'localStorageService', '$window', '$rootScope', 'DateService', 'MediaService', function($http, $q, localStorageService, $window, $rootScope, DateService, MediaService) {
 

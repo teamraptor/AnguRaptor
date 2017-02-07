@@ -6,7 +6,7 @@
             </div>
             <div class="user-info">
                 <p>{{user.first_name}} {{user.last_name}}</p>
-                <p>@{{user.username}}</p>
+                <p>@{{user.username}} <i class="fa fa-check-square verified white" aria-hidden="true" ng-show="{{user.verified}}"></i></p>
             </div>
             <div class="actions" ng-if="!(user.user_follows == null)">
                 <a class="btn btn-raptor" ng-if="!user.user_follows" ng-click="userBox.followingStatusChanged('follow')">{{ 'FOLLOW' | translate}}</a>

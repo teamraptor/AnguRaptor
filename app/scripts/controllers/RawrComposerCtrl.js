@@ -4,14 +4,14 @@ define(['AnguRaptor'], function(AnguRaptor) {
     AnguRaptor.controller('RawrComposerCtrl', ['$scope', function($scope) {
 
           var rawrComposer = {
-            status: ''
+            status: $scope.initialStatus || ''
           };
 
           rawrComposer.postRawr = function() {
-            $scope.postCallback({status: rawrComposer.status});
+            $scope.postCallback({status: rawrComposer.status, arg: $scope.callbackArg});
             rawrComposer.status = '';
           };
-
+          
           $scope.rawrComposer = rawrComposer;
 
     }]);
