@@ -31,6 +31,11 @@ define([], function() {
             '/rawrs/:rawr_id': {
                 templateUrl: './views/rawr.html',
                 controller: 'RawrCtrl'
+            },
+            '/signup': {
+                templateUrl: './views/signup.html',
+                controller: 'SignupCtrl',
+                authLevel: 'notAuthenticated'
             }
             /* ===== yeoman hook ===== */
             /* Do not remove these commented lines! Needed for auto-generation */

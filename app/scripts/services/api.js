@@ -31,6 +31,10 @@ define(['AnguRaptor', 'services/DateService', 'services/MediaService', 'angular-
                 headers.Authorization = 'Basic ' + credentials;
             }
 
+            if (options.before) {
+              options.before();
+            }
+
             var httpConfig = {
                 url: options.url,
                 method: options.method,
@@ -64,6 +68,7 @@ define(['AnguRaptor', 'services/DateService', 'services/MediaService', 'angular-
         }
 
         function loginError(error) {
+            hasCredentials = false;
             localStorageService.remove('credentials');
             return error;
         }
@@ -113,7 +118,7 @@ define(['AnguRaptor', 'services/DateService', 'services/MediaService', 'angular-
                 localStorageService.remove('credentials');
                 $rootScope.$broadcast('session.change');
             },
-            create: function(firstName, lastName, useranme, email, password) {
+            create: function(firstName, lastName, username, email, password) {
                 return endpoint({
                     url: '/signup',
                     method: 'POST',
@@ -123,7 +128,12 @@ define(['AnguRaptor', 'services/DateService', 'services/MediaService', 'angular-
                         'username': username,
                         'email': email,
                         'password': password
-                    }
+                    },
+                    before: function() {
+                      localStorageService.set('credentials', btoa(username + ':' + password));
+                    },
+                    after: buildSession,
+                    afterError: loginError
                 });
             },
             isLoggedIn: function() {

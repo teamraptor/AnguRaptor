@@ -2,7 +2,7 @@
   <form name="composerForm">
     <textarea type="text" name="rawr" class="raptor-input" ng-model="rawrComposer.status" required placeholder="{{ 'RAWR_PLACEHOLDER' | translate}}"></textarea>
     <div class="options">
-      <div class="row no-margin">
+      <div class="row no-margin no-padding">
         <div class="col-md-3 pull-left character-count"  ng-class="{'exceeded': (rawrComposer.status.length > 255)}">
           {{rawrComposer.status.length?rawrComposer.status.length:'0'}}/255
         </div>

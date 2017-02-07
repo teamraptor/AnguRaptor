@@ -1,0 +1,69 @@
+<div class="panel panel-raptor">
+    <div class="signup-form">
+        <h2>{{ 'SIGN_UP_TITLE' | translate}}</h2>
+        <form role="form" name="signupForm">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>{{ 'FIRST_NAME' | translate}}</label>
+                        <input type="text" name="firstName" placeholder="{{ 'FIRST_NAME' | translate}}" required ng-model="signup.firstName" class="form-control raptor-input" />
+                        <div class="error" ng-show="signupForm.firstName.$touched && signupForm.firstName.$error.required">{{ 'FIELD_REQUIRED' | translate}}</div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>{{ 'LAST_NAME' | translate}}</label>
+                        <input type="text" name="lastName" placeholder="{{ 'LAST_NAME' | translate}}" required ng-model="signup.lastName" class="form-control raptor-input" />
+                        <div class="error" ng-show="signupForm.lastName.$touched && signupForm.lastName.$invalid">{{ 'FIELD_REQUIRED' | translate}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>{{ 'USERNAME' | translate}}</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">@</span>
+                            <input type="text" name="username" placeholder="{{ 'USERNAME' | translate}}" ng-pattern="/^[a-zA-Z0-9]+$/" required ng-model="signup.username" class="form-control raptor-input" />
+                        </div>
+                        <div class="error" ng-show="signupForm.username.$touched && signupForm.username.$error.required">{{ 'FIELD_REQUIRED' | translate}}</div>
+                        <div class="error" ng-show="signupForm.username.$touched && signupForm.username.$invalid">{{ 'FIELD_ALPHANUMERIC' | translate}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>{{ 'EMAIL' | translate}}</label>
+                        <input type="email" name="email" placeholder="{{ 'EMAIL' | translate}}" required ng-model="signup.email" class="form-control raptor-input" />
+                        <div class="error" ng-show="signupForm.email.$touched && signupForm.email.$error.required">{{ 'FIELD_REQUIRED' | translate}}</div>
+                        <div class="error" ng-show="signupForm.email.$touched && signupForm.email.$invalid">{{ 'EMAIL_ERROR' | translate}}</div>
+                        <p class="help-block">{{ 'GRAVATAR_REMINDER' | translate}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>{{ 'PASSWORD' | translate}}</label>
+                        <input type="password" name="password" placeholder="{{ 'PASSWORD' | translate}}" ng-maxlength="12" ng-minlength="6" ng-pattern="/^[a-zA-Z0-9]+$/" required ng-model="signup.password" class="form-control raptor-input" />
+                        <div class="error" ng-show="signupForm.password.$touched && signupForm.password.$error.required">{{ 'FIELD_REQUIRED' | translate}}</div>
+                        <div class="error" ng-show="signupForm.password.$touched && signupForm.password.$invalid">{{ 'PASSWORD_ERROR' | translate}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <input type="checkbox"> {{ 'TERMS_AND_CONDITIONS' | translate}}<br>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <a class="btn btn-raptor pull-right" ng-disabled="signupForm.$invalid" ng-click="signup.createUser()">{{ 'CREATE_USER' | translate}}</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

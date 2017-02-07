@@ -12,6 +12,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import 'partials/trending-box';
 @import 'partials/rawr-list';
 @import 'partials/search';
+@import 'partials/signup';
 
 body {
   background-color: $light-blue-color;
@@ -112,4 +113,43 @@ body {
       padding-right: 0px;
       padding-left: 0px;
   }
+}
+
+/* raptor input */
+
+.raptor-input {
+    display: block;
+    height: 34px;
+    padding: 6px 12px;
+    line-height: 1.428571429;
+    color: $dark-gray-color;
+    background-color: $light-blue-color;
+    background-image: none;
+    border-style: none;
+    border-radius: 4px;
+    box-shadow: none;
+}
+
+.raptor-input::-webkit-input-placeholder {
+    color: $dark-blue-color;
+}
+
+.raptor-input:-moz-placeholder {
+    color: $dark-blue-color;
+    opacity: 1;
+}
+
+.raptor-input::-moz-placeholder {
+    color: $dark-blue-color;
+    opacity: 1;
+}
+
+.raptor-input:-ms-input-placeholder {
+    color: $dark-blue-color;
+}
+
+input:focus.raptor-input {
+    outline: none;
+    border: none;
+    box-shadow: none;
 }

@@ -322,42 +322,6 @@ a.link {
   right: 15px;
 }
 
-/* raptor input */
-
-.raptor-input {
-    display: block;
-    height: 34px;
-    padding: 6px 12px;
-    line-height: 1.428571429;
-    color: $dark-gray-color;
-    background-color: $light-blue-color;
-    background-image: none;
-    border-style: none;
-    border-radius: 4px;
-}
-
-.raptor-input::-webkit-input-placeholder {
-    color: $dark-blue-color;
-}
-
-.raptor-input:-moz-placeholder {
-    color: $dark-blue-color;
-    opacity: 1;
-}
-
-.raptor-input::-moz-placeholder {
-    color: $dark-blue-color;
-    opacity: 1;
-}
-
-.raptor-input:-ms-input-placeholder {
-    color: $dark-blue-color;
-}
-
-input:focus.raptor-input {
-    outline: none;
-}
-
 .btn-raptor {
   color: white;
   background-color: $blue-color;

@@ -1,0 +1,31 @@
+@import 'modules/variables';
+
+.signup-form {
+    padding: 30px;
+}
+
+.signup-form h2 {
+    padding-bottom: 20px;
+}
+
+.signup-form .raptor-input {
+    height: 45px;
+}
+
+.signup-form .input-group-addon {
+    font-size: 2em;
+    font-weight: bold;
+    border: none;
+    background-color: $dark-blue-color;
+    color: $light-blue-color;
+    font-family: sans-serif;
+}
+
+.signup-form .help-block {
+    color: $dark-blue-color;
+}
+
+.signup-form .error {
+  color: $red-color;
+  margin-top: 5px;
+}

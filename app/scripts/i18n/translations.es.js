@@ -65,6 +65,22 @@ define([], function() {
 		EMPTY_USER_LIST: 'No hay usuarios',
 
 		UNREAD_RAWR: 'Ver {{number}} nuevo Rawr(s)',
-		RERAWR_BY: 'Rerawred por'
+		RERAWR_BY: 'Rerawred por',
+
+		SIGN_UP_TITLE: 'Crea tu cuenta en Raptor',
+		FIRST_NAME: 'Nombre',
+		LAST_NAME: 'Apellido',
+		USERNAME: 'Nombre de usuario',
+		EMAIL: 'Email',
+		PASSWORD: 'Contraseña',
+		GRAVATAR_REMINDER: 'Asegurate de tener acceso a esta cuenta de email. Usamos Gravatar para popular tu foto de perfil.',
+		TERMS_AND_CONDITIONS: 'Acepto los términos y condiciones.',
+
+		FIELD_REQUIRED: 'Este campo es obligatorio',
+		FIELD_ALPHANUMERIC: 'Este campo solo puede contener letras y números',
+		EMAIL_ERROR: 'El email no es válido',
+		PASSWORD_ERROR: 'La contraseña debe contener entre 6 y 12 caracteres',
+
+		CREATE_USER: 'Crear mi cuenta'
 	};
 });

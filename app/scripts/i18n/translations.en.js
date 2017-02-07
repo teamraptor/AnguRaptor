@@ -65,6 +65,22 @@ define([], function() {
 		EMPTY_USER_LIST: 'No users',
 
 		UNREAD_RAWR: 'View {{number}} new Rawr(s)',
-		RERAWR_BY: 'Rerawred by'
+		RERAWR_BY: 'Rerawred by',
+
+		SIGN_UP_TITLE: 'Create your Raptor account',
+		FIRST_NAME: 'First name',
+		LAST_NAME: 'Last name',
+		USERNAME: 'Username',
+		EMAIL: 'Email',
+		PASSWORD: 'Password',
+		GRAVATAR_REMINDER: 'Be sure to have access to this email. We use Gravatar to populate your profile picture.',
+		TERMS_AND_CONDITIONS: 'I accept the terms and conditions.',
+
+		FIELD_REQUIRED: 'This field is required',
+		FIELD_ALPHANUMERIC: 'This field needs to be alphanumeric',
+		EMAIL_ERROR: 'The email is not valid',
+		PASSWORD_ERROR: 'The password must have between 6 and 12 characters',
+
+		CREATE_USER: 'Create my account'
 	};
 });
