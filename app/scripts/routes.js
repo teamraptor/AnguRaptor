@@ -13,6 +13,16 @@ define([], function() {
                 controller: 'ProfileCtrl',
                 title: 'Profile'
             },
+            '/profile/:username/followers': {
+                templateUrl: './views/followers.html',
+                controller: 'FollowersCtrl',
+                title: 'Followers'
+            },
+            '/profile/:username/following': {
+                templateUrl: './views/following.html',
+                controller: 'FollowingCtrl',
+                title: 'Following'
+            },
             '/search': {
                 templateUrl: './views/search.html',
                 controller: 'SearchCtrl',

@@ -38,6 +38,13 @@ define([], function() {
 		FOLLOW: 'Seguir',
 		UNFOLLOW: 'Dejar de seguir',
 
+		FOLLOWERS: 'Seguidores',
+		FOLLOWING: 'Sigue',
+		RAWRS: 'Rawrs',
+
+		FOLLOWERS_TITLE: 'Seguidores de {{username}}',
+		FOLLOWING_TITLE: 'Usuarios que {{username}} sigue',
+
 		TRENDING_TITLE: 'Popular en Raptor',
 		EMPTY_TRENDING: 'No hay temas populares actualmente',
 

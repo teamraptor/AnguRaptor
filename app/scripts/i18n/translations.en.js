@@ -38,6 +38,13 @@ define([], function() {
 		FOLLOW: 'Follow',
 		UNFOLLOW: 'Unfollow',
 
+		FOLLOWERS: 'Followers',
+		FOLLOWING: 'Following',
+		RAWRS: 'Rawrs',
+
+		FOLLOWERS_TITLE: '{{username}}\'s followers',
+		FOLLOWING_TITLE: '{{username}} is following',
+
 		TRENDING_TITLE: 'Trending on Raptor',
 		EMPTY_TRENDING: 'There\'s nothing is currently trending',
 

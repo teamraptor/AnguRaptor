@@ -4,22 +4,16 @@ define(['AnguRaptor', 'directives/navbar', 'directives/rawr-button', 'services/a
     AnguRaptor.controller('IndexCtrl', ['$scope', 'api', 'PageTitleService', function($scope, api, PageTitleService) {
 
         var index = {
-            isLoggedIn: null
+            isLoggedIn: api.user.isLoggedIn()
         };
 
-        api.user.isLoggedIn().then(function(loggedIn) {
-            index.isLoggedIn = loggedIn;
-        });
-
         var sessionListener = $scope.$on('session.change', function() {
-            api.user.isLoggedIn().then(function(loggedIn) {
-                index.isLoggedIn = loggedIn;
-            });
+            index.isLoggedIn = api.user.isLoggedIn();
         }, true);
 
         $scope.$on('$destroy', sessionListener);
 
-				$scope.index = index;
+        $scope.index = index;
 
     }]);
 

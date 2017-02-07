@@ -7,6 +7,7 @@ define(['routes',
 	'bootstrap',
 	'angular-translate',
 	'angular-cookies',
+	'angular-local-storage',
 	'angular-sanitize',
 	'infinite-scroll'],
 	function(config, dependencyResolverFor, i18n) {
@@ -15,6 +16,7 @@ define(['routes',
 			'pascalprecht.translate',
 			'ngCookies',
 			'infinite-scroll',
+			'LocalStorageModule',
 			'ngSanitize'
 		]);
 		AnguRaptor
@@ -25,15 +27,16 @@ define(['routes',
 				'$filterProvider',
 				'$provide',
 				'$translateProvider',
-				'$httpProvider',
-				function($routeProvider, $controllerProvider, $compileProvider, $filterProvider, $provide, $translateProvider, $httpProvider) {
-
+				'localStorageServiceProvider',
+				function($routeProvider, $controllerProvider, $compileProvider, $filterProvider, $provide, $translateProvider, localStorageServiceProvider) {
 
 					AnguRaptor.controller = $controllerProvider.register;
 					AnguRaptor.directive = $compileProvider.directive;
 					AnguRaptor.filter = $filterProvider.register;
 					AnguRaptor.factory = $provide.factory;
 					AnguRaptor.service = $provide.service;
+
+					localStorageServiceProvider.setPrefix('raptor');
 
 					if (config.routes !== undefined) {
 						angular.forEach(config.routes, function(route, path) {

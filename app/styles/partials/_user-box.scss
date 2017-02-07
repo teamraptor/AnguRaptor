@@ -56,8 +56,14 @@
 .user-box .counts .count-item p {
   margin: 0px;
   font-weight: 500;
+  text-transform: lowercase;
   color: $blue-color;
 }
+
+.user-box .counts .count-item a {
+  text-decoration: none;
+}
+
 
 .user-box .counts .count-item p.count {
   font-size: 1.4em;

@@ -1,14 +1,14 @@
 'use strict';
 
-define(['AnguRaptor', 'services/DateService', 'services/MediaService'], function(AnguRaptor) {
+define(['AnguRaptor', 'services/DateService', 'services/MediaService', 'angular-local-storage'], function(AnguRaptor) {
 
     //  var root = 'http://10.0.1.6:10101';
     // var root = 'http://localhost:8080';
-     var root = 'http://localhost:8080';
+    var root = 'http://localhost:8080';
 
-    AnguRaptor.service('api', ['$http', '$q', '$cookies', '$window', '$rootScope', 'DateService', 'MediaService', function($http, $q, $cookies, $window, $rootScope, DateService, MediaService) {
+    AnguRaptor.service('api', ['$http', '$q', 'localStorageService', '$window', '$rootScope', 'DateService', 'MediaService', function($http, $q, localStorageService, $window, $rootScope, DateService, MediaService) {
 
-        var sessionValid = undefined;
+        var hasCredentials = (localStorageService.get('credentials') == null) ? false : true;
 
         function endpoint(options) {
             options.url = root + options.url;
@@ -19,18 +19,18 @@ define(['AnguRaptor', 'services/DateService', 'services/MediaService'], function
                 return data;
             };
             options.headers = options.headers  ||  {};
-            options.auth = options.auth || false;
             options.method = options.method || 'GET';
-            options.body = options.body || {};
+            options.body = options.body ||  {};
 
             var headers = {
                 'Content-Type': 'application/json'
             };
 
-			var credentials = $cookies.get('credentials');
-			if (credentials) {
-				headers['Authorization'] = 'Basic ' + credentials; 
-			}
+            var credentials = localStorageService.get('credentials');
+
+            if (credentials) {
+                headers.Authorization = 'Basic ' + credentials;
+            }
 
             var httpConfig = {
                 url: options.url,
@@ -60,14 +60,13 @@ define(['AnguRaptor', 'services/DateService', 'services/MediaService'], function
         };
 
         function buildSession() {
-            sessionValid = true;
+            hasCredentials = true;
             $rootScope.$broadcast('session.change');
-            return response;
         }
 
-        function destroySession() {
-            sessionValid = false;
-            $rootScope.$broadcast('session.change');
+        function loginError(error) {
+            localStorageService.remove('credentials');
+            return error;
         }
 
         function buildRawr(rawr) {
@@ -95,40 +94,25 @@ define(['AnguRaptor', 'services/DateService', 'services/MediaService'], function
             return notifications;
         }
 
-        function testSession(response) {
-            if (sessionValid == null) {
-                if (response.error) {
-                    sessionValid = false;
-                } else {
-                    sessionValid = true;
-                }
-            }
-            return sessionValid;
-        }
-
         this.user = {
             get: function() {
                 return endpoint({
-                    url: '/user',
-                    auth: true
+                    url: '/user'
                 });
             },
             login: function(username, password) {
-var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",encode:function(e){var t="";var n,r,i,s,o,u,a;var f=0;e=Base64._utf8_encode(e);while(f<e.length){n=e.charCodeAt(f++);r=e.charCodeAt(f++);i=e.charCodeAt(f++);s=n>>2;o=(n&3)<<4|r>>4;u=(r&15)<<2|i>>6;a=i&63;if(isNaN(r)){u=a=64}else if(isNaN(i)){a=64}t=t+this._keyStr.charAt(s)+this._keyStr.charAt(o)+this._keyStr.charAt(u)+this._keyStr.charAt(a)}return t},decode:function(e){var t="";var n,r,i;var s,o,u,a;var f=0;e=e.replace(/[^A-Za-z0-9+/=]/g,"");while(f<e.length){s=this._keyStr.indexOf(e.charAt(f++));o=this._keyStr.indexOf(e.charAt(f++));u=this._keyStr.indexOf(e.charAt(f++));a=this._keyStr.indexOf(e.charAt(f++));n=s<<2|o>>4;r=(o&15)<<4|u>>2;i=(u&3)<<6|a;t=t+String.fromCharCode(n);if(u!=64){t=t+String.fromCharCode(r)}if(a!=64){t=t+String.fromCharCode(i)}}t=Base64._utf8_decode(t);return t},_utf8_encode:function(e){e=e.replace(/rn/g,"n");var t="";for(var n=0;n<e.length;n++){var r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r)}else if(r>127&&r<2048){t+=String.fromCharCode(r>>6|192);t+=String.fromCharCode(r&63|128)}else{t+=String.fromCharCode(r>>12|224);t+=String.fromCharCode(r>>6&63|128);t+=String.fromCharCode(r&63|128)}}return t},_utf8_decode:function(e){var t="";var n=0;var r=c1=c2=0;while(n<e.length){r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r);n++}else if(r>191&&r<224){c2=e.charCodeAt(n+1);t+=String.fromCharCode((r&31)<<6|c2&63);n+=2}else{c2=e.charCodeAt(n+1);c3=e.charCodeAt(n+2);t+=String.fromCharCode((r&15)<<12|(c2&63)<<6|c3&63);n+=3}}return t}};
-				$cookies.put('credentials', Base64.encode(username + ':' + password));
+                localStorageService.set('credentials', btoa(username + ':' + password));
                 return endpoint({
                     url: '/user',
                     method: 'HEAD',
-                    after: buildSession
+                    after: buildSession,
+                    afterError: loginError
                 });
             },
             logout: function() {
-                return endpoint({
-                    url: '/auth/logout',
-                    method: 'POST',
-                    after: destroySession,
-                    afterError: destroySession
-                });
+                hasCredentials = false;
+                localStorageService.remove('credentials');
+                $rootScope.$broadcast('session.change');
             },
             create: function(firstName, lastName, useranme, email, password) {
                 return endpoint({
@@ -144,18 +128,7 @@ var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456
                 });
             },
             isLoggedIn: function() {
-                if (sessionValid == null) {
-                    return endpoint({
-                        url: '/user',
-                        method: 'HEAD',
-                        after: testSession,
-                        afterError: testSession
-                    });
-                } else {
-                  return $q(function(resolve) {
-                    resolve(sessionValid);
-                  });
-                }
+                return hasCredentials;
             }
         };
 
@@ -168,7 +141,6 @@ var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456
                         'max_position': max_position,
                         'min_position': min_position
                     },
-                    auth: true,
                     after: buildRawrList
                 });
             }
@@ -183,22 +155,19 @@ var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456
                         'max_position': max_position,
                         'min_position': min_position
                     },
-                    auth: true,
                     after: buildNotifications
                 });
             },
             unreadCount: function() {
                 return endpoint({
-                    url: '/user/notifications/count',
-                    auth: true
+                    url: '/user/notifications/count'
                 });
             },
             markRead: function(notificationIds) {
                 return endpoint({
                     url: '/user/notifications/read',
                     method: 'POST',
-                    body: notificationIds,
-                    auth: true
+                    body: notificationIds
                 });
             }
         };
@@ -212,15 +181,37 @@ var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456
             follow: function(username) {
                 return endpoint({
                     url: '/users/' + username + '/follow',
-                    method: 'POST',
-                    auth: true
+                    method: 'POST'
                 });
             },
             unfollow: function(useranme) {
                 return endpoint({
                     url: '/users/' + useranme + '/unfollow',
-                    method: 'POST',
-                    auth: true
+                    method: 'POST'
+                });
+            }
+        };
+
+        this.users.followers = {
+            get: function(username, page, limit) {
+                return endpoint({
+                    url: '/users/' + username + '/followers',
+                    params: {
+                        'limit': limit,
+                        'page': page
+                    }
+                });
+            }
+        };
+
+        this.users.following = {
+            get: function(username, page, limit) {
+                return endpoint({
+                    url: '/users/' + username + '/following',
+                    params: {
+                        'limit': limit,
+                        'page': page
+                    }
                 });
             }
         };
@@ -347,36 +338,31 @@ var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456
                     method: 'POST',
                     body: {
                         'status': status
-                    },
-                    auth: true
+                    }
                 });
             },
             like: function(rawrId) {
                 return endpoint({
                     url: '/rawrs/' + rawrId + '/like',
-                    method: 'POST',
-                    auth: true
+                    method: 'POST'
                 });
             },
             unlike: function(rawrId) {
                 return endpoint({
                     url: '/rawrs/' + rawrId + '/unlike',
-                    method: 'POST',
-                    auth: true
+                    method: 'POST'
                 });
             },
             rerawr: function(rawrId) {
                 return endpoint({
                     url: '/rawrs/' + rawrId + '/rerawr',
-                    method: 'POST',
-                    auth: true
+                    method: 'POST'
                 });
             },
             unrerawr: function(rawrId) {
                 return endpoint({
                     url: '/rawrs/' + rawrId + '/unrerawr',
-                    method: 'POST',
-                    auth: true
+                    method: 'POST'
                 });
             }
         };
