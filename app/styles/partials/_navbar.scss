@@ -254,7 +254,7 @@ a.link {
 }
 
 .open > .card.card-login {
-    max-height: 210px;
+    max-height: 240px;
 }
 
 .card-login input[type="password"],
@@ -263,6 +263,11 @@ a.link {
     width: 100%;
     min-width: 250px;
     margin-bottom: 10px;
+}
+
+.card-login .error {
+  color: $red-color;
+  margin-top: 5px;
 }
 
 .card-user {

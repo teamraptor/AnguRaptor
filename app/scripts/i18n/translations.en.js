@@ -4,6 +4,7 @@ define([], function() {
 	return {
 		LOG_IN: 'Log in',
 		LOG_OUT: 'Log out',
+		LOG_IN_ERROR: 'Invalid username or password',
 
 		SEARCH_PLACEHOLDER: 'Search Raptor...',
 		USERNAME_PLACEHOLDER: 'Username',
@@ -75,6 +76,7 @@ define([], function() {
 		PASSWORD: 'Password',
 		GRAVATAR_REMINDER: 'Be sure to have access to this email. We use Gravatar to populate your profile picture.',
 		TERMS_AND_CONDITIONS: 'I accept the terms and conditions.',
+		ERROR_SIGNUP: 'The username or email are already in use',
 
 		FIELD_REQUIRED: 'This field is required',
 		FIELD_ALPHANUMERIC: 'This field needs to be alphanumeric',

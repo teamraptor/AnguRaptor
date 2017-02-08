@@ -12,7 +12,9 @@ define(['AnguRaptor', 'directives/notification-list', 'directives/rawr-composer'
         };
 
         navbar.login = function() {
-            api.user.login(navbar.loginDetails.username, navbar.loginDetails.password);
+            api.user.login(navbar.loginDetails.username, navbar.loginDetails.password).catch(function() {
+              navbar.loginDetails.error = true;
+            });
         };
 
         navbar.logout = function() {

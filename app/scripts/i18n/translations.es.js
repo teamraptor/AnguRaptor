@@ -4,6 +4,7 @@ define([], function() {
 	return {
 		LOG_IN: 'Iniciar sesión',
 		LOG_OUT: 'Cerrar sesión',
+		LOG_IN_ERROR: 'El usuario o la contraseña no son válidos',
 
 		SEARCH_PLACEHOLDER: 'Buscar en Raptor...',
 		USERNAME_PLACEHOLDER: 'Nombre de usuario',
@@ -75,6 +76,7 @@ define([], function() {
 		PASSWORD: 'Contraseña',
 		GRAVATAR_REMINDER: 'Asegurate de tener acceso a esta cuenta de email. Usamos Gravatar para popular tu foto de perfil.',
 		TERMS_AND_CONDITIONS: 'Acepto los términos y condiciones.',
+		ERROR_SIGNUP: 'El nombre de usuario o el email ya estan en uso',
 
 		FIELD_REQUIRED: 'Este campo es obligatorio',
 		FIELD_ALPHANUMERIC: 'Este campo solo puede contener letras y números',

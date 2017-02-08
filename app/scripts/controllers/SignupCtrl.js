@@ -4,19 +4,20 @@ define(['AnguRaptor', 'services/api', 'services/PageTitleService'], function(Ang
     AnguRaptor.controller('SignupCtrl', ['$scope', 'api', 'PageTitleService', function($scope, api, PageTitleService) {
 
         var signup = {
-          firstName: '',
-          lastName: '',
-          username: '',
-          email: '',
-          password: ''
+            firstName: '',
+            lastName: '',
+            username: '',
+            email: '',
+            password: ''
         };
 
         PageTitleService.setTranslatedTitle('SIGN_UP_TITLE');
 
         signup.createUser = function() {
-          api.user.create(signup.firstName, signup.lastName, signup.username, signup.email, signup.password).catch(function(error) {
-
-          });
+            signup.error = false;
+            api.user.create(signup.firstName, signup.lastName, signup.username, signup.email, signup.password).catch(function() {
+                signup.error = true;
+            });
         };
 
         $scope.signup = signup;

@@ -59,8 +59,14 @@
                     </div>
                 </div>
             </div>
+            <div class="row" ng-if="signup.error">
+                <div class="col-md-12">
+                    <p class="error text-center">{{ 'ERROR_SIGNUP' | translate}}</p>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-md-12">
+                    <p></p>
                     <a class="btn btn-raptor pull-right" ng-disabled="signupForm.$invalid" ng-click="signup.createUser()">{{ 'CREATE_USER' | translate}}</a>
                 </div>
             </div>
