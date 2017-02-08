@@ -10,6 +10,13 @@
     white-space: nowrap;
     overflow: hidden;
     overflow-x: scroll;
+    -ms-overflow-style: none;
+    overflow: -moz-scrollbars-none;
+}
+
+.rawr-list .header::-webkit-scrollbar {
+    width: 0 !important;
+    height: 0 !important;
 }
 
 .rawr-list .header .title {
@@ -180,7 +187,7 @@
 }
 
 .rawr-list .rawr-body .rawr-content .actions .icon.icon-like.selected,
-.rawr-list .rawr-body .rawr-content .actions .icon.icon-like:hover {
+.no-touch .rawr-list .rawr-body .rawr-content .actions .icon.icon-like:hover {
     background: url("../images/favorite-icon-filled.png") no-repeat left;
     color: $like-color;
     background-size: 18px 17px;
@@ -196,7 +203,7 @@
 }
 
 .rawr-list .rawr-body .rawr-content .actions .icon.icon-rerawr.selected,
-.rawr-list .rawr-body .rawr-content .actions .icon.icon-rerawr:hover {
+.no-touch .rawr-list .rawr-body .rawr-content .actions .icon.icon-rerawr:hover {
     background: url("../images/retweet-icon-filled.png") no-repeat left;
     color: $rerawr-color;
     background-size: 25px 17px;
@@ -223,8 +230,6 @@
     .rawr-list .rawr-reply {
         display: none;
     }
-}
-@-moz-document url-prefix() {
     .rawr-list .rawr-reply.open {
         display: block;
     }

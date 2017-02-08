@@ -124,6 +124,7 @@ define(['AnguRaptor', 'services/api', 'filters/htmlize', 'directives/rawr-compos
                 rawr.counts.likes++;
             }
             rawr.user_has_liked = !rawr.user_has_liked;
+            console.log(rawr.user_has_liked);
         };
 
         rawrList.rerawr = function(rawr) {

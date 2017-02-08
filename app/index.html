@@ -8,8 +8,17 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
 
+    <meta property="og:title" content="Raptor" />
+    <meta property="og:image" content="http://raptor.cool/images/icon.png" />
+
+    <link rel="apple-touch-icon" href="images/icon-120.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="images/icon-152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/icon-180.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="images/icon-167.png">
+
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png" />
     <!-- endbuild -->
 
 </head>
@@ -50,6 +59,11 @@
   <script src="bower_components/json3/lib/json3.js"></script>
   <![endif]-->
     <!-- endbuild -->
+    <script>
+        if (!("ontouchstart" in document.documentElement)) {
+            document.documentElement.className += " no-touch";
+        }
+    </script>
     <script src="scripts/paths.js"></script>
     <script src="https://use.fontawesome.com/2928173cdc.js"></script>
     <script src="bower_components/requirejs/require.js" data-main="scripts/build.js"></script>
