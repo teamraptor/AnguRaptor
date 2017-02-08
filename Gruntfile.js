@@ -7,6 +7,8 @@ module.exports = function (grunt) {
 
   require('time-grunt')(grunt);
 
+  grunt.loadNpmTasks('grunt-aws');
+
   var appConfig = {
     app: 'app',
     dist: 'dist'
@@ -381,7 +383,29 @@ module.exports = function (grunt) {
                 outputFile: '<%= yeoman.dist %>/scripts/paths.js'
             }
         }
+    },
+
+    aws: grunt.file.readJSON('.aws.json'),
+
+    s3: {
+      options: {
+        accessKeyId: "<%= aws.accessKeyId %>",
+        secretAccessKey: "<%= aws.secretAccessKey %>",
+        bucket: "<%= aws.bucket %>",
+        region: "<%= aws.region %>",
+        access: 'public-read'
+      },
+      build: {
+        options: {
+          headers: {
+            CacheControl: 31536000 //max-age=630720000, public
+          }
+        },
+        cwd: "dist/",
+        src: "**"
+      }
     }
+
   });
 
   grunt.registerMultiTask('jsrev', 'Use filerev output to create require-js compatible path mappings', function () {
