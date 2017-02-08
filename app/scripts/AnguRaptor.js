@@ -6,7 +6,6 @@ define(['routes',
         'angular-route',
         'bootstrap',
         'angular-translate',
-        'angular-cookies',
         'angular-local-storage',
         'angular-sanitize',
         'infinite-scroll'
@@ -15,7 +14,6 @@ define(['routes',
         var AnguRaptor = angular.module('AnguRaptor', [
             'ngRoute',
             'pascalprecht.translate',
-            'ngCookies',
             'infinite-scroll',
             'LocalStorageModule',
             'ngSanitize'
@@ -45,7 +43,7 @@ define(['routes',
                       });
                   });
               }
-							
+
               if (config.defaultRoutePath !== undefined) {
                   $routeProvider.otherwise({
                       redirectTo: config.defaultRoutePath

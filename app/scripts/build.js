@@ -6,7 +6,6 @@ require.config({
         affix: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/affix',
         alert: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/alert',
         angular: '../../bower_components/angular/angular',
-        'angular-cookies': '../../bower_components/angular-cookies/angular-cookies',
         'angular-local-storage': '../../bower_components/angular-local-storage/dist/angular-local-storage',
         'angular-route': '../../bower_components/angular-route/angular-route',
         'angular-sanitize': '../../bower_components/angular-sanitize/angular-sanitize',
@@ -28,18 +27,12 @@ require.config({
         tab: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/tab',
         tooltip: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/tooltip',
         transition: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/transition',
-        ngInfiniteScroll: '../../bower_components/ngInfiniteScroll/build/ng-infinite-scroll',
-        'angular-bootstrap': '../../bower_components/angular-bootstrap/ui-bootstrap-tpls'
+        ngInfiniteScroll: '../../bower_components/ngInfiniteScroll/build/ng-infinite-scroll'
     },
     shim: {
         angular: {
             deps: [
                 'jquery'
-            ]
-        },
-        'angular-cookies': {
-            deps: [
-                'angular'
             ]
         },
         'angular-local-storage': {

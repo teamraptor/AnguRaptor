@@ -47,7 +47,7 @@
 }
 
 .rawr-list .rawr {
-    padding: 20px 20px 0px 20px;
+    padding: 20px 20px 20px 20px;
     border-bottom: 1px solid $border-blue-color;
 }
 
@@ -205,7 +205,6 @@
 }
 
 .rawr-list .rawr-reply {
-    padding: 10px;
     max-height: 0;
     visibility: hidden;
     opacity: 0;
@@ -213,9 +212,20 @@
 }
 
 .rawr-list .rawr-reply.open {
-    padding: 20px 10px;
+    padding: 20px 10px 0px 10px;
     transition: max-height 0.3s, opacity 0.2s, visibility 0s;
     opacity: 1;
     max-height: 200px;
     visibility: visible;
+}
+
+@-moz-document url-prefix() {
+    .rawr-list .rawr-reply {
+        display: none;
+    }
+}
+@-moz-document url-prefix() {
+    .rawr-list .rawr-reply.open {
+        display: block;
+    }
 }
